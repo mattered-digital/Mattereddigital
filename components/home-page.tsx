@@ -1,139 +1,144 @@
 "use client";
 
+import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const stats = [
-  { label: "Average paid-media efficiency lift", value: "+178%" },
-  { label: "Revenue recovered through retention flows", value: "$3.4M" },
-  { label: "Launches shipped from strategy to go-live", value: "42" }
-];
-
-const signals = [
-  "Brand systems",
-  "Launch strategy",
-  "Paid social",
-  "Search demand",
-  "Content engines",
-  "Conversion design",
-  "Lifecycle automation",
-  "Creative testing"
-];
-
-const featuredProjects = [
+const caseStudies = [
   {
     index: "01",
-    client: "Vanta Atelier",
-    sector: "Luxury fashion / D2C",
+    client: "Orla Studio",
+    sector: "Beauty / D2C",
+    year: "2026",
+    platform: "Next.js / Shopify",
     summary:
-      "Reframed an emerging label from quiet cult favorite into a category-defining launch with sharper brand language, landing pages, and a full-funnel media system.",
-    results: ["5.1x blended ROAS", "38% faster sell-through", "21% higher AOV"],
-    services: ["Brand narrative", "Campaign concepting", "Paid media", "Retention"],
-    palette:
-      "from-[#15120f] via-[#53382a] to-[#df8751]"
+      "A launch platform pairing editorial brand storytelling with performance media, email sequencing, and campaign-specific landing flows.",
+    kpi: "4.8x blended ROAS",
+    services: [
+      "Brand direction",
+      "Campaign site",
+      "Paid social",
+      "Lifecycle"
+    ],
+    palette: "from-[#17110f] via-[#5e3429] to-[#dc8a5a]"
   },
   {
     index: "02",
-    client: "Sable Motion",
+    client: "Frame Athletics",
     sector: "Performance wellness",
+    year: "2026",
+    platform: "Next.js / Sanity",
     summary:
-      "Built a conversion-first launch ecosystem for a premium recovery brand, pairing immersive storytelling with precise acquisition and CRM architecture.",
-    results: ["67% lower CAC", "31% higher signup rate", "12-day product waitlist"],
-    services: ["Go-to-market", "Experience design", "Search & social", "Email automation"],
-    palette:
-      "from-[#111713] via-[#314639] to-[#7d9f77]"
+      "Rebuilt the acquisition funnel around sharper positioning, cinematic launch assets, and a clearer conversion path across paid and owned channels.",
+    kpi: "61% lower CAC",
+    services: [
+      "Go-to-market",
+      "Creative systems",
+      "Search + social",
+      "Analytics"
+    ],
+    palette: "from-[#111412] via-[#26453a] to-[#84a48a]"
   },
   {
     index: "03",
-    client: "Lumen House",
-    sector: "Interiors / ecommerce",
+    client: "Meadow House",
+    sector: "Interiors / Ecommerce",
+    year: "2025",
+    platform: "Next.js / Commerce",
     summary:
-      "Unified fragmented channels into one growth operating system, syncing merchandising, creative production, and seasonal campaign planning.",
-    results: ["2.4x returning customer rate", "18% lift in CVR", "9-country rollout"],
-    services: ["Growth systems", "Creative production", "SEO + CRO", "Forecasting"],
-    palette:
-      "from-[#1b1613] via-[#5d2f2f] to-[#b86d74]"
+      "Unified merchandising, content, and retention into one operating rhythm for seasonal launches and always-on revenue growth.",
+    kpi: "2.3x repeat revenue",
+    services: [
+      "Growth systems",
+      "Content engine",
+      "SEO + CRO",
+      "CRM"
+    ],
+    palette: "from-[#1a1312] via-[#5c3035] to-[#b2757a]"
   }
 ];
 
-const serviceGroups = [
+const pillars = [
   {
-    index: "A.",
-    title: "Positioning & Narrative",
-    description:
-      "We define what your brand should stand for before a single campaign goes live.",
+    label: "(a.)",
+    title: "Brand Direction",
+    copy:
+      "Positioning, naming, messaging systems, and visual cues built so every launch has a point of view before it asks for attention."
+  },
+  {
+    label: "(b.)",
+    title: "Digital Experiences",
+    copy:
+      "Marketing sites, launch pages, and campaign destinations built in Next.js with motion that guides narrative and conversion."
+  },
+  {
+    label: "(c.)",
+    title: "Performance Media",
+    copy:
+      "Paid social, search demand capture, and creative testing loops tuned to push efficiency without flattening the brand."
+  },
+  {
+    label: "(d.)",
+    title: "Growth Operations",
+    copy:
+      "Lifecycle strategy, automation, reporting, and AI-assisted workflows that keep the back half of growth as sharp as the front."
+  }
+];
+
+const serviceColumns = [
+  {
+    label: "(a.) strategy",
+    title: "Strategy & Narrative",
     items: [
-      "Brand strategy",
+      "Brand positioning",
       "Messaging frameworks",
+      "Launch concepts",
       "Offer architecture",
       "Creative direction",
-      "Launch narratives"
+      "Audience research"
     ]
   },
   {
-    index: "B.",
-    title: "Experience & Launch Systems",
-    description:
-      "Landing pages, motion, UX, and front-end builds designed to turn attention into action.",
+    label: "(b.) experience",
+    title: "Creative & Build",
     items: [
-      "Campaign microsites",
-      "Next.js builds",
-      "Design systems",
-      "Conversion-focused UX",
-      "Analytics wiring"
+      "Marketing websites",
+      "Landing pages",
+      "Interaction design",
+      "Motion systems",
+      "Next.js development",
+      "Analytics setup"
     ]
   },
   {
-    index: "C.",
-    title: "Demand & Media",
-    description:
-      "Performance marketing anchored in strong creative testing, channel discipline, and useful reporting.",
+    label: "(c.) growth",
+    title: "Demand & Retention",
     items: [
-      "Meta & TikTok",
-      "Search demand capture",
-      "Creative testing loops",
-      "Budget planning",
+      "Paid social",
+      "Search strategy",
+      "Creative testing",
+      "Email automation",
+      "CRO programs",
       "Reporting dashboards"
-    ]
-  },
-  {
-    index: "D.",
-    title: "Retention & AI Ops",
-    description:
-      "We make the back half of growth just as intentional as the front half.",
-    items: [
-      "Lifecycle automation",
-      "Segmentation systems",
-      "AI-assisted workflows",
-      "Offer sequencing",
-      "Revenue recovery"
     ]
   }
 ];
 
-const processSteps = [
+const artifacts = [
   {
-    index: "01",
-    title: "Read the signal",
-    body:
-      "We audit what the market is already telling you: channel behavior, audience language, offer tension, and friction inside the current funnel."
+    title: "Signal reel",
+    note: "Art direction, motion studies, paid cutdowns."
   },
   {
-    index: "02",
-    title: "Shape the story",
-    body:
-      "From positioning to launch concepts, we translate the strategy into an identity that feels clear, modern, and hard to ignore."
+    title: "Launch deck",
+    note: "Positioning, offer logic, channel sequencing."
   },
   {
-    index: "03",
-    title: "Engineer momentum",
-    body:
-      "Creative, media, landing pages, reporting, CRM, and optimization move together so growth compounds instead of stalling."
+    title: "Growth ops",
+    note: "CRM, reporting, and AI-assisted production."
   }
 ];
+
+const heroHeadline = ["MARKETING", "INNOVATION", "AGENCY"];
 
 export function HomePage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -147,456 +152,486 @@ export function HomePage() {
       return;
     }
 
-    const ctx = gsap.context(() => {
-      gsap.from("[data-header-item]", {
-        y: -24,
-        autoAlpha: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.06
-      });
+    let isActive = true;
+    let ctx: { revert: () => void } | undefined;
 
-      gsap.from("[data-hero-word]", {
-        yPercent: 120,
-        autoAlpha: 0,
-        duration: 1.2,
-        ease: "power4.out",
-        stagger: 0.08
-      });
+    void (async () => {
+      const gsapModule = await import("gsap");
+      const scrollTriggerModule = await import("gsap/dist/ScrollTrigger");
 
-      gsap.from("[data-hero-copy]", {
-        y: 32,
-        autoAlpha: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.12,
-        delay: 0.3
-      });
+      const gsap =
+        gsapModule.default ??
+        ("gsap" in gsapModule ? gsapModule.gsap : undefined);
+      const ScrollTrigger =
+        scrollTriggerModule.ScrollTrigger ?? scrollTriggerModule.default;
 
-      gsap.to("[data-orb]", {
-        yPercent: -16,
-        ease: "none",
-        scrollTrigger: {
-          trigger: rootRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true
-        }
-      });
+      if (!isActive || !gsap || !ScrollTrigger) {
+        return;
+      }
 
-      const revealItems = gsap.utils.toArray<HTMLElement>("[data-reveal]");
-      revealItems.forEach((item, index) => {
-        gsap.fromTo(
-          item,
-          {
-            y: 52,
-            autoAlpha: 0
-          },
-          {
-            y: 0,
-            autoAlpha: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            delay: (index % 3) * 0.05,
-            scrollTrigger: {
-              trigger: item,
-              start: "top 86%"
-            }
+      gsap.registerPlugin(ScrollTrigger);
+
+      ctx = gsap.context(() => {
+        gsap.from("[data-header-item]", {
+          y: -22,
+          autoAlpha: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.05
+        });
+
+        gsap.from("[data-hero-word]", {
+          yPercent: 115,
+          autoAlpha: 0,
+          duration: 1.15,
+          ease: "power4.out",
+          stagger: 0.08
+        });
+
+        gsap.from("[data-hero-copy]", {
+          y: 30,
+          autoAlpha: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.08,
+          delay: 0.28
+        });
+
+        gsap.from("[data-hero-grid]", {
+          autoAlpha: 0,
+          duration: 1.1,
+          ease: "power2.out"
+        });
+
+        gsap.from("[data-hero-figure]", {
+          scale: 0.94,
+          autoAlpha: 0,
+          duration: 1.25,
+          ease: "power3.out",
+          delay: 0.12
+        });
+
+        gsap.from("[data-hero-label]", {
+          y: 18,
+          autoAlpha: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.08,
+          delay: 0.35
+        });
+
+        gsap.to("[data-orb]", {
+          yPercent: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true
           }
-        );
-      });
+        });
 
-      const serviceCards = gsap.utils.toArray<HTMLElement>("[data-service-card]");
-      serviceCards.forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          {
-            y: 64,
-            rotate: index % 2 === 0 ? -1.4 : 1.4,
-            autoAlpha: 0
-          },
-          {
-            y: 0,
-            rotate: 0,
-            autoAlpha: 1,
-            duration: 1,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 82%"
+        const revealItems = gsap.utils.toArray<HTMLElement>("[data-reveal]");
+        revealItems.forEach((item, index) => {
+          gsap.fromTo(
+            item,
+            {
+              y: 54,
+              autoAlpha: 0
+            },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.92,
+              ease: "power3.out",
+              delay: (index % 3) * 0.04,
+              scrollTrigger: {
+                trigger: item,
+                start: "top 84%"
+              }
             }
+          );
+        });
+
+        const caseRows = gsap.utils.toArray<HTMLElement>("[data-case-row]");
+        caseRows.forEach((row, index) => {
+          gsap.fromTo(
+            row,
+            {
+              y: 70,
+              autoAlpha: 0
+            },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 1,
+              ease: "power4.out",
+              delay: index * 0.04,
+              scrollTrigger: {
+                trigger: row,
+                start: "top 84%"
+              }
+            }
+          );
+
+          const preview = row.querySelector<HTMLElement>("[data-case-preview]");
+          if (preview) {
+            gsap.to(preview, {
+              yPercent: -8,
+              ease: "none",
+              scrollTrigger: {
+                trigger: row,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+              }
+            });
           }
-        );
-      });
+        });
 
-      const caseCards = gsap.utils.toArray<HTMLElement>("[data-case-card]");
-      caseCards.forEach((card) => {
-        const screen = card.querySelector<HTMLElement>("[data-case-screen]");
-
-        gsap.fromTo(
-          card,
-          {
-            y: 88,
-            autoAlpha: 0,
-            scale: 0.96
-          },
-          {
-            y: 0,
-            autoAlpha: 1,
-            scale: 1,
-            duration: 1.05,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 82%"
+        const columns = gsap.utils.toArray<HTMLElement>("[data-service-column]");
+        columns.forEach((column, index) => {
+          gsap.fromTo(
+            column,
+            {
+              y: 64,
+              autoAlpha: 0,
+              rotate: index === 1 ? -1.2 : 1.2
+            },
+            {
+              y: 0,
+              autoAlpha: 1,
+              rotate: 0,
+              duration: 1.05,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: column,
+                start: "top 82%"
+              }
             }
-          }
-        );
-
-        if (screen) {
-          gsap.to(screen, {
-            yPercent: -6,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true
-            }
-          });
-        }
-      });
-    }, rootRef);
+          );
+        });
+      }, rootRef);
+    })();
 
     return () => {
-      ctx.revert();
+      isActive = false;
+      ctx?.revert();
     };
   }, []);
 
   return (
-    <main ref={rootRef} className="relative overflow-x-hidden pb-10">
-      <div
-        data-orb
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full"
-      >
-        <div className="absolute right-[-10rem] top-16 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(225,125,56,0.28)_0%,rgba(225,125,56,0.02)_68%,transparent_76%)] blur-3xl" />
-        <div className="absolute left-[-12rem] top-[38rem] h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(115,139,107,0.22)_0%,rgba(115,139,107,0.03)_66%,transparent_76%)] blur-3xl" />
+    <main ref={rootRef} className="relative overflow-x-hidden pb-12">
+      <div data-orb className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full">
+        <div className="absolute left-[-8rem] top-[58rem] h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(223,141,89,0.2)_0%,rgba(223,141,89,0.02)_72%,transparent_80%)] blur-3xl" />
+        <div className="absolute right-[-10rem] top-[80rem] h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(125,149,128,0.16)_0%,rgba(125,149,128,0.02)_72%,transparent_80%)] blur-3xl" />
       </div>
 
-      <header className="section-shell sticky top-0 z-50 pt-4">
-        <div className="panel flex items-center justify-between rounded-full border hairline px-4 py-3 md:px-6">
-          <a
-            data-header-item
-            href="#top"
-            className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.34em]"
-          >
-            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
-            Northforge
-          </a>
-
-          <nav className="hidden items-center gap-6 text-xs font-medium uppercase tracking-[0.26em] text-black/65 md:flex">
-            <a data-header-item href="#work">
-              Work
-            </a>
-            <a data-header-item href="#services">
-              Services
-            </a>
-            <a data-header-item href="#process">
-              Process
-            </a>
-            <a data-header-item href="#contact">
-              Contact
-            </a>
-          </nav>
-
-          <a
-            data-header-item
-            href="mailto:hello@northforge.studio"
-            className="rounded-full border hairline px-4 py-2 text-xs font-medium uppercase tracking-[0.26em] transition hover:-translate-y-0.5 hover:bg-black hover:text-white"
-          >
-            Start a project
-          </a>
+      <section
+        id="top"
+        className="relative min-h-[100svh] overflow-hidden bg-[#03070a] text-white"
+      >
+        <div
+          data-hero-grid
+          className="hero-grid pointer-events-none absolute inset-0"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,transparent_24%,rgba(3,7,10,0.36)_58%,rgba(3,7,10,0.9)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-[8%] z-[1] flex justify-center px-6">
+          <div className="relative h-[58svh] w-[min(78vw,44rem)] md:h-[70svh]">
+            <Image
+              data-hero-figure
+              src="/hero-figure.svg"
+              alt=""
+              fill
+              priority
+              className="object-contain object-top opacity-65 mix-blend-screen"
+            />
+          </div>
         </div>
-      </header>
 
-      <section id="top" className="section-shell pb-20 pt-8 md:pb-24 lg:pt-14">
-        <div className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
-          <div className="space-y-8">
-            <div data-hero-copy className="eyebrow">
-              Signal-first growth agency for brands ready to move louder.
-            </div>
-
-            <div className="space-y-3">
-              {["We build", "attention", "into demand."].map((word) => (
-                <div key={word} className="overflow-hidden">
-                  <h1
-                    data-hero-word
-                    className={`headline-xl text-balance ${
-                      word === "attention" ? "serif italic text-[var(--berry)]" : ""
-                    }`}
-                  >
-                    {word}
-                  </h1>
-                </div>
-              ))}
-            </div>
-
-            <p
-              data-hero-copy
-              className="max-w-2xl text-base leading-8 text-black/72 sm:text-lg"
-            >
-              Northforge partners with ambitious teams across strategy,
-              creative, performance media, and retention to create launches that
-              look cinematic, convert clearly, and scale without losing their
-              edge.
-            </p>
-
-            <div
-              data-hero-copy
-              className="flex flex-col gap-4 sm:flex-row sm:items-center"
-            >
-              <a
-                href="#work"
-                className="inline-flex items-center justify-center rounded-full bg-[var(--panel-strong)] px-6 py-3 text-sm font-medium uppercase tracking-[0.24em] text-white transition hover:-translate-y-0.5 hover:bg-black"
+        <div className="relative z-10 flex min-h-[100svh] flex-col">
+          <div className="section-shell pt-7">
+            <div className="grid gap-6 text-[0.72rem] uppercase tracking-[0.2em] text-white/92 md:grid-cols-[1.05fr_1fr_1fr_0.6fr] md:items-start">
+              <div
+                data-header-item
+                className="flex items-center gap-3 text-[1.05rem] font-medium normal-case tracking-[-0.05em] text-white"
               >
-                Explore launches
-              </a>
-              <a
-                href="#services"
-                className="inline-flex items-center justify-center rounded-full border hairline px-6 py-3 text-sm font-medium uppercase tracking-[0.24em] transition hover:-translate-y-0.5 hover:bg-white/65"
+                <span className="grid h-4 w-4 grid-cols-2 gap-1">
+                  <span className="rounded-full bg-white" />
+                  <span className="rounded-full bg-white/88" />
+                  <span className="rounded-full bg-white/72" />
+                  <span className="rounded-full bg-white/56" />
+                </span>
+                northforge
+              </div>
+
+              <div data-header-item className="max-w-[15rem] leading-[1.2] text-white/90">
+                Ecommerce and brand systems.
+                <br />
+                Driven by vision. Built with design and technology.
+              </div>
+
+              <div data-header-item className="max-w-[14rem] leading-[1.2] text-white/90">
+                hello@northforge.studio
+                <br />
+                India, EST 2026
+              </div>
+
+              <div
+                data-header-item
+                className="flex items-center gap-4 md:justify-end"
               >
-                View services
-              </a>
+                <span className="text-white/80">EN</span>
+                <span className="inline-flex min-w-[5.5rem] items-center justify-center bg-white px-3 py-1 text-[0.72rem] font-medium tracking-[0.08em] text-black">
+                  Menu
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="grid gap-4">
-            <div
-              data-hero-copy
-              className="grain rounded-[2rem] border hairline bg-[#171411] p-6 text-[#f6efe4] shadow-[0_22px_80px_rgba(19,17,15,0.18)]"
-            >
-              <div className="flex items-center justify-between text-xs uppercase tracking-[0.26em] text-white/56">
-                <span>Current velocity</span>
-                <span>2026</span>
-              </div>
+          <div className="section-shell relative flex-1">
+            <div className="absolute inset-x-0 top-[32%] hidden items-center justify-between text-sm text-white md:flex">
+              <span data-hero-label className="text-white/92">
+                Brand Direction
+              </span>
+              <span data-hero-label className="ml-[8%] text-white/92">
+                Performance Marketing
+              </span>
+              <span data-hero-label className="text-white/92">
+                Advanced Tech
+              </span>
+            </div>
 
-              <div className="mt-10 space-y-5">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="border-t border-white/12 pt-5 first:border-t-0 first:pt-0"
-                  >
-                    <div className="text-3xl font-medium tracking-[-0.06em] sm:text-4xl">
-                      {stat.value}
-                    </div>
-                    <div className="mt-1 max-w-[18rem] text-sm leading-6 text-white/66">
-                      {stat.label}
-                    </div>
+            <div className="absolute inset-x-0 bottom-9 flex justify-center sm:bottom-12 md:bottom-16">
+              <div className="w-full max-w-[86rem] text-center">
+                {heroHeadline.map((word) => (
+                  <div key={word} className="overflow-hidden">
+                    <h1
+                      data-hero-word
+                      className="headline-monument leading-none tracking-[-0.08em] text-white"
+                    >
+                      {word}
+                    </h1>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            <div
-              data-hero-copy
-              className="panel rounded-[2rem] border hairline p-6"
-            >
-              <div className="eyebrow">How we work</div>
-              <p className="mt-4 text-sm leading-7 text-black/68">
-                Strategy and execution stay inside one room. No lag between the
-                big idea, the site experience, and the campaign system carrying
-                it into market.
-              </p>
+          <div className="section-shell pb-6 md:hidden">
+            <div className="grid grid-cols-3 gap-3 text-[0.65rem] uppercase tracking-[0.18em] text-white/76">
+              <span data-hero-label>Brand Direction</span>
+              <span data-hero-label className="text-center">
+                Performance
+              </span>
+              <span data-hero-label className="text-right">
+                Advanced Tech
+              </span>
             </div>
           </div>
         </div>
+      </section>
 
+      <section className="section-shell py-8 md:py-10">
         <div
           data-reveal
-          className="mt-14 overflow-hidden rounded-full border hairline bg-white/45 py-4"
+          className="grid gap-6 border-b border-black/10 pb-8 md:grid-cols-[1.2fr_0.85fr_0.8fr]"
         >
-          <div className="marquee flex min-w-max items-center gap-5 px-5 text-xs font-medium uppercase tracking-[0.34em] text-black/58">
-            {[...signals, ...signals].map((signal, index) => (
-              <span key={`${signal}-${index}`} className="flex items-center gap-5">
-                <span>{signal}</span>
-                <span className="inline-flex h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-              </span>
-            ))}
+          <div>
+            <p className="eyebrow">Signal-first creative growth</p>
+            <p className="mt-4 max-w-2xl text-lg leading-8 text-black/72">
+              We design high-impact launch systems for ecommerce and modern
+              brands, blending storytelling, technology, and performance into
+              one sharp operating model.
+            </p>
+          </div>
+
+          <div className="text-[0.72rem] uppercase tracking-[0.24em] text-black/62">
+            <div className="border-t border-black/10 pt-3">Brand Direction</div>
+            <div className="border-t border-black/10 pt-3">Performance Marketing</div>
+            <div className="border-t border-black/10 pt-3">Advanced Tech</div>
+          </div>
+
+          <div className="flex items-end md:justify-end">
+            <a
+              data-hero-copy
+              href="#work"
+              className="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium uppercase tracking-[0.26em] text-white transition hover:-translate-y-0.5"
+            >
+              View selected work
+            </a>
           </div>
         </div>
       </section>
 
       <section id="work" className="section-shell py-12 md:py-16">
-        <div data-reveal className="grid gap-5 md:grid-cols-[0.72fr_1fr]">
+        <div data-reveal className="grid gap-6 lg:grid-cols-[0.84fr_1.16fr]">
           <div>
-            <p className="eyebrow">Featured launches</p>
+            <p className="eyebrow">Selected work</p>
             <h2 className="headline-lg mt-5 text-balance">
-              Editorial thinking for campaigns that need to convert, not just
-              impress.
+              Launch systems built to move product, perception, and demand.
             </h2>
           </div>
-          <p className="max-w-2xl self-end text-base leading-8 text-black/68">
-            Inspired by the cinematic rhythm of high-end agency portfolios, but
-            written for a modern marketing team: sharp case studies, clear
-            proof, and motion that supports the story instead of distracting
-            from it.
+          <p className="max-w-2xl self-end text-base leading-8 text-black/66">
+            Every engagement combines narrative, interface, and measurable
+            growth mechanics. We build destinations that look premium, feel
+            intentional, and perform under pressure once the campaign goes live.
           </p>
         </div>
 
-        <div className="mt-10 space-y-6">
-          {featuredProjects.map((project) => (
+        <div className="mt-8 overflow-hidden rounded-[2.5rem] border border-black/8 bg-white/44">
+          {caseStudies.map((study, index) => (
             <article
-              key={project.client}
-              data-case-card
-              className="grid gap-8 overflow-hidden rounded-[2.25rem] border border-black/8 bg-[#16120f] p-6 text-[#f8f2e8] shadow-[0_18px_80px_rgba(19,17,15,0.16)] lg:grid-cols-[0.72fr_1fr] lg:p-8"
+              key={study.client}
+              data-case-row
+              className={`grid gap-7 border-t border-black/8 p-5 sm:p-6 lg:grid-cols-[1.15fr_0.6fr_0.62fr_0.9fr_auto] lg:items-start lg:p-8 ${
+                index === 0 ? "border-t-0" : ""
+              }`}
             >
-              <div className="flex flex-col justify-between gap-8">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between text-xs uppercase tracking-[0.28em] text-white/52">
-                    <span>{project.index}</span>
-                    <span>{project.sector}</span>
-                  </div>
-
-                  <div>
-                    <h3 className="headline-md">{project.client}</h3>
-                    <p className="mt-4 max-w-xl text-sm leading-7 text-white/68 sm:text-base">
-                      {project.summary}
-                    </p>
-                  </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 text-[0.66rem] uppercase tracking-[0.28em] text-black/42">
+                  <span>{study.index}</span>
+                  <span>{study.sector}</span>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.24em] text-white/42">
-                      Impact
-                    </div>
-                    <ul className="mt-4 space-y-3 text-sm text-white/72">
-                      {project.results.map((result) => (
-                        <li key={result} className="border-t border-white/10 pt-3">
-                          {result}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.24em] text-white/42">
-                      Scope
-                    </div>
-                    <ul className="mt-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em] text-white/72">
-                      {project.services.map((service) => (
-                        <li
-                          key={service}
-                          className="rounded-full border border-white/12 px-3 py-2"
-                        >
-                          {service}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div>
+                  <h3 className="text-[2.2rem] font-medium leading-[0.96] tracking-[-0.06em] sm:text-[3rem] lg:text-[3.4rem]">
+                    {study.client}
+                  </h3>
+                  <p className="mt-4 max-w-xl text-sm leading-7 text-black/66 sm:text-base">
+                    {study.summary}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 text-[0.64rem] uppercase tracking-[0.24em] text-black/66">
+                  {study.services.map((service) => (
+                    <span
+                      key={service}
+                      className="rounded-full border border-black/10 px-3 py-2"
+                    >
+                      {service}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              <div className="min-h-[20rem]">
+              <div>
+                <div className="text-[0.62rem] uppercase tracking-[0.28em] text-black/38">
+                  Year
+                </div>
+                <div className="mt-3 text-sm uppercase tracking-[0.18em] text-black/76">
+                  {study.year}
+                </div>
+              </div>
+
+              <div>
+                <div className="text-[0.62rem] uppercase tracking-[0.28em] text-black/38">
+                  Platform
+                </div>
+                <div className="mt-3 text-sm uppercase tracking-[0.18em] text-black/76">
+                  {study.platform}
+                </div>
+              </div>
+
+              <div className="min-h-[10rem]">
                 <div
-                  data-case-screen
-                  className={`grain relative flex h-full min-h-[22rem] items-end overflow-hidden rounded-[1.8rem] border border-white/10 bg-gradient-to-br ${project.palette} p-5 sm:p-7`}
+                  data-case-preview
+                  className={`grain flex h-full min-h-[11rem] items-end rounded-[1.8rem] bg-gradient-to-br ${study.palette} p-4 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)]`}
                 >
-                  <div className="absolute inset-4 rounded-[1.5rem] border border-white/12 bg-black/10" />
-                  <div className="absolute left-7 top-7 flex gap-2">
-                    <span className="h-3 w-3 rounded-full bg-white/70" />
-                    <span className="h-3 w-3 rounded-full bg-white/35" />
-                    <span className="h-3 w-3 rounded-full bg-white/20" />
-                  </div>
-                  <div className="absolute inset-x-[12%] top-[20%] h-12 rounded-full bg-white/10 blur-3xl" />
-
-                  <div className="relative z-10 grid w-full gap-4 md:grid-cols-[0.8fr_1fr]">
-                    <div className="rounded-[1.35rem] border border-white/16 bg-black/14 p-4 backdrop-blur-sm">
-                      <div className="text-[0.68rem] uppercase tracking-[0.26em] text-white/48">
-                        Campaign board
-                      </div>
-                      <div className="mt-5 space-y-3">
-                        <div className="h-2 rounded-full bg-white/20" />
-                        <div className="h-2 w-4/5 rounded-full bg-white/65" />
-                        <div className="h-2 w-3/5 rounded-full bg-white/28" />
-                      </div>
+                  <div className="w-full rounded-[1.2rem] border border-white/12 bg-black/12 p-4 backdrop-blur-sm">
+                    <div className="text-[0.62rem] uppercase tracking-[0.28em] text-white/48">
+                      Key outcome
                     </div>
-
-                    <div className="rounded-[1.5rem] border border-white/16 bg-[#f7efe4]/92 p-5 text-black shadow-[0_14px_30px_rgba(0,0,0,0.12)]">
-                      <div className="text-[0.66rem] uppercase tracking-[0.28em] text-black/45">
-                        Launch frame
-                      </div>
-                      <div className="mt-8 h-28 rounded-[1.2rem] bg-[linear-gradient(135deg,rgba(19,17,15,0.9),rgba(19,17,15,0.7),rgba(225,125,56,0.8))]" />
-                      <div className="mt-5 flex items-center justify-between">
-                        <div>
-                          <div className="text-lg font-medium tracking-[-0.04em]">
-                            Narrative-led funnel
-                          </div>
-                          <div className="mt-1 text-sm text-black/56">
-                            Motion, offer sequencing, reporting.
-                          </div>
-                        </div>
-                        <span className="rounded-full bg-black px-4 py-2 text-[0.66rem] uppercase tracking-[0.26em] text-white">
-                          Live
-                        </span>
-                      </div>
+                    <div className="mt-5 text-xl font-medium tracking-[-0.04em]">
+                      {study.kpi}
+                    </div>
+                    <div className="mt-2 text-sm text-white/62">
+                      Launch platform + growth operating system
                     </div>
                   </div>
                 </div>
               </div>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-full border border-black/12 px-5 py-3 text-[0.64rem] font-medium uppercase tracking-[0.28em] text-black/74 transition hover:-translate-y-0.5 hover:bg-black hover:text-white"
+              >
+                Explore
+              </a>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="services" className="section-shell py-14 md:py-18">
-        <div
-          data-reveal
-          className="rounded-[2.5rem] border hairline bg-white/44 p-6 sm:p-8 lg:p-10"
-        >
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1fr]">
+      <section className="section-shell py-14 md:py-18">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div data-reveal>
+            <p className="eyebrow">About the agency</p>
+            <h2 className="headline-lg mt-5 text-balance">
+              We are a marketing agency.
+              <br />
+              Not a disconnected stack of freelancers.
+            </h2>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {pillars.map((pillar) => (
+              <article
+                key={pillar.title}
+                data-reveal
+                className="rounded-[2rem] border border-black/8 bg-[#f8f2ea] p-6 shadow-[0_12px_36px_rgba(19,17,15,0.05)]"
+              >
+                <div className="text-[0.66rem] uppercase tracking-[0.28em] text-black/38">
+                  {pillar.label}
+                </div>
+                <h3 className="mt-7 text-[1.8rem] font-medium leading-[0.98] tracking-[-0.05em]">
+                  {pillar.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-black/64 sm:text-base">
+                  {pillar.copy}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="section-shell py-12 md:py-16">
+        <div className="rounded-[2.7rem] border border-black/8 bg-[#15110f] px-5 py-7 text-[#f8f1e7] sm:px-6 sm:py-8 lg:px-8">
+          <div data-reveal className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr]">
             <div>
-              <p className="eyebrow">Capabilities</p>
+              <p className="eyebrow text-white/44">Full-service agency</p>
               <h2 className="headline-lg mt-5 text-balance">
-                One agency. Four systems. Built to make growth feel deliberate.
+                Strategy, creative, tech, and growth built inside one system.
               </h2>
             </div>
 
-            <p className="max-w-2xl self-end text-base leading-8 text-black/66">
-              The reference site works because every section feels like it has a
-              point of view. We keep that same conviction here: fewer generic
-              blocks, more intentional systems, clearer outcomes, and a stronger
-              visual identity across the whole homepage.
+            <p className="max-w-2xl self-end text-base leading-8 text-white/64">
+              We partner with ambitious founders and in-house teams that need
+              more than isolated deliverables. The work spans brand, website,
+              campaigns, and growth infrastructure so launches stay coherent
+              from first impression to repeat purchase.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {serviceGroups.map((group) => (
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {serviceColumns.map((column) => (
               <article
-                key={group.title}
-                data-service-card
-                className="rounded-[2rem] border hairline bg-[#f7f1e8] p-6 shadow-[0_12px_40px_rgba(19,17,15,0.06)]"
+                key={column.title}
+                data-service-column
+                className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-[0.28em] text-black/46">
-                    {group.index}
-                  </span>
-                  <span className="rounded-full bg-black px-3 py-2 text-[0.62rem] uppercase tracking-[0.28em] text-white">
-                    Core
-                  </span>
+                <div className="text-[0.64rem] uppercase tracking-[0.28em] text-white/42">
+                  {column.label}
                 </div>
-
-                <h3 className="mt-8 text-2xl font-medium tracking-[-0.05em] md:text-3xl">
-                  {group.title}
+                <h3 className="mt-6 text-[1.9rem] font-medium leading-[0.98] tracking-[-0.05em]">
+                  {column.title}
                 </h3>
-                <p className="mt-4 max-w-xl text-sm leading-7 text-black/64 sm:text-base">
-                  {group.description}
-                </p>
-
-                <ul className="mt-8 grid gap-3 text-sm uppercase tracking-[0.16em] text-black/72 sm:grid-cols-2">
-                  {group.items.map((item) => (
+                <ul className="mt-8 space-y-3 text-sm uppercase tracking-[0.18em] text-white/72">
+                  {column.items.map((item) => (
                     <li
                       key={item}
-                      className="rounded-full border hairline px-4 py-3 text-center"
+                      className="border-t border-white/8 pt-3 first:border-t-0 first:pt-0"
                     >
                       {item}
                     </li>
@@ -608,147 +643,149 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="process" className="section-shell py-14 md:py-18">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div data-reveal className="space-y-6">
-            <p className="eyebrow">Operating model</p>
-            <h2 className="headline-lg text-balance">
-              We don&apos;t stack services. We choreograph momentum.
-            </h2>
-            <p className="max-w-xl text-base leading-8 text-black/68">
-              Great agency sites feel like they were built by people who know
-              what they do. This section anchors that confidence with a clear
-              process, cinematic pacing, and copy that feels more like a point
-              of view than filler.
-            </p>
+      <section id="process" className="section-shell py-14 md:py-20">
+        <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
+          <div
+            data-reveal
+            className="grain rounded-[2.7rem] border border-black/8 bg-[#14110f] p-6 text-[#f8f1e7] shadow-[0_20px_80px_rgba(19,17,15,0.14)] sm:p-8"
+          >
+            <div className="flex items-center justify-between text-[0.64rem] uppercase tracking-[0.28em] text-white/42">
+              <span>Showreel</span>
+              <span>02:13</span>
+            </div>
 
-            <div className="rounded-[2rem] border hairline bg-[#15120f] p-6 text-[#f5efe6]">
-              <div className="flex items-center justify-between text-xs uppercase tracking-[0.28em] text-white/48">
-                <span>Showreel mode</span>
-                <span>02:13</span>
+            <div className="mt-8 rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-5 sm:p-6">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[var(--accent)] text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-black">
+                  Play
+                </span>
+                <div>
+                  <div className="text-lg font-medium tracking-[-0.04em]">
+                    Northforge reel / spring 2026
+                  </div>
+                  <div className="text-sm text-white/56">
+                    Direction, site systems, growth operations.
+                  </div>
+                </div>
               </div>
-              <div className="mt-10 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-semibold uppercase tracking-[0.24em] text-black">
-                    Play
-                  </span>
-                  <div>
-                    <div className="text-lg font-medium tracking-[-0.04em]">
-                      Signal reel / Spring campaign
-                    </div>
-                    <div className="text-sm text-white/56">
-                      Motion direction, landing flow, ad cutdowns.
-                    </div>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-[0.9fr_1.1fr]">
+                <div className="rounded-[1.5rem] border border-white/10 bg-black/12 p-4">
+                  <div className="text-[0.6rem] uppercase tracking-[0.28em] text-white/42">
+                    Sequence
+                  </div>
+                  <div className="mt-5 space-y-3">
+                    <div className="h-2 rounded-full bg-white/12" />
+                    <div className="h-2 w-5/6 rounded-full bg-white/55" />
+                    <div className="h-2 w-2/3 rounded-full bg-white/18" />
+                    <div className="h-2 w-1/2 rounded-full bg-white/28" />
                   </div>
                 </div>
 
-                <div className="mt-8 space-y-3">
-                  <div className="h-2 rounded-full bg-white/14">
-                    <div className="h-full w-2/3 rounded-full bg-[var(--accent)]" />
+                <div className="rounded-[1.6rem] border border-white/10 bg-[#f7efe5]/94 p-5 text-black shadow-[0_14px_30px_rgba(0,0,0,0.12)]">
+                  <div className="text-[0.6rem] uppercase tracking-[0.28em] text-black/42">
+                    Frame / launch system
                   </div>
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="h-24 rounded-[1.2rem] bg-white/8" />
-                    <div className="h-24 rounded-[1.2rem] bg-white/6" />
-                    <div className="h-24 rounded-[1.2rem] bg-white/10" />
+                  <div className="mt-6 h-28 rounded-[1.2rem] bg-[linear-gradient(135deg,rgba(16,15,13,0.96),rgba(16,15,13,0.72),rgba(220,138,90,0.88))]" />
+                  <div className="mt-4 text-lg font-medium tracking-[-0.04em]">
+                    Campaign narrative wired to conversion
                   </div>
                 </div>
+              </div>
+
+              <div className="mt-8 h-2 rounded-full bg-white/10">
+                <div className="h-full w-[68%] rounded-full bg-[var(--accent)]" />
               </div>
             </div>
           </div>
 
-          <div className="space-y-4">
-            {processSteps.map((step) => (
-              <article
-                key={step.index}
-                data-reveal
-                className="rounded-[2rem] border hairline bg-white/52 p-6 sm:p-7"
-              >
-                <div className="text-xs uppercase tracking-[0.28em] text-black/44">
-                  {step.index}
-                </div>
-                <h3 className="mt-5 text-2xl font-medium tracking-[-0.05em] sm:text-3xl">
-                  {step.title}
-                </h3>
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-black/66 sm:text-base">
-                  {step.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+          <div className="space-y-5">
+            <div data-reveal className="rounded-[2.4rem] border border-black/8 bg-white/44 p-6 sm:p-8">
+              <p className="eyebrow">How we think</p>
+              <h2 className="headline-lg mt-5 text-balance">
+                Innovation is connection.
+                <br />
+                Strategy to creative.
+                <br />
+                Creative to growth.
+              </h2>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-black/66">
+                Strong brands do not split their identity from their acquisition
+                engine. We connect the story, the shopping experience, the ad
+                system, and the retention layer so momentum compounds instead of
+                fragmenting.
+              </p>
+            </div>
 
-      <section className="section-shell py-14 md:py-20">
-        <div
-          data-reveal
-          className="grid gap-8 rounded-[2.5rem] border hairline bg-[#13110f] px-6 py-8 text-[#f8f1e5] sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-10"
-        >
-          <div>
-            <p className="eyebrow text-white/46">Manifesto</p>
-            <h2 className="headline-lg mt-5 text-balance">
-              Strategy should feel clear. Creative should feel dangerous.
-            </h2>
-          </div>
-
-          <div className="space-y-6 text-base leading-8 text-white/66">
-            <p>
-              We build for brands that have already outgrown safe templates. The
-              work needs more voltage, more conviction, and better systems under
-              the surface. That is what this homepage is designed to signal.
-            </p>
-            <p>
-              The result is a one-page experience with the confidence of a
-              portfolio site, the clarity of a conversion page, and the polish
-              expected from a modern Next.js build using Tailwind CSS, GSAP, and
-              TypeScript.
-            </p>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {artifacts.map((artifact) => (
+                <article
+                  key={artifact.title}
+                  data-reveal
+                  className="rounded-[1.9rem] border border-black/8 bg-[#f8f2ea] p-5"
+                >
+                  <div className="text-[0.62rem] uppercase tracking-[0.28em] text-black/36">
+                    Artifact
+                  </div>
+                  <div className="mt-5 text-[1.4rem] font-medium leading-[1.02] tracking-[-0.05em]">
+                    {artifact.title}
+                  </div>
+                  <p className="mt-3 text-sm leading-7 text-black/62">
+                    {artifact.note}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <footer id="contact" className="section-shell py-14 md:py-20">
-        <div className="grid gap-8 rounded-[2.5rem] border hairline bg-white/48 p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:p-10">
-          <div data-reveal>
-            <p className="eyebrow">Let&apos;s launch something with edge.</p>
-            <h2 className="headline-lg mt-5 text-balance">
-              Ready when your brand is.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-black/68">
-              Need a sharper landing page, a campaign site, or a full growth
-              system? This build is ready to evolve into your real agency brand,
-              case studies, and contact flow.
-            </p>
-          </div>
-
-          <div data-reveal className="grid gap-4">
-            <a
-              href="mailto:hello@northforge.studio"
-              className="rounded-[2rem] border hairline bg-[#16120f] p-6 text-[#f6efe5] transition hover:-translate-y-1"
-            >
-              <div className="text-xs uppercase tracking-[0.28em] text-white/44">
-                Email
-              </div>
-              <div className="mt-4 text-xl font-medium tracking-[-0.04em] sm:text-2xl">
+        <div className="border-t border-black/10 pt-8">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.65fr_0.75fr]">
+            <div data-reveal>
+              <p className="eyebrow">Let&apos;s build something with edge.</p>
+              <h2 className="headline-lg mt-5 text-balance">
+                Ready when your brand is.
+              </h2>
+              <a
+                href="mailto:hello@northforge.studio"
+                className="mt-8 inline-flex rounded-full bg-black px-6 py-3 text-sm font-medium uppercase tracking-[0.26em] text-white transition hover:-translate-y-0.5"
+              >
                 hello@northforge.studio
-              </div>
-            </a>
+              </a>
+            </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[2rem] border hairline bg-[#f7f0e7] p-5">
-                <div className="text-xs uppercase tracking-[0.28em] text-black/44">
-                  Based in
+            <div data-reveal className="space-y-6 text-sm uppercase tracking-[0.2em] text-black/62">
+              <div>
+                <div className="text-[0.62rem] tracking-[0.28em] text-black/34">
+                  Office
                 </div>
-                <div className="mt-3 text-lg font-medium tracking-[-0.04em]">
-                  Global / Remote
-                </div>
+                <div className="mt-3">Global / Remote</div>
               </div>
-
-              <div className="rounded-[2rem] border hairline bg-[#f7f0e7] p-5">
-                <div className="text-xs uppercase tracking-[0.28em] text-black/44">
-                  Stack
+              <div>
+                <div className="text-[0.62rem] tracking-[0.28em] text-black/34">
+                  Availability
                 </div>
-                <div className="mt-3 text-lg font-medium tracking-[-0.04em]">
-                  Next.js, Tailwind, GSAP
+                <div className="mt-3">New projects from May 2026</div>
+              </div>
+            </div>
+
+            <div data-reveal className="space-y-6 text-sm uppercase tracking-[0.2em] text-black/62">
+              <div>
+                <div className="text-[0.62rem] tracking-[0.28em] text-black/34">
+                  Follow the build
+                </div>
+                <div className="mt-3">Next.js / Tailwind / GSAP / TypeScript</div>
+              </div>
+              <div>
+                <div className="text-[0.62rem] tracking-[0.28em] text-black/34">
+                  Links
+                </div>
+                <div className="mt-3 flex flex-wrap gap-4">
+                  <a href="#top">Top</a>
+                  <a href="#work">Work</a>
+                  <a href="#services">Services</a>
                 </div>
               </div>
             </div>

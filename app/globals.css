@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3ecdf;
-  --foreground: #13110f;
-  --muted: #6c6258;
-  --line: rgba(19, 17, 15, 0.12);
-  --panel: rgba(255, 255, 255, 0.56);
+  --background: #f5efe6;
+  --foreground: #110f0d;
+  --muted: #665d54;
+  --line: rgba(17, 15, 13, 0.11);
+  --panel: rgba(255, 255, 255, 0.52);
   --panel-strong: #13110f;
-  --accent: #e17d38;
-  --accent-soft: #f2c49f;
-  --sage: #738b6b;
-  --berry: #7d4648;
+  --accent: #df8d59;
+  --accent-soft: #e8c3a4;
+  --sage: #7d9580;
+  --berry: #774a53;
   --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
@@ -27,9 +27,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at top right, rgba(225, 125, 56, 0.18), transparent 26%),
-    radial-gradient(circle at 14% 18%, rgba(115, 139, 107, 0.18), transparent 22%),
-    linear-gradient(180deg, #f6efe3 0%, #f1e8da 46%, #efe5d4 100%);
+    radial-gradient(circle at top left, rgba(223, 141, 89, 0.13), transparent 24%),
+    radial-gradient(circle at 92% 18%, rgba(125, 149, 128, 0.11), transparent 22%),
+    linear-gradient(180deg, #f7f1e9 0%, #f4ede2 45%, #f1e8db 100%);
   color: var(--foreground);
   font-family: var(--font-sans);
 }
@@ -39,12 +39,12 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.14;
   background-image:
     linear-gradient(rgba(19, 17, 15, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(19, 17, 15, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(circle at center, black 36%, transparent 88%);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(circle at center, black 42%, transparent 92%);
 }
 
 a {
@@ -102,6 +102,17 @@ textarea {
     @apply text-[3.6rem] leading-[0.9] font-medium tracking-[-0.06em] sm:text-[4.8rem] md:text-[6.4rem] lg:text-[8.7rem];
   }
 
+  .headline-display {
+    @apply text-[4.3rem] leading-[0.88] font-medium tracking-[-0.07em] sm:text-[5.8rem] md:text-[7.4rem] lg:text-[9.5rem];
+  }
+
+  .headline-monument {
+    font-size: clamp(4.4rem, 13vw, 12rem);
+    font-weight: 600;
+    line-height: 0.86;
+    letter-spacing: -0.085em;
+  }
+
   .headline-lg {
     @apply text-[2.5rem] leading-[0.95] font-medium tracking-[-0.05em] sm:text-[3.6rem] md:text-[4.5rem] lg:text-[5.6rem];
   }
@@ -132,6 +143,18 @@ textarea {
 
   .marquee {
     animation: marquee 24s linear infinite;
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(to bottom, transparent 39.5%, rgba(255, 255, 255, 0.13) 39.5%, rgba(255, 255, 255, 0.13) 39.7%, transparent 39.7%),
+      repeating-linear-gradient(
+        to right,
+        transparent 0,
+        transparent 37px,
+        rgba(255, 255, 255, 0.08) 37px,
+        rgba(255, 255, 255, 0.08) 38px
+      );
   }
 }
 
