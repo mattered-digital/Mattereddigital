@@ -11,6 +11,29 @@ const heroImages = [
   "/editorial-tshirt.png",
 ];
 
+const heroLinePositions = [
+  "5%",
+  "12.5%",
+  "20%",
+  "27.5%",
+  "35%",
+  "42.5%",
+  "50%",
+  "57.5%",
+  "65%",
+  "72.5%",
+  "80%",
+  "87.5%",
+  "95%",
+];
+
+const heroHeadingLines = [
+  "ECOMMERCE",
+  "INNOVATION",
+  "PERFORMANCE",
+  "AGENCY",
+];
+
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
@@ -228,17 +251,12 @@ export default function Hero() {
     >
       {/* Decorative vertical lines */}
       <div className="hero-lines" aria-hidden="true">
-        <span className="hero-line" style={{ left: "8%" }} />
-        <span className="hero-line" style={{ left: "20%" }} />
-        <span className="hero-line" style={{ left: "33%" }} />
-        <span className="hero-line" style={{ left: "46%" }} />
-        <span className="hero-line" style={{ left: "59%" }} />
-        <span className="hero-line" style={{ left: "72%" }} />
-        <span className="hero-line" style={{ left: "85%" }} />
-        <span className="hero-line" style={{ left: "95%" }} />
+        {heroLinePositions.map((left) => (
+          <span key={left} className="hero-line" style={{ left }} />
+        ))}
       </div>
 
-      {/* Hero image — centered, partial width */}
+      {/* Hero image — full-bleed */}
       <div ref={imageContainerRef} className="hero-image-container">
         {heroImages.map((src, i) => (
           <div
@@ -252,7 +270,7 @@ export default function Hero() {
                 alt={`Hero visual ${i + 1}`}
                 fill
                 priority={i === 0}
-                sizes="60vw"
+                sizes="100vw"
                 className="hero-image"
               />
               <div className="hero-image-overlay" />
@@ -271,15 +289,11 @@ export default function Hero() {
       {/* Massive headline — bottom of hero */}
       <div ref={headingRef} className="hero-heading-wrap">
         <h1 className="heading-condensed hero-heading">
-          <div className="overflow-hidden">
-            <span className="hero-word inline-block">ECOMMERCE</span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="hero-word inline-block">INNOVATION</span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="hero-word inline-block">AGENCY</span>
-          </div>
+          {heroHeadingLines.map((line) => (
+            <div key={line} className="overflow-hidden">
+              <span className="hero-word inline-block">{line}</span>
+            </div>
+          ))}
         </h1>
       </div>
     </section>

@@ -154,7 +154,7 @@ body::after {
   }
 
   .hero-image-container {
-    @apply absolute top-[15%] bottom-[10%] left-0 right-0 mx-auto w-full max-w-[50vw] z-[5] overflow-hidden;
+    @apply absolute left-0 right-0 top-[-10vh] bottom-[-10vh] z-[5] w-full max-w-none overflow-hidden;
   }
 
   .hero-slide {
@@ -172,7 +172,7 @@ body::after {
   }
 
   .hero-image-overlay {
-    @apply absolute inset-0 bg-black/20;
+    @apply absolute inset-0 bg-black/35;
   }
 
   .hero-categories {
@@ -193,5 +193,6 @@ body::after {
 
   .hero-heading {
     @apply text-hero leading-[0.85] w-full flex flex-col items-center justify-center text-white;
+    font-size: clamp(4rem, 9vw, 11rem);
   }
 }
