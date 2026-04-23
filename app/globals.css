@@ -188,7 +188,7 @@ body::after {
   }
 
   .hero-heading {
-    @apply text-hero leading-[0.75] w-full flex flex-col items-center justify-center text-white;
+    @apply text-hero leading-[0.8] w-full flex flex-col items-center justify-center text-white;
     font-size: clamp(3.5rem, 8vw, 9.5rem);
   }
 }

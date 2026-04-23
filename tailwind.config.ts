@@ -29,7 +29,7 @@ const config: Config = {
         tight: "-0.02em"
       },
       fontSize: {
-        "hero": ["clamp(3.5rem, 8vw, 9.5rem)", { lineHeight: "0.9", fontWeight: "700" }],
+        "hero": ["clamp(3.5rem, 8vw, 9.5rem)", { lineHeight: "0.8", fontWeight: "700" }],
         "hero-sm": ["clamp(2.5rem, 6vw, 5rem)", { lineHeight: "0.95", fontWeight: "700" }],
         "statement": ["clamp(2rem, 5vw, 4.5rem)", { lineHeight: "1.1", fontWeight: "700" }]
       }
