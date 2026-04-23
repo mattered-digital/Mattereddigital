@@ -279,6 +279,8 @@ export default function Hero() {
         ))}
       </div>
 
+      <div className="hero-screen-overlay" aria-hidden="true" />
+
       {/* Top category labels — positioned across the hero like the reference */}
       <div className="hero-categories">
         <span className="hero-cat opacity-0">Brand Direction</span>
