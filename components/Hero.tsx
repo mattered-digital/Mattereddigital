@@ -55,9 +55,6 @@ export default function Hero() {
     const nextImg = nextSlide.querySelector(".hero-image");
     const currentImg = currentSlide.querySelector(".hero-image");
     
-    // Start panning from the left (-80px) to the right (to 0px)
-    if (nextImg) gsap.set(nextImg, { scale: 1.25, x: -80 });
-
     // Animate next slide wiping in from LEFT to RIGHT using clip-path
     tl.to(nextSlide, {
       clipPath: "inset(0 0% 0 0%)",
@@ -70,27 +67,10 @@ export default function Hero() {
       tl.to(
         nextImg,
         {
-          scale: 1,
-          x: 0,
           duration: 3.8, // Increased duration for smoother settling
           ease: "power2.out",
         },
         "<0.2" 
-      );
-    }
-
-    // Slowly push/scale the current image slightly backward and to the RIGHT
-    // to give a sense of depth as it gets covered from the left.
-    if (currentImg) {
-      tl.to(
-        currentImg,
-        {
-          scale: 1.15,
-          x: 40, // pan to the right as it gets covered from the left
-          duration: 3.2, // Match wipe duration
-          ease: "power3.inOut",
-        },
-        "<" // Sync with the wipe
       );
     }
 
