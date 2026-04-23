@@ -4,40 +4,10 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const serviceBlocks = [
-  {
-    title: "Brand Direction",
-    description:
-      "We shape brand identity from the inside out — defining narrative, visual language, and strategic positioning.",
-    items: ["Brand Strategy", "Visual Identity", "Copywriting", "Art Direction"]
-  },
-  {
-    title: "Advanced Tech",
-    description:
-      "Custom platforms, headless architectures, and performance-driven development for modern commerce.",
-    items: [
-      "Shopify Plus / Headless",
-      "Custom Development",
-      "App Development",
-      "System Integration"
-    ]
-  },
-  {
-    title: "Performance Marketing",
-    description:
-      "Data-led growth strategies that connect creative vision with measurable results across channels.",
-    items: ["SEO / SEM", "CRO", "Email / CRM", "Paid Social"]
-  },
-  {
-    title: "Merchant of Records",
-    description:
-      "Simplifying global expansion with compliant, seamless cross-border commerce operations.",
-    items: [
-      "Tax Compliance",
-      "Payment Processing",
-      "Logistics",
-      "International Expansion"
-    ]
-  }
+  { title: "Brand\nDirection" },
+  { title: "Advanced\nTech" },
+  { title: "Performance\nMarketing" },
+  { title: "Merchant of\nRecords" },
 ];
 
 export default function AgencyStatement() {
@@ -54,7 +24,7 @@ export default function AgencyStatement() {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 1.2,
             ease: "power3.out",
             scrollTrigger: {
               trigger: heading,
@@ -66,18 +36,37 @@ export default function AgencyStatement() {
       }
 
       // Service blocks stagger
-      const blocks = gsap.utils.toArray<HTMLElement>(".service-block");
+      const blocks = gsap.utils.toArray<HTMLElement>(".service-block-wrap");
       gsap.fromTo(
         blocks,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 60 },
         {
           opacity: 1,
           y: 0,
           stagger: 0.1,
-          duration: 0.6,
+          duration: 1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: blocks[0],
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Paragraphs stagger
+      const paragraphs = gsap.utils.toArray<HTMLElement>(".agency-paragraph");
+      gsap.fromTo(
+        paragraphs,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".paragraphs-container",
             start: "top 85%",
             toggleActions: "play none none none"
           }
@@ -88,55 +77,57 @@ export default function AgencyStatement() {
   );
 
   return (
-    <section ref={sectionRef} className="section-shell py-24 md:py-32">
-      {/* Top statement */}
-      <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-        <div>
-          <p className="section-heading mb-6">(a.) Services</p>
-          <h2 className="agency-heading heading-condensed text-statement">
-            WE ARE AN ECOMMERCE AGENCY. NOT JUST EXECUTION, BUT AN ECOSYSTEM WHERE STRATEGY, DESIGN, AND TECHNOLOGY DRIVE MEANINGFUL RESULTS.
-          </h2>
-        </div>
-        <div className="lg:pt-16">
-          <p className="text-sm leading-7 text-gray-light">
-            We live in an age where everything is everywhere, all the time. The
-            real challenge is no longer visibility, but meaning. Evolve exists to
-            build authentic connections between brands and people — where every
-            experience, physical or digital, becomes part of the same story.
-          </p>
-          <p className="mt-4 text-sm leading-7 text-gray-light">
-            We believe commerce is culture: a coherent ecosystem where
-            technology, design, and strategy merge to create living brands,
-            worlds with identity, and relationships that endure over time.
-          </p>
-        </div>
+    <section ref={sectionRef} className="section-shell py-24 md:py-40 relative z-20">
+      {/* Top large statement */}
+      <div className="mx-auto w-full lg:max-w-[92%] lg:mx-0">
+        <h2 className="agency-heading font-sans text-[32px] md:text-[50px] lg:text-[56px] font-medium leading-[1.05] tracking-tight md:tracking-[-0.03em] text-white">
+          We are an eCommerce agency. Not just execution, not isolated services. We provide brand direction, advanced tech, performance marketing and system integration as one connected approach. An end-to-end ecosystem designed to scale, perform and integrate seamlessly with existing platforms.
+        </h2>
       </div>
 
-      {/* Service grid */}
-      <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {serviceBlocks.map((block) => (
-          <div
-            key={block.title}
-            className="service-block rounded-2xl border border-white/8 bg-white/[0.02] p-6"
-          >
-            <h3 className="font-heading text-lg font-semibold uppercase tracking-tight">
-              {block.title}
-            </h3>
-            <p className="mt-3 text-xs leading-5 text-gray-light">
-              {block.description}
-            </p>
-            <ul className="mt-4 space-y-1.5">
-              {block.items.map((item) => (
-                <li
-                  key={item}
-                  className="text-xs uppercase tracking-label text-gray"
-                >
-                  → {item}
-                </li>
-              ))}
-            </ul>
+      {/* Grid below */}
+      <div className="mt-32 md:mt-48 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-[3vw] gap-y-16 lg:pr-8">
+        
+        {/* The 4 grey boxes */}
+        {serviceBlocks.map((block, i) => (
+          <div key={block.title} className="service-block-wrap relative w-full">
+            {i === 0 && (
+              <p className="absolute -top-10 left-0 text-[11px] uppercase tracking-wider text-white font-medium">
+                Our Services
+              </p>
+            )}
+            <div className="bg-[#141414] h-[320px] md:h-[450px] w-full p-6 flex flex-col justify-between">
+              <h3 className="font-sans text-white text-[15px] leading-[1.2] font-medium whitespace-pre-line tracking-tight">
+                {block.title}
+              </h3>
+            </div>
           </div>
         ))}
+
+        {/* Right side paragraphs taking 2 columns */}
+        <div className="lg:col-span-2 paragraphs-container pl-0 lg:pl-[2vw] pt-2">
+          <p className="text-[11px] mb-8 uppercase tracking-wider text-white font-medium">
+            Est 2008®
+          </p>
+          <div className="space-y-8">
+            <p className="agency-paragraph font-sans text-gray-400 text-[15px] leading-[1.5] tracking-[-0.01em]">
+              Every eCommerce is already in motion. Processes, people, numbers,
+              decisions. Our job isn&apos;t to sit on top of it. It&apos;s to step inside.
+            </p>
+            <p className="agency-paragraph font-sans text-gray-400 text-[15px] leading-[1.5] tracking-[-0.01em]">
+              We work alongside teams, read the business, identify where energy is being
+              lost and where it needs to be amplified. We don&apos;t operate in silos: design,
+              technology and marketing move together, because that&apos;s how growth
+              becomes sustainable.
+            </p>
+            <p className="agency-paragraph font-sans text-white text-[15px] leading-[1.5] tracking-[-0.01em]">
+              With in-house teams collaborating in real time, we reduce friction, align
+              decisions and turn complexity into structure. We don&apos;t add noise. We bring
+              direction.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
   );
