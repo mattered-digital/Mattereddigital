@@ -11,11 +11,6 @@ const heroImages = [
   "/editorial-tshirt.png",
 ];
 
-const heroLinePositions = Array.from(
-  { length: 40 },
-  (_, index) => `${((index / 40) * 100).toFixed(3)}%`
-);
-
 const heroHeadingLines = [
   "ECOMMERCE",
   "INNOVATION",
@@ -118,7 +113,6 @@ export default function Hero() {
       if (!headingRef.current || !imageContainerRef.current) return;
 
       const words = headingRef.current.querySelectorAll(".hero-word");
-      const lines = sectionRef.current?.querySelectorAll(".hero-line");
       const cats = sectionRef.current?.querySelectorAll(".hero-cat");
 
       // Initial states
@@ -135,21 +129,6 @@ export default function Hero() {
         duration: 1,
         ease: "power4.out",
       });
-
-      // Animate decorative lines
-      if (lines) {
-        masterTl.fromTo(
-          lines,
-          { scaleY: 0, transformOrigin: "top" },
-          {
-            scaleY: 1,
-            stagger: 0.06,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.6"
-        );
-      }
 
       // Category labels
       if (cats) {
@@ -238,13 +217,6 @@ export default function Hero() {
       id="home"
       className="hero-section"
     >
-      {/* Decorative vertical lines */}
-      <div className="hero-lines" aria-hidden="true">
-        {heroLinePositions.map((left) => (
-          <span key={left} className="hero-line" style={{ left }} />
-        ))}
-      </div>
-
       {/* Hero image — full-bleed */}
       <div ref={imageContainerRef} className="hero-image-container">
         {heroImages.map((src, i) => (

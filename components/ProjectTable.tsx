@@ -34,7 +34,7 @@ export default function ProjectTable() {
   return (
     <section ref={sectionRef} id="projects" className="py-0">
       {/* Header row */}
-      <div className="section-shell border-b border-white/10 py-4">
+      <div className="section-shell py-4">
         <div className="mono-row grid grid-cols-[1fr] gap-4 text-gray md:grid-cols-[1.2fr_1fr_1fr_1.5fr]">
           <span>Partner</span>
           <span className="hidden md:block">Platform</span>
@@ -47,14 +47,10 @@ export default function ProjectTable() {
 
       {/* Body rows */}
       <div className="section-shell">
-        {caseStudies.map((cs, i) => (
+        {caseStudies.map((cs) => (
           <div
             key={cs.id}
-            className={`cs-row mono-row grid grid-cols-1 gap-2 py-4 transition-colors duration-200 hover:text-white md:grid-cols-[1.2fr_1fr_1fr_1.5fr] md:items-center ${
-              i !== caseStudies.length - 1
-                ? "border-b border-white/[0.06]"
-                : ""
-            }`}
+            className="cs-row mono-row grid grid-cols-1 gap-2 py-4 transition-colors duration-200 hover:text-white md:grid-cols-[1.2fr_1fr_1fr_1.5fr] md:items-center"
           >
             <span className="text-sm font-medium text-white md:text-base">
               {cs.partner}

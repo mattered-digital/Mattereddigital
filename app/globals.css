@@ -4,8 +4,8 @@
 
 :root {
   color-scheme: dark;
-  --grid-color: rgba(255, 255, 255, 0.06);
-  --grid-columns: 6;
+  --grid-color: rgba(255, 255, 255, 0.035);
+  --grid-columns: 40;
   --edge-glow: rgba(80, 120, 255, 0.15);
 }
 
@@ -143,14 +143,6 @@ body::after {
   /* ── Hero Component Styles ── */
   .hero-section {
     @apply relative flex min-h-screen flex-col overflow-hidden pb-10 pt-32 section-shell;
-  }
-
-  .hero-lines {
-    @apply absolute inset-0 z-[15] pointer-events-none;
-  }
-
-  .hero-line {
-    @apply absolute top-0 bottom-0 w-[1px] bg-white/[0.025];
   }
 
   .hero-image-container {
