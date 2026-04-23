@@ -113,7 +113,8 @@ export default function Hero() {
       gsap.set(words, { yPercent: 120, opacity: 0 });
 
       // --- Entry animations ---
-      const masterTl = gsap.timeline({ delay: 2.2 });
+      // We reduce delay slightly since we want the image to "just be there" 
+      const masterTl = gsap.timeline({ delay: 0.5 });
 
       // Animate hero words
       masterTl.to(words, {
@@ -140,38 +141,14 @@ export default function Hero() {
         );
       }
 
-      // Main Hero Image Entry
+      // Main Hero Image Initial State (no entry wipe)
       const firstSlide = imageContainerRef.current.querySelector(".hero-slide");
       const firstImg = firstSlide?.querySelector(".hero-image");
 
       if (firstSlide) {
-        gsap.set(firstSlide, { opacity: 1, xPercent: 0, zIndex: 2 });
+        gsap.set(firstSlide, { opacity: 1, xPercent: 0, zIndex: 2, clipPath: "none" });
         if (firstImg) {
-          gsap.set(firstImg, { scale: 1.2, x: 60 });
-        }
-
-        masterTl.fromTo(
-          firstSlide,
-          { clipPath: "inset(0 100% 0 0)" },
-          {
-            clipPath: "inset(0 0% 0 0)",
-            duration: 1.6,
-            ease: "power3.inOut",
-          },
-          "-=1.2"
-        );
-
-        if (firstImg) {
-          masterTl.to(
-            firstImg,
-            {
-              scale: 1,
-              x: 0,
-              duration: 2,
-              ease: "power2.out",
-            },
-            "-=1.4"
-          );
+          gsap.set(firstImg, { scale: 1, x: 0 }); // Image is completely static on load
         }
       }
 
@@ -187,15 +164,29 @@ export default function Hero() {
         },
       });
 
-      // Start auto-cycling images after entry
-      masterTl.call(() => {
+      // To do the first transition after exactly 2 seconds of the text finishing 
+      // (or shortly after load), we handle it explicitly:
+      const startCarousel = () => {
+        // Fire the first transition
+        setCurrentIndex((prev) => {
+          const next = (prev + 1) % heroImages.length;
+          animateImageTransition(next);
+          return prev;
+        });
+
+        // Set the continuous interval sequence
         intervalRef.current = setInterval(() => {
           setCurrentIndex((prev) => {
             const next = (prev + 1) % heroImages.length;
             animateImageTransition(next);
             return prev;
           });
-        }, 5000); // 5 seconds between slides
+        }, 5000); 
+      };
+
+      // Trigger the slide precisely 2 seconds after the texts animate in
+      masterTl.call(() => {
+        setTimeout(startCarousel, 2000);
       });
 
       return () => {
