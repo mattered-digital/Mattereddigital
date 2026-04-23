@@ -124,7 +124,7 @@ export default function ProjectTable() {
       >
         <div
           ref={previewRef}
-          className="pointer-events-none absolute left-1/2 top-[48%] z-0 hidden aspect-[4/3] w-[min(38vw,520px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden md:block"
+          className="pointer-events-none absolute left-1/2 top-[64%] z-0 hidden aspect-[7/8] w-[min(31vw,464px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden md:block"
           aria-hidden="true"
         >
           {caseStudies.map((cs, index) => (
