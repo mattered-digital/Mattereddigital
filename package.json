@@ -1,5 +1,5 @@
 {
-  "name": "marketing-agency-site",
+  "name": "evolve-clone",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,18 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
-    "gsap": "^3.13.0",
-    "next": "^15.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.23",
+    "next": "^14.2.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.0",
-    "@types/node": "^24.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "postcss": "^8.5.0",
-    "tailwindcss": "^4.1.0",
-    "typescript": "^5.0.0"
+    "@types/node": "^20.19.39",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   }
 }
