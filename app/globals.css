@@ -139,4 +139,59 @@ body::after {
     font-size: 0.85rem;
     letter-spacing: 0.05em;
   }
+
+  /* ── Hero Component Styles ── */
+  .hero-section {
+    @apply relative flex min-h-screen flex-col overflow-hidden pb-10 pt-32 section-shell;
+  }
+
+  .hero-lines {
+    @apply absolute inset-0 z-0 pointer-events-none;
+  }
+
+  .hero-line {
+    @apply absolute top-0 bottom-0 w-[1px] bg-white/[0.04];
+  }
+
+  .hero-image-container {
+    @apply absolute top-[15%] bottom-[10%] left-0 right-0 mx-auto w-full max-w-[50vw] z-[5] overflow-hidden;
+  }
+
+  .hero-slide {
+    @apply absolute inset-0 w-full h-full;
+    will-change: transform, clip-path;
+  }
+
+  .hero-slide-inner {
+    @apply relative w-full h-full scale-[1.01];
+    will-change: transform;
+  }
+
+  .hero-image {
+    @apply object-cover object-center;
+  }
+
+  .hero-image-overlay {
+    @apply absolute inset-0 bg-black/20;
+  }
+
+  .hero-categories {
+    @apply relative z-20 flex w-full justify-between pt-8 px-4 text-[11px] uppercase tracking-label;
+  }
+
+  .hero-categories .hero-cat {
+    @apply text-gray-light;
+  }
+
+  .hero-categories .hero-cat:nth-child(2) {
+    @apply absolute left-1/2 -translate-x-1/2 text-white;
+  }
+
+  .hero-heading-wrap {
+    @apply relative z-20 mt-auto w-full text-center pointer-events-none pb-4;
+  }
+
+  .hero-heading {
+    @apply text-hero leading-[0.85] w-full flex flex-col items-center justify-center text-white;
+  }
 }
