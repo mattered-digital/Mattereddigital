@@ -9,11 +9,11 @@ const heroImages = [
   "/editorial-glass.png",
   "/editorial-redbook.png",
   "/editorial-tshirt.png",
+  "/footer-bg.png", // Added more images from public folder
 ];
 
 const heroHeadingLines = [
   "ECOMMERCE",
-  "INNOVATION",
   "PERFORMANCE",
   "AGENCY",
 ];
@@ -36,10 +36,10 @@ export default function Hero() {
 
     const tl = gsap.timeline();
 
-    // Set next slide initial state: off-screen right via clip-path
+    // Set next slide initial state: off-screen LEFT via clip-path (inset from right)
     gsap.set(nextSlide, {
       xPercent: 0,
-      clipPath: "inset(0 100% 0 0)",
+      clipPath: "inset(0 0% 0 100%)", // wiped out from the right (meaning it will enter from the left)
       opacity: 1,
       zIndex: 2,
     });
@@ -48,45 +48,46 @@ export default function Hero() {
     gsap.set(currentSlide, { 
       xPercent: 0, 
       zIndex: 1,
-      clipPath: "inset(0 0% 0 0)"
+      clipPath: "inset(0 0% 0 0%)"
     });
 
     // Use .hero-image to precisely match the initial load animation
     const nextImg = nextSlide.querySelector(".hero-image");
     const currentImg = currentSlide.querySelector(".hero-image");
     
-    if (nextImg) gsap.set(nextImg, { scale: 1.2, x: 60 });
+    // Start panning from the left (-80px) to the right (to 0px)
+    if (nextImg) gsap.set(nextImg, { scale: 1.25, x: -80 });
 
-    // Animate next slide wiping in from right to left using clip-path
+    // Animate next slide wiping in from LEFT to RIGHT using clip-path
     tl.to(nextSlide, {
-      clipPath: "inset(0 0% 0 0)",
-      duration: 1.6,
+      clipPath: "inset(0 0% 0 0%)",
+      duration: 3.2, // Increased duration
       ease: "power3.inOut",
     });
 
-    // Delay the inner image effect slightly to match initial masterTl timing
+    // Delay the inner image effect strictly behind the wipe
     if (nextImg) {
       tl.to(
         nextImg,
         {
           scale: 1,
           x: 0,
-          duration: 2,
+          duration: 3.8, // Increased duration for smoother settling
           ease: "power2.out",
         },
         "<0.2" 
       );
     }
 
-    // Slowly push/scale the current image slightly backward 
-    // to give a sense of depth as it gets covered.
+    // Slowly push/scale the current image slightly backward and to the RIGHT
+    // to give a sense of depth as it gets covered from the left.
     if (currentImg) {
       tl.to(
         currentImg,
         {
-          scale: 1.1,
-          x: -20,
-          duration: 1.6,
+          scale: 1.15,
+          x: 40, // pan to the right as it gets covered from the left
+          duration: 3.2, // Match wipe duration
           ease: "power3.inOut",
         },
         "<" // Sync with the wipe
