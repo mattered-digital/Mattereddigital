@@ -1,12 +1,14 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import Image from "next/image";
 
 const heroImages = [
   "/editorial-fashion.png",
   "/editorial-glass.png",
+  "/editorial-redbook.png",
+  "/editorial-tshirt.png",
 ];
 
 const heroHeadingLines = [
@@ -20,18 +22,95 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
-  const smallImageRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const animateImageTransition = useCallback((nextIndex: number) => {
+    if (!imageContainerRef.current) return;
+
+    const slides = imageContainerRef.current.querySelectorAll(".hero-slide");
+    const currentSlide = slides[currentIndex];
+    const nextSlide = slides[nextIndex];
+
+    if (!currentSlide || !nextSlide) return;
+
+    const tl = gsap.timeline();
+
+    // Set next slide initial state: off-screen right via clip-path
+    gsap.set(nextSlide, {
+      xPercent: 0,
+      clipPath: "inset(0 100% 0 0)",
+      opacity: 1,
+      zIndex: 2,
+    });
+    
+    // Ensure current slide is underneath and static
+    gsap.set(currentSlide, { 
+      xPercent: 0, 
+      zIndex: 1,
+      clipPath: "inset(0 0% 0 0)"
+    });
+
+    // Use .hero-image to precisely match the initial load animation
+    const nextImg = nextSlide.querySelector(".hero-image");
+    const currentImg = currentSlide.querySelector(".hero-image");
+    
+    if (nextImg) gsap.set(nextImg, { scale: 1.2, x: 60 });
+
+    // Animate next slide wiping in from right to left using clip-path
+    tl.to(nextSlide, {
+      clipPath: "inset(0 0% 0 0)",
+      duration: 1.6,
+      ease: "power3.inOut",
+    });
+
+    // Delay the inner image effect slightly to match initial masterTl timing
+    if (nextImg) {
+      tl.to(
+        nextImg,
+        {
+          scale: 1,
+          x: 0,
+          duration: 2,
+          ease: "power2.out",
+        },
+        "<0.2" 
+      );
+    }
+
+    // Slowly push/scale the current image slightly backward 
+    // to give a sense of depth as it gets covered.
+    if (currentImg) {
+      tl.to(
+        currentImg,
+        {
+          scale: 1.1,
+          x: -20,
+          duration: 1.6,
+          ease: "power3.inOut",
+        },
+        "<" // Sync with the wipe
+      );
+    }
+
+    // After transition, hide and reset the previous slide
+    tl.call(() => {
+      gsap.set(currentSlide, { opacity: 0, zIndex: 0, clipPath: "none" }); 
+      setCurrentIndex(nextIndex);
+    });
+
+    return tl;
+  }, [currentIndex]);
 
   useGSAP(
     () => {
-      if (!headingRef.current || !imageContainerRef.current || !smallImageRef.current) return;
+      if (!headingRef.current || !imageContainerRef.current) return;
 
       const words = headingRef.current.querySelectorAll(".hero-word");
       const cats = sectionRef.current?.querySelectorAll(".hero-cat");
 
       // Initial states
       gsap.set(words, { yPercent: 120, opacity: 0 });
-      gsap.set(smallImageRef.current, { xPercent: 120, opacity: 0 }); // start small image offscreen to right
 
       // --- Entry animations ---
       const masterTl = gsap.timeline({ delay: 2.2 });
@@ -62,16 +141,17 @@ export default function Hero() {
       }
 
       // Main Hero Image Entry
-      const mainSlide = imageContainerRef.current.querySelector(".hero-slide");
-      const mainImg = mainSlide?.querySelector(".hero-image");
+      const firstSlide = imageContainerRef.current.querySelector(".hero-slide");
+      const firstImg = firstSlide?.querySelector(".hero-image");
 
-      if (mainSlide) {
-        if (mainImg) {
-          gsap.set(mainImg, { scale: 1.2, x: 60 });
+      if (firstSlide) {
+        gsap.set(firstSlide, { opacity: 1, xPercent: 0, zIndex: 2 });
+        if (firstImg) {
+          gsap.set(firstImg, { scale: 1.2, x: 60 });
         }
 
         masterTl.fromTo(
-          mainSlide,
+          firstSlide,
           { clipPath: "inset(0 100% 0 0)" },
           {
             clipPath: "inset(0 0% 0 0)",
@@ -81,9 +161,9 @@ export default function Hero() {
           "-=1.2"
         );
 
-        if (mainImg) {
+        if (firstImg) {
           masterTl.to(
-            mainImg,
+            firstImg,
             {
               scale: 1,
               x: 0,
@@ -93,28 +173,6 @@ export default function Hero() {
             "-=1.4"
           );
         }
-      }
-
-      // Small image entry (smooth transition right to left)
-      masterTl.to(
-        smallImageRef.current,
-        {
-          xPercent: 0,
-          opacity: 1,
-          duration: 1.6,
-          ease: "power3.out",
-        },
-        "-=1.6" // start simultaneously with the main image
-      );
-
-      const smallInnerImg = smallImageRef.current.querySelector("img");
-      if (smallInnerImg) {
-        masterTl.fromTo(
-          smallInnerImg,
-          { scale: 1.2, x: 40 },
-          { scale: 1, x: 0, duration: 2, ease: "power2.out" },
-          "-=1.6"
-        );
       }
 
       // Parallax on the hero image containers
@@ -129,16 +187,20 @@ export default function Hero() {
         },
       });
 
-      gsap.to(smallImageRef.current, {
-        yPercent: 25,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
+      // Start auto-cycling images after entry
+      masterTl.call(() => {
+        intervalRef.current = setInterval(() => {
+          setCurrentIndex((prev) => {
+            const next = (prev + 1) % heroImages.length;
+            animateImageTransition(next);
+            return prev;
+          });
+        }, 5000); // 5 seconds between slides
       });
+
+      return () => {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      };
     },
     { scope: sectionRef }
   );
@@ -151,46 +213,28 @@ export default function Hero() {
     >
       {/* Hero image — full-bleed main background */}
       <div ref={imageContainerRef} className="hero-image-container">
-        <div
-          className="hero-slide opacity-100"
-        >
-          <div className="hero-slide-inner">
-            <Image
-              src={heroImages[0]}
-              alt="Main Hero Visual"
-              fill
-              priority
-              sizes="100vw"
-              className="hero-image"
-            />
-            <div className="hero-image-overlay" />
+        {heroImages.map((src, i) => (
+          <div
+            key={src}
+            className="hero-slide"
+            style={{ opacity: i === 0 ? 1 : 0 }} // Only first image is visible initially
+          >
+            <div className="hero-slide-inner">
+              <Image
+                src={src}
+                alt={`Hero visual ${i + 1}`}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className="hero-image"
+              />
+              <div className="hero-image-overlay" />
+            </div>
           </div>
-        </div>
+        ))}
       </div>
 
       <div className="hero-screen-overlay" aria-hidden="true" />
-
-      {/* Small floating image on the right */}
-      <div
-        ref={smallImageRef}
-        className="absolute z-[15] hidden md:block overflow-hidden"
-        style={{
-          right: "8vw",
-          top: "40%",
-          width: "22vw",
-          height: "32vw",
-          maxWidth: "300px",
-          maxHeight: "420px",
-        }}
-      >
-        <Image
-          src={heroImages[1]}
-          alt="Secondary Hero Visual"
-          fill
-          sizes="33vw"
-          className="object-cover object-center"
-        />
-      </div>
 
       {/* Top category labels */}
       <div className="hero-categories">
