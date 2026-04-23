@@ -4,6 +4,7 @@ export type CaseStudy = {
   platform: string;
   index: string;
   services: string[];
+  image: string;
 };
 
 export type Project = {

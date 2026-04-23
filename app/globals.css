@@ -4,8 +4,7 @@
 
 :root {
   color-scheme: dark;
-  --grid-color: rgba(255, 255, 255, 0.035);
-  --grid-columns: 40;
+  --grid-color: rgba(255, 255, 255, 0.06);
   --edge-glow: rgba(80, 120, 255, 0.15);
 }
 
@@ -61,16 +60,14 @@ select {
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns), 1fr);
 }
 
 .grid-overlay span {
-  border-right: 1px solid var(--grid-color);
-}
-
-.grid-overlay span:last-child {
-  border-right: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--grid-color);
 }
 
 /* ── Edge glow (left & right) ── */
