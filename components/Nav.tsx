@@ -59,7 +59,7 @@ export default function Nav() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[110] px-6 py-4 md:px-10 lg:px-16">
+    <header className="fixed inset-x-0 top-0 z-[110] px-6 py-4 md:px-10 lg:px-16 bg-black/50 backdrop-blur-lg border-b border-white/5">
       <nav className="relative">
         {/* Main bar */}
         <div className="flex items-start justify-between text-sm">
@@ -80,8 +80,8 @@ export default function Nav() {
           </div>
 
           {/* Right zone */}
-          <div className="flex items-start gap-6">
-            <div className="hidden text-right text-[11px] leading-relaxed text-gray-light md:block">
+          <div className="flex items-start gap-4 md:gap-6">
+            <div className="hidden text-right text-[11px] leading-relaxed text-gray-light xl:block">
               <p>hello@madeinevolve.com</p>
               <p>Modena, EST 2008©</p>
             </div>

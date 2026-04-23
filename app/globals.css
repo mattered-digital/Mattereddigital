@@ -172,7 +172,7 @@ body::after {
   }
 
   .hero-categories {
-    @apply relative z-20 flex w-full justify-between pt-8 px-4 text-[11px] uppercase tracking-label;
+    @apply relative z-20 flex w-full justify-between pt-8 px-4 text-[10px] sm:text-[11px] uppercase tracking-label;
   }
 
   .hero-categories .hero-cat {
@@ -180,7 +180,7 @@ body::after {
   }
 
   .hero-categories .hero-cat:nth-child(2) {
-    @apply absolute left-1/2 -translate-x-1/2 text-white;
+    @apply absolute left-1/2 -translate-x-1/2 text-white hidden sm:block;
   }
 
   .hero-heading-wrap {
@@ -188,7 +188,7 @@ body::after {
   }
 
   .hero-heading {
-    @apply text-hero leading-[0.8] w-full flex flex-col items-center justify-center text-white;
-    font-size: clamp(3.5rem, 8vw, 9.5rem);
+    @apply text-hero leading-[0.82] w-full flex flex-col items-center justify-center text-white;
+    font-size: clamp(2.8rem, 10vw, 9.5rem);
   }
 }

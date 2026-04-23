@@ -107,13 +107,13 @@ export default function ProjectTable() {
     <section ref={sectionRef} id="projects" className="relative min-h-screen py-0">
       {/* Header row */}
       <div className="section-shell relative z-20 py-4 md:py-8">
-        <div className="mono-row grid grid-cols-[1fr] gap-4 text-gray md:grid-cols-[1.2fr_1fr_1fr_1.5fr]">
+        <div className="mono-row hidden md:grid grid-cols-[1.2fr_1fr_1fr_1.5fr] gap-4 text-gray">
           <span>Partner</span>
-          <span className="hidden md:block">Platform</span>
-          <span className="hidden text-center md:block">
+          <span>Platform</span>
+          <span className="text-center">
             ( EVOLVE CASE STUDIES )
           </span>
-          <span className="hidden text-right md:block">Service</span>
+          <span className="text-right">Service</span>
         </div>
       </div>
 
@@ -156,20 +156,20 @@ export default function ProjectTable() {
               onFocus={() => showProjectImage(cs.id)}
               onBlur={hideProjectImage}
               onPointerEnter={() => showProjectImage(cs.id)}
-              className="cs-row mono-row group relative grid min-h-[56px] grid-cols-1 items-center gap-1 overflow-visible py-3 outline-none md:grid-cols-[1.2fr_1fr_1fr_1.5fr] md:gap-4 md:py-0"
+              className="cs-row mono-row group relative flex flex-col items-start gap-1 overflow-visible py-5 outline-none md:grid md:grid-cols-[1.2fr_1fr_1fr_1.5fr] md:items-center md:gap-4 md:py-0 md:min-h-[56px]"
             >
               <span className="pointer-events-none absolute left-0 right-0 top-1/2 z-0 h-5 -translate-y-1/2 scale-x-0 bg-white opacity-0 transition-[opacity,transform] duration-200 ease-out group-hover:scale-x-100 group-hover:opacity-100 group-focus:scale-x-100 group-focus:opacity-100" />
 
-              <span className="relative z-10 whitespace-nowrap text-[13px] font-medium leading-none text-white transition-colors duration-200 group-hover:text-black group-focus:text-black">
+              <span className="relative z-10 whitespace-nowrap text-[14px] font-medium leading-none text-white transition-colors duration-200 group-hover:text-black group-focus:text-black md:text-[13px]">
                 {cs.partner}
               </span>
-              <span className="relative z-10 whitespace-nowrap text-[13px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black">
+              <span className="relative z-10 whitespace-nowrap text-[11px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black md:text-[13px]">
                 {cs.platform}
               </span>
               <span className="relative z-10 hidden whitespace-nowrap text-center text-[13px] leading-none text-gray transition-colors duration-200 group-hover:text-black group-focus:text-black md:block">
                 {cs.index}
               </span>
-              <span className="relative z-10 text-left text-[13px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black md:truncate md:text-right">
+              <span className="relative z-10 text-left text-[11px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black md:truncate md:text-[13px] md:text-right">
                 {cs.services.join(", ")}
               </span>
             </div>

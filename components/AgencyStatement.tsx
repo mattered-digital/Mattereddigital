@@ -81,12 +81,12 @@ export default function AgencyStatement() {
       {/* Top large statement */}
       <div className="mx-auto w-full lg:max-w-[95%] lg:mx-0">
         <h2 className="agency-heading font-sans text-[28px] md:text-[38px] lg:text-[44px] font-medium leading-[1.1] tracking-tight md:tracking-[-0.02em] text-white">
-          We are an eCommerce agency. Not just execution, not isolated services. We provide brand direction, advanced tech, performance marketing and system integration as one connected approach. An end-to-end ecosystem designed to scale, perform and integrate seamlessly with existing platforms.
+          We are an eCommerce agency providing brand direction, advanced tech, and performance marketing. A connected ecosystem designed to scale seamlessly.
         </h2>
       </div>
 
       {/* Grid below */}
-      <div className="mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-[2vw] gap-y-12">
+      <div className="mt-12 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-[2vw] gap-y-6 md:gap-y-12">
         
         {/* The 4 grey boxes */}
         {serviceBlocks.map((block, i) => (
@@ -98,7 +98,7 @@ export default function AgencyStatement() {
                 </p>
               )}
             </div>
-            <div className="bg-[#141414] h-[280px] md:h-[360px] w-full p-5 flex flex-col justify-between">
+            <div className="bg-[#141414] h-[180px] md:h-[360px] w-full p-5 flex flex-col justify-between">
               <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight">
                 {block.title}
               </h3>
@@ -115,19 +115,13 @@ export default function AgencyStatement() {
           </div>
           <div className="space-y-6 lg:space-y-8 pt-1">
             <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              Every eCommerce is already in motion. Processes, people, numbers,
-              decisions. Our job isn&apos;t to sit on top of it. It&apos;s to step inside.
+              Every eCommerce is in motion. We don&apos;t sit on top of it; we step inside.
             </p>
             <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              We work alongside teams, read the business, identify where energy is being
-              lost and where it needs to be amplified. We don&apos;t operate in silos: design,
-              technology and marketing move together, because that&apos;s how growth
-              becomes sustainable.
+              We identify lost energy and amplify growth. Design, tech, and marketing moving together—because that&apos;s how growth becomes sustainable.
             </p>
             <p className="agency-paragraph font-sans text-white text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              With in-house teams collaborating in real time, we reduce friction, align
-              decisions and turn complexity into structure. We don&apos;t add noise. We bring
-              direction.
+              We reduce friction, align decisions, and turn complexity into structure. We don&apos;t add noise. We bring direction.
             </p>
           </div>
         </div>
