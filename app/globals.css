@@ -146,11 +146,11 @@ body::after {
   }
 
   .hero-lines {
-    @apply absolute inset-0 z-0 pointer-events-none;
+    @apply absolute inset-0 z-[15] pointer-events-none;
   }
 
   .hero-line {
-    @apply absolute top-0 bottom-0 w-[1px] bg-white/[0.04];
+    @apply absolute top-0 bottom-0 w-[1px] bg-white/[0.025];
   }
 
   .hero-image-container {

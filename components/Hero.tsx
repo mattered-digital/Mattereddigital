@@ -11,21 +11,10 @@ const heroImages = [
   "/editorial-tshirt.png",
 ];
 
-const heroLinePositions = [
-  "5%",
-  "12.5%",
-  "20%",
-  "27.5%",
-  "35%",
-  "42.5%",
-  "50%",
-  "57.5%",
-  "65%",
-  "72.5%",
-  "80%",
-  "87.5%",
-  "95%",
-];
+const heroLinePositions = Array.from(
+  { length: 40 },
+  (_, index) => `${((index / 40) * 100).toFixed(3)}%`
+);
 
 const heroHeadingLines = [
   "ECOMMERCE",
