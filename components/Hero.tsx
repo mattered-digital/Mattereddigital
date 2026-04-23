@@ -1,34 +1,102 @@
+"use client";
+
+import { useRef } from "react";
+import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
+
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!headingRef.current) return;
+
+      const words = headingRef.current.querySelectorAll(".hero-word");
+
+      gsap.set(words, { yPercent: 120, opacity: 0 });
+
+      gsap.to(words, {
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.08,
+        duration: 1,
+        ease: "power4.out",
+        delay: 2.2
+      });
+
+      // Parallax on the hero image
+      const heroImg = sectionRef.current?.querySelector(".hero-bg");
+      if (heroImg) {
+        gsap.to(heroImg, {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      }
+
+      // Category labels stagger in
+      const cats = sectionRef.current?.querySelectorAll(".hero-cat");
+      if (cats) {
+        gsap.fromTo(
+          cats,
+          { opacity: 0, y: 15 },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.12,
+            duration: 0.6,
+            ease: "power3.out",
+            delay: 2.8
+          }
+        );
+      }
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section id="home" className="section-shell pb-16 pt-10 md:pb-24 md:pt-16">
-      <div className="soft-panel overflow-hidden rounded-[2rem] px-6 py-10 md:px-10 md:py-14">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <div className="max-w-4xl">
-            <p className="section-heading mb-5">Independent growth agency</p>
-            <h1 className="max-w-4xl font-serif text-5xl italic leading-[0.95] text-white md:text-7xl lg:text-[7.5rem]">
-              We build sharp brand worlds that move with intent.
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-gray-light md:text-lg">
-              Evolve is a cinematic starter for agencies that want presence,
-              pace, and polish baked into the first commit.
-            </p>
+    <section
+      ref={sectionRef}
+      id="home"
+      className="relative flex min-h-screen flex-col justify-end overflow-hidden pb-10 pt-32 section-shell"
+    >
+      {/* Background image with overlay */}
+      <div className="hero-bg absolute inset-0 z-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/editorial-fashion.png')",
+            filter: "brightness(0.25) saturate(0.6)"
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/90" />
+      </div>
+
+      {/* Top category labels */}
+      <div className="relative z-10 mb-auto flex flex-wrap gap-6 pt-8 text-[11px] uppercase tracking-label text-gray-light">
+        <span className="hero-cat opacity-0">Brand Direction</span>
+        <span className="hero-cat opacity-0">Performance Marketing</span>
+        <span className="hero-cat opacity-0">Advanced Tech</span>
+      </div>
+
+      {/* Massive headline */}
+      <div ref={headingRef} className="relative z-10 mt-auto">
+        <h1 className="heading-condensed text-hero leading-[0.85]">
+          <div className="overflow-hidden">
+            <span className="hero-word inline-block">ECOMMERCE</span>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
-              <p className="section-heading mb-3">Selected focus</p>
-              <p className="text-2xl font-medium">Strategy, identity, motion</p>
-            </div>
-            <div className="rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/10 via-white/[0.04] to-transparent p-6">
-              <p className="section-heading mb-3">Current rhythm</p>
-              <p className="text-2xl font-medium">06 launches in 90 days</p>
-            </div>
+          <div className="overflow-hidden">
+            <span className="hero-word inline-block">INNOVATION</span>
           </div>
-        </div>
-        <div className="mt-10 grid gap-4 border-t border-white/10 pt-6 text-sm text-gray-light md:grid-cols-3">
-          <p>Editorial storytelling for brands in transition.</p>
-          <p>Performance systems that keep the aesthetic accountable.</p>
-          <p>High-touch creative direction across digital surfaces.</p>
-        </div>
+          <div className="overflow-hidden">
+            <span className="hero-word inline-block">AGENCY</span>
+          </div>
+        </h1>
       </div>
     </section>
   );

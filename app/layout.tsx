@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Inter } from "next/font/google";
+import { Inter, Oswald, Space_Mono } from "next/font/google";
 import CustomCursor from "@/components/CustomCursor";
 import Nav from "@/components/Nav";
+import GridOverlay from "@/components/GridOverlay";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import "./globals.css";
 
-const dmSerif = DM_Serif_Display({
+const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["italic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-serif"
+  variable: "--font-heading"
 });
 
 const inter = Inter({
@@ -20,10 +20,17 @@ const inter = Inter({
   variable: "--font-sans"
 });
 
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-mono"
+});
+
 export const metadata: Metadata = {
-  title: "Evolve Clone",
+  title: "Evolve | Direction, Tech, Marketing",
   description:
-    "A motion-first agency landing page scaffold built with Next.js 14, Tailwind CSS, GSAP, and Lenis."
+    "Ecommerce and brand systems. Driven by visions. Built with design and technology."
 };
 
 export default function RootLayout({
@@ -34,12 +41,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSerif.variable} ${inter.variable}`}
+      className={`${oswald.variable} ${inter.variable} ${spaceMono.variable}`}
       suppressHydrationWarning
     >
       <body className="bg-black font-sans text-white antialiased">
         <SmoothScrollProvider>
           <CustomCursor />
+          <GridOverlay />
           <Nav />
           {children}
         </SmoothScrollProvider>

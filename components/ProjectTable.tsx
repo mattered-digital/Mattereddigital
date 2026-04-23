@@ -1,37 +1,71 @@
-import { projectTable } from "@/data/projects";
+"use client";
+
+import { useRef } from "react";
+import { caseStudies } from "@/data/projects";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 export default function ProjectTable() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const rows = gsap.utils.toArray<HTMLElement>(".cs-row");
+      rows.forEach((row) => {
+        gsap.fromTo(
+          row,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: row,
+              start: "top 90%",
+              toggleActions: "play none none none"
+            }
+          }
+        );
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="section-shell py-16 md:py-24">
-      <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="section-heading mb-3">Project index</p>
-          <h2 className="text-3xl font-medium md:text-4xl">
-            A lean overview of current momentum.
-          </h2>
+    <section ref={sectionRef} id="projects" className="py-0">
+      {/* Header row */}
+      <div className="section-shell border-b border-white/10 py-4">
+        <div className="mono-row grid grid-cols-[1fr] gap-4 text-gray md:grid-cols-[1.2fr_1fr_1fr_1.5fr]">
+          <span>Partner</span>
+          <span className="hidden md:block">Platform</span>
+          <span className="hidden text-center md:block">
+            ( EVOLVE CASE STUDIES )
+          </span>
+          <span className="hidden text-right md:block">Service</span>
         </div>
-        <p className="max-w-md text-sm leading-6 text-gray-light">
-          A simple table keeps the page grounded and gives the motion-heavy
-          moments a place to breathe.
-        </p>
       </div>
-      <div className="rounded-[2rem] border border-white/10">
-        {projectTable.map((project, index) => (
+
+      {/* Body rows */}
+      <div className="section-shell">
+        {caseStudies.map((cs, i) => (
           <div
-            key={project.id}
-            className={`grid gap-3 px-6 py-5 md:grid-cols-[1.1fr_0.7fr_0.6fr_0.8fr] md:items-center ${
-              index !== projectTable.length - 1 ? "border-b border-white/10" : ""
+            key={cs.id}
+            className={`cs-row mono-row grid grid-cols-1 gap-2 py-4 transition-colors duration-200 hover:text-white md:grid-cols-[1.2fr_1fr_1fr_1.5fr] md:items-center ${
+              i !== caseStudies.length - 1
+                ? "border-b border-white/[0.06]"
+                : ""
             }`}
           >
-            <div>
-              <p className="text-lg font-medium">{project.title}</p>
-              <p className="mt-1 text-sm text-gray-light">{project.summary}</p>
-            </div>
-            <p className="text-sm uppercase tracking-label text-gray">
-              {project.category}
-            </p>
-            <p className="text-sm text-gray-light">{project.location}</p>
-            <p className="text-sm text-white">{project.primaryMetric}</p>
+            <span className="text-sm font-medium text-white md:text-base">
+              {cs.partner}
+            </span>
+            <span className="text-sm text-gray-light">{cs.platform}</span>
+            <span className="hidden text-center text-sm text-gray md:block">
+              {cs.index}
+            </span>
+            <span className="text-right text-sm text-gray-light">
+              {cs.services.join(", ")}
+            </span>
           </div>
         ))}
       </div>

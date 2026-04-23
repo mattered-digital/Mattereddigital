@@ -1,3 +1,11 @@
+export type CaseStudy = {
+  id: string;
+  partner: string;
+  platform: string;
+  index: string;
+  services: string[];
+};
+
 export type Project = {
   id: string;
   title: string;

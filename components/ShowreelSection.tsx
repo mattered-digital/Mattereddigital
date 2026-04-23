@@ -1,30 +1,84 @@
+"use client";
+
+import { useRef } from "react";
+import { gsap, useGSAP } from "@/lib/gsap";
+
+const lines = [
+  "INNOVATION IS CONNECTION.",
+  "WE BRIDGE THE GAP BETWEEN",
+  "COMPLEX INFRASTRUCTURE",
+  "AND HUMAN EXPERIENCE TO",
+  "TURN VISION INTO",
+  "MOMENTUM."
+];
+
 export default function ShowreelSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const lineElements = gsap.utils.toArray<HTMLElement>(".showreel-line");
+
+      lineElements.forEach((line) => {
+        gsap.fromTo(
+          line,
+          { color: "rgba(255,255,255,0.15)" },
+          {
+            color: "rgba(255,255,255,1)",
+            ease: "none",
+            scrollTrigger: {
+              trigger: line,
+              start: "top 80%",
+              end: "top 40%",
+              scrub: true
+            }
+          }
+        );
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section id="showreel" className="section-shell py-16 md:py-24">
-      <div className="soft-panel overflow-hidden rounded-[2rem] p-6 md:p-10">
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6">
-            <p className="section-heading mb-4">Showreel</p>
-            <div className="flex items-center gap-4">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 text-lg">
-                01
-              </span>
-              <p className="text-sm leading-6 text-gray-light">
-                Placeholder block for video, canvas work, or a motion-led
-                feature case study.
-              </p>
-            </div>
-          </div>
-          <div>
-            <h2 className="max-w-3xl font-serif text-4xl italic leading-tight md:text-6xl">
-              Motion should support the thesis of the page, not distract from
-              it.
-            </h2>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-gray-light">
-              The section is ready for a reel embed, a GSAP-driven media reveal,
-              or a layered image sequence once your real assets are in place.
-            </p>
-          </div>
+    <section ref={sectionRef} id="showreel" className="section-shell py-24 md:py-40">
+      {/* Big text block */}
+      <div className="max-w-6xl">
+        {lines.map((line, i) => (
+          <p
+            key={i}
+            className="showreel-line heading-condensed text-hero-sm md:text-statement lg:text-[clamp(3rem,5.5vw,5.5rem)]"
+            style={{ color: "rgba(255,255,255,0.15)" }}
+          >
+            {line}
+          </p>
+        ))}
+      </div>
+
+      {/* Video / image block */}
+      <div className="relative mt-20 overflow-hidden rounded-2xl border border-white/10">
+        <div className="aspect-video w-full">
+          <img
+            src="/editorial-glass.png"
+            alt="Showreel"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+
+        {/* Tech overlay corners */}
+        <div className="absolute left-4 top-4 font-mono text-[10px] uppercase tracking-widest text-white/50">
+          <p>00:00:24</p>
+          <p>REC●</p>
+        </div>
+        <div className="absolute right-4 top-4 text-right font-mono text-[10px] uppercase tracking-widest text-white/50">
+          <p>4K 60FPS</p>
+          <p>3840×2160</p>
+        </div>
+        <div className="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-widest text-white/50">
+          <p>EVOLVE SHOWREEL 2026</p>
+        </div>
+        <div className="absolute bottom-4 right-4 font-mono text-[10px] uppercase tracking-widest text-white/50">
+          <p>▶ PLAY</p>
         </div>
       </div>
     </section>

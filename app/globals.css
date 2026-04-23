@@ -4,6 +4,9 @@
 
 :root {
   color-scheme: dark;
+  --grid-color: rgba(255, 255, 255, 0.06);
+  --grid-columns: 6;
+  --edge-glow: rgba(80, 120, 255, 0.15);
 }
 
 * {
@@ -52,6 +55,52 @@ select {
   color: #0a0a0a;
 }
 
+/* ── Grid Overlay ── */
+.grid-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+}
+
+.grid-overlay span {
+  border-right: 1px solid var(--grid-color);
+}
+
+.grid-overlay span:last-child {
+  border-right: none;
+}
+
+/* ── Edge glow (left & right) ── */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  z-index: 101;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--edge-glow) 30%,
+    rgba(80, 120, 255, 0.3) 50%,
+    var(--edge-glow) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
 @layer base {
   section {
     position: relative;
@@ -64,7 +113,15 @@ select {
   }
 
   .section-heading {
-    @apply text-[11px] uppercase tracking-label text-gray;
+    @apply text-[11px] uppercase tracking-label text-gray font-mono;
+  }
+
+  .heading-condensed {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
   }
 
   .soft-panel {
@@ -73,5 +130,13 @@ select {
       rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(18px);
+  }
+
+  /* Monospace table style */
+  .mono-row {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
   }
 }

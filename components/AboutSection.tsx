@@ -1,40 +1,121 @@
-const stats = [
-  { label: "Average launch window", value: "5 weeks" },
-  { label: "Retained partnerships", value: "83%" },
-  { label: "Senior team per project", value: "100%" }
+"use client";
+
+import { useRef } from "react";
+import Image from "next/image";
+import { gsap, useGSAP } from "@/lib/gsap";
+
+const photos = [
+  { src: "/editorial-fashion.png", alt: "Fashion editorial" },
+  { src: "/editorial-glass.png", alt: "Architecture" },
+  { src: "/editorial-redbook.png", alt: "Publication design" },
+  { src: "/editorial-tshirt.png", alt: "Product editorial" }
 ];
 
 export default function AboutSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // Parallax on images
+      const images = gsap.utils.toArray<HTMLElement>(".about-img");
+      images.forEach((img, i) => {
+        gsap.fromTo(
+          img,
+          { yPercent: i % 2 === 0 ? 10 : 20 },
+          {
+            yPercent: i % 2 === 0 ? -10 : -20,
+            ease: "none",
+            scrollTrigger: {
+              trigger: img,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true
+            }
+          }
+        );
+      });
+
+      // Text reveal
+      const texts = gsap.utils.toArray<HTMLElement>(".about-text");
+      texts.forEach((text) => {
+        gsap.fromTo(
+          text,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: text,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          }
+        );
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section id="about" className="section-shell py-16 md:py-24">
-      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="soft-panel rounded-[2rem] p-7 md:p-8">
-          <p className="section-heading mb-4">About evolve</p>
-          <h2 className="font-serif text-4xl italic md:text-5xl">
-            Strategy that feels intimate. Execution that feels inevitable.
-          </h2>
-        </div>
-        <div className="grid gap-4">
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.02] p-7 md:p-8">
-            <p className="max-w-2xl text-base leading-7 text-gray-light">
-              This scaffold is designed to feel premium from the start: layered
-              surfaces, disciplined typography, and enough modular structure to
-              build out a full editorial agency site without rethinking the
-              foundation.
-            </p>
+    <section ref={sectionRef} id="about" className="section-shell py-24 md:py-32">
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* Left column: 2 stacked photos */}
+        <div className="space-y-6">
+          <div className="about-img overflow-hidden rounded-2xl">
+            <Image
+              src={photos[0].src}
+              alt={photos[0].alt}
+              width={800}
+              height={600}
+              className="h-full w-full object-cover"
+            />
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5"
-              >
-                <p className="text-3xl font-medium">{stat.value}</p>
-                <p className="mt-3 text-sm leading-6 text-gray-light">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          <div className="about-img overflow-hidden rounded-2xl">
+            <Image
+              src={photos[2].src}
+              alt={photos[2].alt}
+              width={800}
+              height={900}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Right column: 2 photos + text */}
+        <div className="space-y-6 md:pt-20">
+          <div className="about-img overflow-hidden rounded-2xl">
+            <Image
+              src={photos[1].src}
+              alt={photos[1].alt}
+              width={800}
+              height={500}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="about-img overflow-hidden rounded-2xl">
+            <Image
+              src={photos[3].src}
+              alt={photos[3].alt}
+              width={800}
+              height={800}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="about-text pt-4">
+            <p className="text-sm leading-7 text-gray-light">
+              We live in an age where everything is everywhere, all the time. The
+              real challenge is no longer visibility, but meaning. Evolve exists
+              to build authentic connections between brands and people where
+              every experience, physical or digital, becomes part of the same
+              story.
+            </p>
+            <p className="mt-4 text-sm leading-7 text-gray-light">
+              We believe commerce is culture: a coherent ecosystem where
+              technology, design, and strategy merge to create living brands,
+              worlds with identity, and relationships that endure over time.
+            </p>
           </div>
         </div>
       </div>
