@@ -184,7 +184,7 @@ body::after {
   }
 
   .hero-heading-wrap {
-    @apply relative z-20 mt-auto w-full text-center pointer-events-none pb-4;
+    @apply relative z-20 mt-auto w-full text-center pointer-events-none pb-16;
   }
 
   .hero-heading {
