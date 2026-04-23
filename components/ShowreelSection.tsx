@@ -5,11 +5,8 @@ import { gsap, useGSAP } from "@/lib/gsap";
 
 const lines = [
   "INNOVATION IS CONNECTION.",
-  "WE BRIDGE THE GAP BETWEEN",
-  "COMPLEX INFRASTRUCTURE",
-  "AND HUMAN EXPERIENCE TO",
-  "TURN VISION INTO",
-  "MOMENTUM."
+  "BRIDGING COMPLEX SYSTEMS",
+  "TO HUMAN MOMENTUM."
 ];
 
 export default function ShowreelSection() {

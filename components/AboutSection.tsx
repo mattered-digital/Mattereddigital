@@ -105,16 +105,10 @@ export default function AboutSection() {
           </div>
           <div className="about-text pt-4">
             <p className="text-sm leading-7 text-gray-light">
-              We live in an age where everything is everywhere, all the time. The
-              real challenge is no longer visibility, but meaning. Evolve exists
-              to build authentic connections between brands and people where
-              every experience, physical or digital, becomes part of the same
-              story.
+              In an era of over-visibility, our challenge is meaning. Evolve builds authentic connections where every experience—physical or digital—belongs to the same story.
             </p>
             <p className="mt-4 text-sm leading-7 text-gray-light">
-              We believe commerce is culture: a coherent ecosystem where
-              technology, design, and strategy merge to create living brands,
-              worlds with identity, and relationships that endure over time.
+              We believe commerce is culture. A coherent ecosystem where technology, design, and strategy merge to create living brands with enduring identity.
             </p>
           </div>
         </div>
