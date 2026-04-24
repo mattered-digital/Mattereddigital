@@ -5,10 +5,10 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import Image from "next/image";
 
 const heroImages = [
-  "/editorial-fashion.png",
-  "/editorial-glass.png",
-  "/editorial-redbook.png",
-  "/editorial-tshirt.png",
+  "/editorial-fashion.jpg",
+  "/editorial-glass.jpg",
+  "/editorial-redbook.jpg",
+  "/editorial-tshirt.jpg",
   "/footer-bg.png"
 ];
 

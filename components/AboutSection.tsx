@@ -5,10 +5,10 @@ import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const photos = [
-  { src: "/editorial-fashion.png", alt: "Campaign creative direction" },
-  { src: "/editorial-glass.png", alt: "Brand planning workshop" },
-  { src: "/editorial-redbook.png", alt: "Editorial content system" },
-  { src: "/editorial-tshirt.png", alt: "Product marketing concept" }
+  { src: "/editorial-fashion.jpg", alt: "Campaign creative direction" },
+  { src: "/editorial-glass.jpg", alt: "Brand planning workshop" },
+  { src: "/editorial-redbook.jpg", alt: "Editorial content system" },
+  { src: "/editorial-tshirt.jpg", alt: "Product marketing concept" }
 ];
 
 export default function AboutSection() {

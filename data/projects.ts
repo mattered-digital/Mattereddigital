@@ -7,7 +7,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "DTC RETAIL",
     index: "(a.)",
     services: ["Brand Strategy", "Paid Social", "Email", "CRO"],
-    image: "/editorial-fashion.png"
+    image: "/editorial-fashion.jpg"
   },
   {
     id: "helio",
@@ -15,7 +15,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "B2B SAAS",
     index: "(b.)",
     services: ["Messaging", "Launch Campaign", "Paid Search", "CRM"],
-    image: "/editorial-tshirt.png"
+    image: "/editorial-tshirt.jpg"
   },
   {
     id: "cinder",
@@ -23,7 +23,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "HOSPITALITY",
     index: "(c.)",
     services: ["Rebrand Rollout", "Content Production", "Local Ads"],
-    image: "/editorial-redbook.png"
+    image: "/editorial-redbook.jpg"
   },
   {
     id: "monograph",
@@ -31,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "MEDIA",
     index: "(d.)",
     services: ["Growth Strategy", "Subscription Funnel", "Paid Social"],
-    image: "/editorial-glass.png"
+    image: "/editorial-glass.jpg"
   },
   {
     id: "astral",
@@ -39,7 +39,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "BEAUTY",
     index: "(e.)",
     services: ["Creative Testing", "UGC Direction", "Retention"],
-    image: "/editorial-redbook.png"
+    image: "/editorial-redbook.jpg"
   },
   {
     id: "forge",
@@ -47,7 +47,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "B2B SERVICES",
     index: "(f.)",
     services: ["Positioning", "Web Copy", "Demand Gen"],
-    image: "/editorial-glass.png"
+    image: "/editorial-glass.jpg"
   },
   {
     id: "atlas",
@@ -55,7 +55,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "TRAVEL",
     index: "(g.)",
     services: ["Campaign Strategy", "Video Ads", "Landing Pages"],
-    image: "/editorial-fashion.png"
+    image: "/editorial-fashion.jpg"
   },
   {
     id: "noir",
@@ -63,7 +63,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "LUXURY GOODS",
     index: "(h.)",
     services: ["Brand Platform", "Influencer Seeding", "CRM"],
-    image: "/editorial-tshirt.png"
+    image: "/editorial-tshirt.jpg"
   },
   {
     id: "kite",
@@ -71,7 +71,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "FINTECH",
     index: "(i.)",
     services: ["Product Marketing", "Paid Media", "Lifecycle"],
-    image: "/editorial-glass.png"
+    image: "/editorial-glass.jpg"
   },
   {
     id: "vale",
@@ -79,7 +79,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "WELLNESS",
     index: "(j.)",
     services: ["Go-to-Market", "Content System", "SEO"],
-    image: "/editorial-tshirt.png"
+    image: "/editorial-tshirt.jpg"
   },
   {
     id: "drift",
@@ -87,7 +87,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "CONSUMER APP",
     index: "(m.)",
     services: ["Launch Strategy", "Paid Social", "App Store Creative"],
-    image: "/editorial-fashion.png"
+    image: "/editorial-fashion.jpg"
   },
   {
     id: "signal",
@@ -95,7 +95,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "SAAS",
     index: "(n.)",
     services: ["ABM Campaigns", "Landing Pages", "Sales Enablement"],
-    image: "/editorial-redbook.png"
+    image: "/editorial-redbook.jpg"
   },
   {
     id: "luma",
@@ -103,7 +103,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "WELLNESS",
     index: "(o.)",
     services: ["Creator Partnerships", "Retention", "Paid Search"],
-    image: "/editorial-glass.png"
+    image: "/editorial-glass.jpg"
   }
 ];
 

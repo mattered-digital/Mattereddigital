@@ -55,7 +55,7 @@ export default function ShowreelSection() {
       <div className="relative mt-20 overflow-hidden rounded-2xl border border-white/10">
         <div className="aspect-video w-full">
           <img
-            src="/editorial-glass.png"
+            src="/editorial-glass.jpg"
             alt="Matter campaign reel preview"
             className="h-full w-full object-cover"
           />
