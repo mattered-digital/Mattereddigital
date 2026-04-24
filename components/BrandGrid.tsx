@@ -5,14 +5,14 @@ export default function BrandGrid() {
     <section className="section-shell py-16 md:py-24">
       <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="section-heading mb-3">Brand grid</p>
+          <p className="section-heading mb-3">Sectors</p>
           <h2 className="font-serif text-4xl italic md:text-5xl">
-            Trusted by brands with taste and patience.
+            Matter works where attention and trust have to move together.
           </h2>
         </div>
         <p className="max-w-md text-sm leading-6 text-gray-light">
-          Replace these placeholders with real logos, marquees, or stills once
-          the final story is locked.
+          From DTC launches to B2B demand gen, we build systems that keep the
+          message clear while the channels scale.
         </p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

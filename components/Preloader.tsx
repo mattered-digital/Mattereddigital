@@ -67,7 +67,7 @@ export default function Preloader() {
       className="fixed inset-0 z-[130] flex flex-col items-center justify-center bg-black"
     >
       <p className="font-heading text-6xl font-bold uppercase tracking-tight md:text-8xl">
-        EVOLVE
+        MATTER
       </p>
       <p className="mt-3 font-mono text-xs uppercase tracking-widest text-gray">
         Loading <span ref={counterRef}>0</span>%

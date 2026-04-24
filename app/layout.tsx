@@ -28,9 +28,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Evolve | Direction, Tech, Marketing",
+  title: "Matter | Marketing Agency for Brands That Want Momentum",
   description:
-    "Ecommerce and brand systems. Driven by visions. Built with design and technology."
+    "Matter is a marketing agency blending strategy, creative, content, and performance to help ambitious brands turn attention into growth."
 };
 
 export default function RootLayout({

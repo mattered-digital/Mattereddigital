@@ -2,146 +2,146 @@ import type { CaseStudy, Project, Service, Brand } from "@/types";
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "dockers",
-    partner: "DOCKERS",
-    platform: "SHOPIFY",
+    id: "northline",
+    partner: "NORTHLINE",
+    platform: "DTC RETAIL",
     index: "(a.)",
-    services: ["Integration", "Marketing", "SEO", "CRO", "MOR"],
+    services: ["Brand Strategy", "Paid Social", "Email", "CRO"],
     image: "/editorial-fashion.png"
   },
   {
-    id: "champion",
-    partner: "CHAMPION",
-    platform: "SHOPIFY PLUS",
+    id: "helio",
+    partner: "HELIO",
+    platform: "B2B SAAS",
     index: "(b.)",
-    services: ["UX/UI", "Dev", "Integration", "SEO", "Marketing"],
+    services: ["Messaging", "Launch Campaign", "Paid Search", "CRM"],
     image: "/editorial-tshirt.png"
   },
   {
-    id: "benetton",
-    partner: "BENETTON",
-    platform: "SHOPIFY PLUS",
+    id: "cinder",
+    partner: "CINDER",
+    platform: "HOSPITALITY",
     index: "(c.)",
-    services: ["UX/UI", "Dev", "Integration", "SEO"],
+    services: ["Rebrand Rollout", "Content Production", "Local Ads"],
     image: "/editorial-redbook.png"
   },
   {
-    id: "sotf",
-    partner: "SOTF",
-    platform: "CUSTOM",
+    id: "monograph",
+    partner: "MONOGRAPH",
+    platform: "MEDIA",
     index: "(d.)",
-    services: ["UX/UI", "Brand Direction"],
+    services: ["Growth Strategy", "Subscription Funnel", "Paid Social"],
     image: "/editorial-glass.png"
   },
   {
-    id: "masons",
-    partner: "MASON'S",
-    platform: "SHOPIFY PLUS",
+    id: "astral",
+    partner: "ASTRAL",
+    platform: "BEAUTY",
     index: "(e.)",
-    services: ["UX/UI", "Dev", "Integration", "SEO"],
+    services: ["Creative Testing", "UGC Direction", "Retention"],
     image: "/editorial-redbook.png"
   },
   {
-    id: "roberto-collina",
-    partner: "ROBERTO COLLINA",
-    platform: "SHOPIFY PLUS",
+    id: "forge",
+    partner: "FORGE",
+    platform: "B2B SERVICES",
     index: "(f.)",
-    services: ["UX/UI", "Dev B2C", "Marketing", "Integration", "SEO"],
+    services: ["Positioning", "Web Copy", "Demand Gen"],
     image: "/editorial-glass.png"
   },
   {
-    id: "pollini",
-    partner: "POLLINI",
-    platform: "LARAVEL",
+    id: "atlas",
+    partner: "ATLAS",
+    platform: "TRAVEL",
     index: "(g.)",
-    services: ["UX/UI", "Dev", "Integration", "SEO", "Marketing"],
+    services: ["Campaign Strategy", "Video Ads", "Landing Pages"],
     image: "/editorial-fashion.png"
   },
   {
-    id: "engine",
-    partner: "ENGINE",
-    platform: "SHOPIFY HEADLESS",
+    id: "noir",
+    partner: "NOIR",
+    platform: "LUXURY GOODS",
     index: "(h.)",
-    services: ["Dev", "Marketing", "Integration"],
+    services: ["Brand Platform", "Influencer Seeding", "CRM"],
     image: "/editorial-tshirt.png"
   },
   {
-    id: "rombo-group",
-    partner: "ROMBO GROUP",
-    platform: "SHOPIFY",
+    id: "kite",
+    partner: "KITE",
+    platform: "FINTECH",
     index: "(i.)",
-    services: ["UX/UI", "Dev (B2C/B2B)", "Marketing", "Integration", "SEO"],
+    services: ["Product Marketing", "Paid Media", "Lifecycle"],
     image: "/editorial-glass.png"
   },
   {
-    id: "pier",
-    partner: "PIER",
-    platform: "SHOPIFY",
+    id: "vale",
+    partner: "VALE",
+    platform: "WELLNESS",
     index: "(j.)",
-    services: ["UX/UI", "Dev", "Integration", "Marketing", "SEO"],
+    services: ["Go-to-Market", "Content System", "SEO"],
     image: "/editorial-tshirt.png"
   },
   {
-    id: "aura",
-    partner: "AURA",
-    platform: "SHOPIFY APP",
+    id: "drift",
+    partner: "DRIFT",
+    platform: "CONSUMER APP",
     index: "(m.)",
-    services: ["UX/UI", "Brand Direction", "App Development"],
+    services: ["Launch Strategy", "Paid Social", "App Store Creative"],
     image: "/editorial-fashion.png"
   },
   {
-    id: "kunzi",
-    partner: "KUNZI",
-    platform: "SHOPIFY PLUS",
+    id: "signal",
+    partner: "SIGNAL",
+    platform: "SAAS",
     index: "(n.)",
-    services: ["UX/UI", "Dev (B2C/B2B)", "Integration", "Marketing", "SEO"],
+    services: ["ABM Campaigns", "Landing Pages", "Sales Enablement"],
     image: "/editorial-redbook.png"
   },
   {
-    id: "8pm",
-    partner: "8PM",
-    platform: "SHOPIFY PLUS",
+    id: "luma",
+    partner: "LUMA",
+    platform: "WELLNESS",
     index: "(o.)",
-    services: ["UX/UI", "Dev", "Marketing", "Integration", "SEO"],
+    services: ["Creator Partnerships", "Retention", "Paid Search"],
     image: "/editorial-glass.png"
   }
 ];
 
 export const latestProjects: Project[] = [
   {
-    id: "atelier-rift",
-    title: "Atelier Rift",
-    category: "Identity / Ecommerce",
+    id: "northline-launch",
+    title: "Northline Spring Launch",
+    category: "Paid Social / Landing Pages",
     year: "2026",
     summary:
-      "A measured digital flagship for an independent fashion label moving from capsule drops to always-on commerce.",
-    location: "Milan",
-    primaryMetric: "+42% conversion lift",
-    metrics: ["Launch system", "Editorial PDP", "Retention flows"],
+      "A seasonal demand push that paired sharper offer framing with a faster landing-page system for a retail brand scaling acquisition.",
+    location: "London",
+    primaryMetric: "+42% qualified revenue",
+    metrics: ["Offer strategy", "Creative refresh", "Email follow-up"],
     gradient: "from-zinc-200 via-stone-500 to-black"
   },
   {
-    id: "northline",
-    title: "Northline Goods",
-    category: "Shopify Plus",
+    id: "helio-demand-gen",
+    title: "Helio Demand Gen",
+    category: "B2B SaaS / Growth Marketing",
     year: "2025",
     summary:
-      "A cleaner catalog architecture and campaign system for a lifestyle brand with seasonal product depth.",
-    location: "Copenhagen",
-    primaryMetric: "-31% path friction",
-    metrics: ["UX audit", "Theme build", "Performance"],
+      "A cleaner narrative, media mix, and nurture sequence for a SaaS team moving from founder-led sales into a repeatable pipeline.",
+    location: "New York",
+    primaryMetric: "2.3x pipeline lift",
+    metrics: ["Messaging", "Paid search", "Lifecycle automation"],
     gradient: "from-slate-100 via-emerald-500 to-neutral-950"
   },
   {
-    id: "mono-lab",
-    title: "Mono Lab",
-    category: "Brand Direction",
+    id: "vale-retention",
+    title: "Vale Retention System",
+    category: "CRM / Content Strategy",
     year: "2025",
     summary:
-      "A modular identity and acquisition surface for a design-led technology studio entering new markets.",
-    location: "Berlin",
-    primaryMetric: "3 market rollout",
-    metrics: ["Messaging", "Web system", "Content design"],
+      "A content and retention framework that gave a wellness brand more reasons to show up consistently across email, product pages, and paid remarketing.",
+    location: "Los Angeles",
+    primaryMetric: "+28% repeat purchase",
+    metrics: ["CRM strategy", "Content calendar", "Retention design"],
     gradient: "from-white via-red-500 to-zinc-950"
   }
 ];
@@ -150,34 +150,40 @@ export const services: Service[] = [
   {
     title: "Brand strategy",
     intro:
-      "Narrative platforms, positioning moves, and sharper decision-making before visual work begins.",
-    items: ["Founder interviews", "Audience reframing", "Message architecture"]
+      "Positioning, category insight, and message architecture that give every campaign a clear point of view.",
+    items: ["Audience research", "Positioning sprints", "Message architecture"]
   },
   {
-    title: "Identity systems",
+    title: "Creative campaigns",
     intro:
-      "Flexible design directions for teams that need coherence across launch, growth, and campaigns.",
-    items: ["Art direction", "Type and color systems", "Guidelines and rollout"]
+      "Concepts, visual direction, and campaign assets designed to be remembered and built to travel across channels.",
+    items: ["Campaign concepts", "Art direction", "Paid creative production"]
   },
   {
-    title: "Digital experiences",
+    title: "Performance marketing",
     intro:
-      "Sites and launch surfaces that feel editorial, perform cleanly, and support real conversion goals.",
+      "Paid media and testing systems that connect creative intent with pipeline, revenue, and repeatable learning.",
     items: [
-      "Creative development",
-      "Motion choreography",
-      "Performance optimization"
+      "Paid social and search",
+      "Funnel optimization",
+      "Reporting and experimentation"
     ]
+  },
+  {
+    title: "Content systems",
+    intro:
+      "Editorial planning, lifecycle flows, and landing-page content that keep brands consistent while they scale.",
+    items: ["Content calendars", "CRM and retention", "Landing-page copy"]
   }
 ];
 
 export const brands: Brand[] = [
-  { name: "Aster", sector: "Fashion" },
-  { name: "Monograph", sector: "Publishing" },
+  { name: "Northline", sector: "Retail" },
+  { name: "Helio", sector: "SaaS" },
   { name: "Cinder", sector: "Hospitality" },
   { name: "Vale", sector: "Wellness" },
-  { name: "Helio", sector: "Technology" },
-  { name: "Noir", sector: "Beauty" },
-  { name: "Kite", sector: "Finance" },
+  { name: "Forge", sector: "B2B Services" },
+  { name: "Noir", sector: "Luxury" },
+  { name: "Kite", sector: "Fintech" },
   { name: "Atlas", sector: "Travel" }
 ];

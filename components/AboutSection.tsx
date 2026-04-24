@@ -5,10 +5,10 @@ import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const photos = [
-  { src: "/editorial-fashion.png", alt: "Fashion editorial" },
-  { src: "/editorial-glass.png", alt: "Architecture" },
-  { src: "/editorial-redbook.png", alt: "Publication design" },
-  { src: "/editorial-tshirt.png", alt: "Product editorial" }
+  { src: "/editorial-fashion.png", alt: "Campaign creative direction" },
+  { src: "/editorial-glass.png", alt: "Brand planning workshop" },
+  { src: "/editorial-redbook.png", alt: "Editorial content system" },
+  { src: "/editorial-tshirt.png", alt: "Product marketing concept" }
 ];
 
 export default function AboutSection() {
@@ -105,10 +105,10 @@ export default function AboutSection() {
           </div>
           <div className="about-text pt-4">
             <p className="text-sm leading-7 text-gray-light">
-              In an era of over-visibility, our challenge is meaning. Evolve builds authentic connections where every experience—physical or digital—belongs to the same story.
+              Matter is a marketing agency for brands that need sharper positioning, stronger creative, and campaigns that perform beyond the launch window.
             </p>
             <p className="mt-4 text-sm leading-7 text-gray-light">
-              We believe commerce is culture. A coherent ecosystem where technology, design, and strategy merge to create living brands with enduring identity.
+              We connect strategy, content, paid media, and conversion design so every touchpoint feels like part of the same system, not a pile of disconnected tactics.
             </p>
           </div>
         </div>

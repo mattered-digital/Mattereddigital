@@ -45,15 +45,15 @@ export default function Footer() {
       <div className="relative z-10 section-shell py-24 md:py-32">
         {/* CTA section */}
         <div className="text-center">
-          <p className="section-heading mb-6">Get in touch</p>
+          <p className="section-heading mb-6">Start a project</p>
           <h2 className="footer-heading heading-condensed mx-auto max-w-5xl text-hero-sm md:text-hero">
-            LET&apos;S MAKE AN IMPACT TOGETHER.
+            MAKE YOUR NEXT CAMPAIGN MATTER.
           </h2>
           <a
-            href="mailto:hello@madeinevolve.com"
+            href="mailto:hello@matter.agency"
             className="mt-8 inline-block border-b border-white/30 pb-1 font-mono text-sm uppercase tracking-label text-gray-light transition-colors hover:border-white hover:text-white"
           >
-            hello@madeinevolve.com
+            hello@matter.agency
           </a>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function Footer() {
       {/* Sub-footer */}
       <div className="relative z-10 section-shell border-t border-white/10 py-6">
         <div className="flex flex-col gap-3 text-xs uppercase tracking-label text-gray md:flex-row md:items-center md:justify-between">
-          <p className="font-mono">✦ Evolve — Modena, EST 2008</p>
+          <p className="font-mono">✦ Matter - Independent marketing agency</p>
           <div className="flex gap-4 font-mono">
             <a
               href="#"
@@ -82,7 +82,7 @@ export default function Footer() {
               Behance
             </a>
           </div>
-          <p className="font-mono">Next.js, Tailwind, GSAP, Lenis</p>
+          <p className="font-mono">Strategy, creative, media, web</p>
         </div>
       </div>
     </footer>

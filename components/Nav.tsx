@@ -4,11 +4,11 @@ import { useState, useRef, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 
 const links = [
-  { label: "Projects", id: "projects" },
+  { label: "Work", id: "projects" },
   { label: "About", id: "about" },
-  { label: "Future Vision", id: "showreel" },
+  { label: "Approach", id: "showreel" },
   { label: "Services", id: "services" },
-  { label: "Contacts", id: "contact" }
+  { label: "Contact", id: "contact" }
 ];
 
 export default function Nav() {
@@ -69,33 +69,31 @@ export default function Nav() {
             onClick={() => handleScroll("home")}
             className="font-heading text-xl font-bold uppercase tracking-tight"
           >
-            <span className="mr-1 text-xs">✦</span>evolve
+            <span className="mr-1 text-xs">✦</span>Matter
           </button>
 
           {/* Center tagline */}
           <div className="hidden max-w-xs text-center text-[11px] leading-relaxed text-gray-light lg:block">
-            <p>Ecommerce and brand systems.</p>
-            <p>Driven by visions. Built with design</p>
-            <p>and technology.</p>
+            <p>Marketing strategy and creative systems.</p>
+            <p>Built for brands that need attention</p>
+            <p>to turn into momentum.</p>
           </div>
 
           {/* Right zone */}
           <div className="flex items-start gap-4 md:gap-6">
             <div className="hidden text-right text-[11px] leading-relaxed text-gray-light xl:block">
-              <p>hello@madeinevolve.com</p>
-              <p>Modena, EST 2008©</p>
+              <p>hello@matter.agency</p>
+              <p>Remote, worldwide</p>
             </div>
 
             <div className="hidden text-right text-[11px] leading-relaxed text-gray-light lg:block">
-              <p>
-                We don&apos;t add noise. We bring
-              </p>
-              <p className="font-medium text-white underline">direction.</p>
+              <p>We align strategy, creative, and media</p>
+              <p className="font-medium text-white underline">into one growth system.</p>
             </div>
 
             <div className="flex items-center gap-3">
               <span className="hidden text-[11px] uppercase tracking-label text-gray-light md:inline">
-                IT
+                EN
               </span>
               <button
                 type="button"

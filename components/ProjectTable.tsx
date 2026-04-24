@@ -108,12 +108,12 @@ export default function ProjectTable() {
       {/* Header row */}
       <div className="section-shell relative z-20 py-4 md:py-8">
         <div className="mono-row hidden md:grid grid-cols-[1.2fr_1fr_1fr_1.5fr] gap-4 text-gray">
-          <span>Partner</span>
-          <span>Platform</span>
+          <span>Client</span>
+          <span>Focus</span>
           <span className="text-center">
-            ( EVOLVE CASE STUDIES )
+            ( MATTER WORK )
           </span>
-          <span className="text-right">Service</span>
+          <span className="text-right">Scope</span>
         </div>
       </div>
 

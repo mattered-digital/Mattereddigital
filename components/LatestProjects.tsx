@@ -5,14 +5,14 @@ export default function LatestProjects() {
     <section id="projects" className="section-shell py-16 md:py-24">
       <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="section-heading mb-3">Latest projects</p>
+          <p className="section-heading mb-3">Recent work</p>
           <h2 className="max-w-2xl font-serif text-4xl italic md:text-5xl">
-            New worlds, built with clarity and restraint.
+            Recent campaigns, launches, and growth systems.
           </h2>
         </div>
         <p className="max-w-md text-sm leading-6 text-gray-light">
-          Each engagement combines narrative framing, conversion systems, and a
-          visual language that feels tailored instead of templated.
+          Each engagement connects positioning, creative production, paid
+          media, and conversion thinking into one sharper customer journey.
         </p>
       </div>
       <div className="grid gap-6 lg:grid-cols-3">

@@ -9,13 +9,13 @@ const heroImages = [
   "/editorial-glass.png",
   "/editorial-redbook.png",
   "/editorial-tshirt.png",
-  "/footer-bg.png", // Added more images from public folder
+  "/footer-bg.png"
 ];
 
 const heroHeadingLines = [
-  "ECOMMERCE",
-  "PERFORMANCE",
-  "AGENCY",
+  "MATTER",
+  "MAKES",
+  "MOMENTUM"
 ];
 
 export default function Hero() {
@@ -210,9 +210,9 @@ export default function Hero() {
 
       {/* Top category labels */}
       <div className="hero-categories">
-        <span className="hero-cat opacity-0">Brand Direction</span>
+        <span className="hero-cat opacity-0">Brand Strategy</span>
+        <span className="hero-cat opacity-0">Creative Campaigns</span>
         <span className="hero-cat opacity-0">Performance Marketing</span>
-        <span className="hero-cat opacity-0">Advanced Tech</span>
       </div>
 
       {/* Massive headline — bottom of hero */}

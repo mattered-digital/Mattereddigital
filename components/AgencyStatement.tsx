@@ -4,10 +4,10 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const serviceBlocks = [
-  { title: "Brand\nDirection" },
-  { title: "Advanced\nTech" },
-  { title: "Performance\nMarketing" },
-  { title: "Merchant of\nRecords" },
+  { title: "Brand\nStrategy" },
+  { title: "Creative\nCampaigns" },
+  { title: "Performance\nMedia" },
+  { title: "Content\nSystems" }
 ];
 
 export default function AgencyStatement() {
@@ -81,7 +81,7 @@ export default function AgencyStatement() {
       {/* Top large statement */}
       <div className="mx-auto w-full lg:max-w-[95%] lg:mx-0">
         <h2 className="agency-heading font-sans text-[28px] md:text-[38px] lg:text-[44px] font-medium leading-[1.1] tracking-tight md:tracking-[-0.02em] text-white">
-          We are an eCommerce agency providing brand direction, advanced tech, and performance marketing. A connected ecosystem designed to scale seamlessly.
+          Matter builds marketing systems for brands that want clear positioning, memorable creative, and measurable growth working together from day one.
         </h2>
       </div>
 
@@ -110,18 +110,18 @@ export default function AgencyStatement() {
         <div className="lg:col-span-2 paragraphs-container pl-0 lg:pl-[2vw] flex flex-col">
           <div className="h-8 mb-2 flex items-center">
             <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
-              Est 2008®
+              Matter Agency
             </p>
           </div>
           <div className="space-y-6 lg:space-y-8 pt-1">
             <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              Every eCommerce is in motion. We don&apos;t sit on top of it; we step inside.
+              We turn research, messaging, campaign ideas, and distribution into one connected growth engine.
             </p>
             <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              We identify lost energy and amplify growth. Design, tech, and marketing moving together—because that&apos;s how growth becomes sustainable.
+              Matter helps teams move faster with sharper stories, better creative decisions, and channels that reinforce each other instead of competing for attention.
             </p>
             <p className="agency-paragraph font-sans text-white text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              We reduce friction, align decisions, and turn complexity into structure. We don&apos;t add noise. We bring direction.
+              Less noise, more traction. That is the standard we build for every launch, campaign, and growth sprint.
             </p>
           </div>
         </div>

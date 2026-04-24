@@ -35,9 +35,9 @@ export default function ServicesAccordion() {
   return (
     <section ref={sectionRef} id="services" className="section-shell py-16 md:py-24">
       <div className="mb-8 max-w-2xl">
-        <p className="section-heading mb-3">(b.) Capabilities</p>
+        <p className="section-heading mb-3">(b.) Services</p>
         <h2 className="heading-condensed text-3xl md:text-4xl">
-          A TIGHT SERVICE STACK WITH ROOM TO EXPAND.
+          A MODERN MARKETING STACK BUILT TO CREATE DEMAND.
         </h2>
       </div>
       <div className="space-y-3">

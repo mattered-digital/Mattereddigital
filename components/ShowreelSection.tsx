@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const lines = [
-  "INNOVATION IS CONNECTION.",
-  "BRIDGING COMPLEX SYSTEMS",
-  "TO HUMAN MOMENTUM."
+  "STRATEGY SETS THE SIGNAL.",
+  "CREATIVE EARNS THE ATTENTION.",
+  "MATTER TURNS IT INTO GROWTH."
 ];
 
 export default function ShowreelSection() {
@@ -56,7 +56,7 @@ export default function ShowreelSection() {
         <div className="aspect-video w-full">
           <img
             src="/editorial-glass.png"
-            alt="Showreel"
+            alt="Matter campaign reel preview"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-black/30" />
@@ -72,7 +72,7 @@ export default function ShowreelSection() {
           <p>3840×2160</p>
         </div>
         <div className="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-widest text-white/50">
-          <p>EVOLVE SHOWREEL 2026</p>
+          <p>MATTER CAMPAIGN REEL 2026</p>
         </div>
         <div className="absolute bottom-4 right-4 font-mono text-[10px] uppercase tracking-widest text-white/50">
           <p>▶ PLAY</p>
