@@ -17,28 +17,57 @@ export default function Nav() {
   const linksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [menuOpen]);
+
+  useEffect(() => {
     if (!menuRef.current || !linksRef.current) return;
 
-    const items = linksRef.current.querySelectorAll("button");
+    const items = linksRef.current.querySelectorAll(".menu-link");
+    const secondaryItems = menuRef.current.querySelectorAll(".menu-secondary-item");
 
     if (menuOpen) {
-      gsap.to(menuRef.current, {
-        height: "auto",
-        opacity: 1,
-        duration: 0.4,
-        ease: "power3.out"
-      });
+      gsap.fromTo(menuRef.current, 
+        { clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" },
+        {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          opacity: 1,
+          pointerEvents: "all",
+          duration: 0.8,
+          ease: "power4.inOut"
+        }
+      );
+
       gsap.fromTo(
         items,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.05, duration: 0.35, ease: "power3.out", delay: 0.15 }
+        { y: 120, rotateX: -15, opacity: 0 },
+        { 
+          y: 0, 
+          rotateX: 0, 
+          opacity: 1, 
+          stagger: 0.08, 
+          duration: 1.2, 
+          ease: "power4.out", 
+          delay: 0.4 
+        }
+      );
+
+      gsap.fromTo(
+          secondaryItems,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.8 }
       );
     } else {
       gsap.to(menuRef.current, {
-        height: 0,
+        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
         opacity: 0,
-        duration: 0.3,
-        ease: "power3.in"
+        pointerEvents: "none",
+        duration: 0.6,
+        ease: "power4.inOut"
       });
     }
   }, [menuOpen]);
@@ -59,76 +88,88 @@ export default function Nav() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[110] px-6 py-4 md:px-10 lg:px-16 bg-black/50 backdrop-blur-lg border-b border-white/5">
-      <nav className="relative">
-        {/* Main bar */}
-        <div className="flex items-start justify-between text-sm">
+    <>
+      <header className={`fixed inset-x-0 top-0 z-[110] px-6 py-4 md:px-10 lg:px-16 transition-colors duration-500 ${menuOpen ? "bg-transparent border-transparent" : "bg-black/50 backdrop-blur-lg border-b border-white/5"}`}>
+        <nav className="relative flex items-center justify-between">
           {/* Logo */}
           <button
             type="button"
             onClick={() => handleScroll("home")}
-            className="font-heading text-xl font-bold uppercase tracking-tight"
+            className="font-heading text-xl font-bold uppercase tracking-tight z-[120]"
           >
             <span className="mr-1 text-xs">✦</span>Matter
           </button>
 
-          {/* Center tagline */}
-          <div className="hidden max-w-xs text-center text-[11px] leading-relaxed text-gray-light lg:block">
-            <p>Marketing strategy and creative systems.</p>
-            <p>Built for brands that need attention</p>
-            <p>to turn into momentum.</p>
-          </div>
-
-          {/* Right zone */}
-          <div className="flex items-start gap-4 md:gap-6">
-            <div className="hidden text-right text-[11px] leading-relaxed text-gray-light xl:block">
-              <p>hello@matter.agency</p>
-              <p>Remote, worldwide</p>
+          {/* Center tagline (only visible when menu closed) */}
+          {!menuOpen && (
+            <div className="hidden max-w-xs text-center text-[11px] leading-relaxed text-gray-light lg:block">
+              <p>Marketing strategy and creative systems.</p>
+              <p>Built for brands that need attention</p>
+              <p>to turn into momentum.</p>
             </div>
+          )}
 
-            <div className="hidden text-right text-[11px] leading-relaxed text-gray-light lg:block">
-              <p>We align strategy, creative, and media</p>
-              <p className="font-medium text-white underline">into one growth system.</p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <span className="hidden text-[11px] uppercase tracking-label text-gray-light md:inline">
-                EN
-              </span>
+          {/* Menu Toggle */}
+          <div className="flex items-center gap-6 z-[120]">
               <button
                 type="button"
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="rounded-none border border-white/20 px-4 py-1.5 text-[11px] uppercase tracking-label text-white transition-colors hover:bg-white hover:text-black"
+                className="group relative flex items-center gap-3 rounded-none border border-white/20 px-4 py-1.5 text-[11px] uppercase tracking-label text-white transition-all hover:bg-white hover:text-black"
               >
-                Menu
+                <span>{menuOpen ? "Close" : "Menu"}</span>
+                <div className="flex h-3 w-4 flex-col justify-between overflow-hidden">
+                    <span className={`h-[1px] w-full bg-current transition-transform duration-300 ${menuOpen ? "translate-y-1.5 rotate-45" : ""}`} />
+                    {!menuOpen && <span className="h-[1px] w-full bg-current transition-transform duration-300" />}
+                    <span className={`h-[1px] w-full bg-current transition-transform duration-300 ${menuOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
+                </div>
               </button>
-            </div>
           </div>
-        </div>
+        </nav>
+      </header>
 
-        {/* Dropdown menu */}
-        <div
-          ref={menuRef}
-          className="absolute right-0 top-full mt-2 overflow-hidden opacity-0"
-          style={{ height: 0 }}
-        >
-          <div
-            ref={linksRef}
-            className="border border-white/10 bg-black/95 backdrop-blur-md"
-          >
-            {links.map((link) => (
-              <button
-                key={link.id}
-                type="button"
-                onClick={() => handleScroll(link.id)}
-                className="block w-full border-b border-white/5 px-6 py-3 text-left text-sm tracking-wide text-gray-light transition-colors hover:bg-white/5 hover:text-white"
-              >
-                {link.label}
-              </button>
+      {/* Full-screen menu */}
+      <div
+        ref={menuRef}
+        className="fixed inset-0 z-[105] flex flex-col bg-[#0a0a0a] opacity-0 pointer-events-none overflow-hidden"
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
+      >
+        <div className="flex-1 flex flex-col justify-center px-6 md:px-20 lg:px-32">
+          <div ref={linksRef} className="flex flex-col gap-4 md:gap-8">
+            {links.map((link, idx) => (
+              <div key={link.id} className="overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => handleScroll(link.id)}
+                  className="menu-link group flex items-start text-left"
+                >
+                  <span className="mr-4 mt-2 font-mono text-xs text-gray-light/40 md:mt-4 md:text-sm">
+                    0{idx + 1}
+                  </span>
+                  <span className="heading-condensed text-[12vw] leading-[0.85] transition-colors group-hover:text-gray-light/60 md:text-[10vw]">
+                    {link.label}
+                  </span>
+                </button>
+              </div>
             ))}
           </div>
         </div>
-      </nav>
-    </header>
+
+        {/* Footer info in menu */}
+        <div className="menu-secondary-item px-6 py-10 md:px-20 md:py-16 flex flex-col md:flex-row justify-between items-end border-t border-white/5 bg-black/50">
+           <div className="flex flex-col gap-1 text-[11px] uppercase tracking-[0.2em] text-gray-light mb-8 md:mb-0">
+              <span className="text-white mb-2">Social</span>
+              <a href="#" className="hover:text-white transition-colors">Instagram</a>
+              <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+              <a href="#" className="hover:text-white transition-colors">X / Twitter</a>
+           </div>
+           
+           <div className="flex flex-col gap-1 text-right text-[11px] uppercase tracking-[0.2em] text-gray-light">
+              <span className="text-white mb-2">Inquiries</span>
+              <a href="mailto:hello@matter.agency" className="hover:text-white transition-colors">hello@matter.agency</a>
+              <span>Remote Worldwide</span>
+           </div>
+        </div>
+      </div>
+    </>
   );
 }
