@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useCallback } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import Image from "next/image";
 
@@ -22,66 +22,72 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const currentIndexRef = useRef(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const transitionRef = useRef<gsap.core.Timeline | null>(null);
 
   const animateImageTransition = useCallback((nextIndex: number) => {
     if (!imageContainerRef.current) return;
 
     const slides = imageContainerRef.current.querySelectorAll(".hero-slide");
-    const currentSlide = slides[currentIndex];
+    const currentSlide = slides[currentIndexRef.current];
     const nextSlide = slides[nextIndex];
 
-    if (!currentSlide || !nextSlide) return;
+    if (!currentSlide || !nextSlide || currentSlide === nextSlide) return;
+
+    transitionRef.current?.kill();
+
+    slides.forEach((slide, index) => {
+      if (index !== currentIndexRef.current && index !== nextIndex) {
+        gsap.set(slide, { opacity: 0, zIndex: 0, clipPath: "none" });
+      }
+    });
 
     const tl = gsap.timeline();
 
-    // Set next slide initial state: off-screen LEFT via clip-path (inset from right)
     gsap.set(nextSlide, {
       xPercent: 0,
-      clipPath: "inset(0 0% 0 100%)", // wiped out from the right (meaning it will enter from the left)
+      clipPath: "inset(0 0% 0 100%)",
       opacity: 1,
-      zIndex: 2,
+      zIndex: 2
     });
-    
-    // Ensure current slide is underneath and static
-    gsap.set(currentSlide, { 
-      xPercent: 0, 
+
+    gsap.set(currentSlide, {
+      opacity: 1,
+      xPercent: 0,
       zIndex: 1,
       clipPath: "inset(0 0% 0 0%)"
     });
 
-    // Use .hero-image to precisely match the initial load animation
     const nextImg = nextSlide.querySelector(".hero-image");
-    const currentImg = currentSlide.querySelector(".hero-image");
-    
-    // Animate next slide wiping in from LEFT to RIGHT using clip-path
+
     tl.to(nextSlide, {
       clipPath: "inset(0 0% 0 0%)",
-      duration: 3.2, // Increased duration
-      ease: "power3.inOut",
+      duration: 3.2,
+      ease: "power3.inOut"
     });
 
-    // Delay the inner image effect strictly behind the wipe
     if (nextImg) {
       tl.to(
         nextImg,
         {
-          duration: 3.8, // Increased duration for smoother settling
-          ease: "power2.out",
+          duration: 3.8,
+          ease: "power2.out"
         },
-        "<0.2" 
+        "<0.2"
       );
     }
 
-    // After transition, hide and reset the previous slide
     tl.call(() => {
-      gsap.set(currentSlide, { opacity: 0, zIndex: 0, clipPath: "none" }); 
-      setCurrentIndex(nextIndex);
+      gsap.set(currentSlide, { opacity: 0, zIndex: 0, clipPath: "none" });
+      gsap.set(nextSlide, { opacity: 1, zIndex: 1, clipPath: "none" });
+      currentIndexRef.current = nextIndex;
     });
 
+    transitionRef.current = tl;
+
     return tl;
-  }, [currentIndex]);
+  }, []);
 
   useGSAP(
     () => {
@@ -129,11 +135,13 @@ export default function Hero() {
       if (firstSlide) {
         gsap.set(firstSlide, { opacity: 1, xPercent: 0, zIndex: 2, clipPath: "none" });
         if (firstImg) {
-          gsap.set(firstImg, { scale: 1, x: 0 }); // Image is completely static on load
+          gsap.set(firstImg, { scale: 1, x: 0 });
         }
       }
 
-      // Parallax on the hero image containers
+      const otherSlides = imageContainerRef.current.querySelectorAll(".hero-slide:not(:first-child)");
+      gsap.set(otherSlides, { opacity: 0, zIndex: 0, clipPath: "none" });
+
       gsap.to(imageContainerRef.current, {
         yPercent: 15,
         ease: "none",
@@ -141,37 +149,25 @@ export default function Hero() {
           trigger: sectionRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: true,
-        },
+          scrub: true
+        }
       });
 
-      // To do the first transition after exactly 2 seconds of the text finishing 
-      // (or shortly after load), we handle it explicitly:
       const startCarousel = () => {
-        // Fire the first transition
-        setCurrentIndex((prev) => {
-          const next = (prev + 1) % heroImages.length;
-          animateImageTransition(next);
-          return prev;
-        });
+        animateImageTransition((currentIndexRef.current + 1) % heroImages.length);
 
-        // Set the continuous interval sequence
         intervalRef.current = setInterval(() => {
-          setCurrentIndex((prev) => {
-            const next = (prev + 1) % heroImages.length;
-            animateImageTransition(next);
-            return prev;
-          });
-        }, 5000); 
+          animateImageTransition((currentIndexRef.current + 1) % heroImages.length);
+        }, 5000);
       };
 
-      // Trigger the slide precisely 2 seconds after the texts animate in
       masterTl.call(() => {
         setTimeout(startCarousel, 2000);
       });
 
       return () => {
         if (intervalRef.current) clearInterval(intervalRef.current);
+        transitionRef.current?.kill();
       };
     },
     { scope: sectionRef }
