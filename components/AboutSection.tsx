@@ -60,94 +60,120 @@ export default function AboutSection() {
 
   return (
     <section ref={sectionRef} id="about" className="section-shell py-24 md:py-32">
-      {/* Mobile Layout: Scattered Overlapping Photos */}
-      <div className="flex flex-col md:hidden pb-12 w-full pt-16 mt-8">
-        
-        {/* Image 1: Left */}
-        <div className="about-img w-[65%] self-start relative z-10 overflow-hidden">
-          <Image src={photos[0].src} alt={photos[0].alt} width={600} height={800} className="w-full h-auto object-cover grayscale" />
-        </div>
-        
-        {/* Image 2: Right (Pulled up to sit next to bottom of Image 1) */}
-        <div className="about-img w-[60%] self-end relative z-20 overflow-hidden -mt-32 mb-16 pr-2">
-          <Image src={photos[1].src} alt={photos[1].alt} width={600} height={800} className="w-full h-auto object-cover" />
-        </div>
+      {/* Mobile Layout: Evolve Style */}
+      <div className="md:hidden w-full pt-6 pb-24 flex flex-col relative px-[4%]">
+         
+         {/* Row 1: Left Image and Contact Text */}
+         <div className="flex w-full justify-between items-end relative z-10">
+            {/* Left Image */}
+            <div className="w-[48%]">
+               <div className="about-img relative overflow-hidden w-full aspect-[4/5]">
+                  <Image src={photos[0].src} alt={photos[0].alt} fill sizes="50vw" className="object-cover grayscale" />
+               </div>
+            </div>
+            {/* Contact Text */}
+            <div className="w-[45%] pb-4">
+               <p className="text-[10px] leading-[1.4] text-white/90 font-sans tracking-tight">
+                 hello@matter.com<br/>
+                 New York, EST 2024
+               </p>
+            </div>
+         </div>
 
-        {/* Mid-section Text */}
-        <div className="about-text w-[90%] self-start mb-16">
-          <h3 className="text-[16px] sm:text-[18px] font-sans font-medium tracking-tight text-white leading-[1.3] pl-2 md:pl-0">
-            Matter is a multi-disciplinary cultural hub that focuses on partnering creatives with brands to produce innovative stories.
-          </h3>
-        </div>
+         {/* Row 2: Right Image */}
+         <div className="flex w-full justify-end mt-4 relative z-20">
+            <div className="w-[50%]">
+               <div className="about-img relative overflow-hidden w-full aspect-[3/4]">
+                  <Image src={photos[1].src} alt={photos[1].alt} fill sizes="50vw" className="object-cover" />
+               </div>
+            </div>
+         </div>
 
-        {/* Image 3: Left */}
-        <div className="about-img w-[65%] self-start relative z-10 overflow-hidden mb-12 pl-2">
-          <Image src={photos[2].src} alt={photos[2].alt} width={600} height={800} className="w-full h-auto object-cover" />
-        </div>
+         {/* Row 3: Middle Text block */}
+         <div className="w-full mt-12 relative z-30">
+            <div className="about-text w-[85%]">
+               <p className="text-[14px] leading-[1.5] font-sans font-medium text-white tracking-tight">
+                  Matter is a multi-disciplinary cultural hub that focuses on partnering creatives with brands to produce innovative stories.
+               </p>
+            </div>
+         </div>
 
-        {/* Image 4: Right (Pulled up to sit next to bottom of Image 3) */}
-        <div className="about-img w-[55%] self-end relative z-20 overflow-hidden -mt-40 mb-24 pr-4">
-          <Image src={photos[3].src} alt={photos[3].alt} width={600} height={800} className="w-full h-auto object-cover grayscale" />
-        </div>
+         {/* Row 4: Left Image 2 */}
+         <div className="flex w-full mt-12 relative z-10">
+            <div className="w-[48%]">
+               <div className="about-img relative overflow-hidden w-full aspect-[4/5]">
+                  <Image src={photos[2].src} alt={photos[2].alt} fill sizes="50vw" className="object-cover" />
+               </div>
+            </div>
+         </div>
 
-        {/* Footer text */}
-        <div className="about-text w-full text-center">
-            <p className="text-[14px] font-sans font-medium text-white/70">
-              Let's make an impact together.<br/>
-              <span className="text-white mt-1 inline-block">hello@matter.com</span>
-            </p>
-        </div>
+         {/* Row 5: Right Image 2 */}
+         <div className="flex w-full justify-end mt-[-10%] relative z-20">
+            <div className="w-[48%]">
+               <div className="about-img relative overflow-hidden w-full aspect-[1/1]">
+                  <Image src={photos[3].src} alt={photos[3].alt} fill sizes="50vw" className="object-cover grayscale" />
+               </div>
+            </div>
+         </div>
       </div>
 
-      {/* Desktop Layout: 2-Column Grid */}
-      <div className="hidden md:grid gap-12 md:grid-cols-2">
-        {/* Left column: 2 stacked photos */}
-        <div className="space-y-32">
-          <div className="about-img overflow-hidden">
-            <Image
-              src={photos[0].src}
-              alt={photos[0].alt}
-              width={800}
-              height={600}
-              className="h-full w-full object-cover grayscale"
-            />
+      {/* Desktop Layout: 2-Column Asymmetrical Grid like Evolve */}
+      <div className="hidden md:flex w-full justify-between items-stretch md:pb-16 lg:pb-24">
+        {/* Left side: Images Columns */}
+        <div className="w-[58%] lg:w-[62%] flex gap-4 lg:gap-8">
+          
+          {/* Left Image Column */}
+          <div className="w-1/2 flex flex-col gap-4 lg:gap-8 md:mt-24 lg:mt-32 relative z-10">
+            <div className="about-img relative overflow-hidden w-full aspect-[4/5]">
+              <Image
+                src={photos[0].src}
+                alt={photos[0].alt}
+                fill
+                sizes="(max-width: 1024px) 30vw, 25vw"
+                className="object-cover grayscale"
+              />
+            </div>
+            <div className="about-img relative overflow-hidden w-full aspect-[1/1] xl:aspect-[4/3]">
+              <Image
+                src={photos[2].src}
+                alt={photos[2].alt}
+                fill
+                sizes="(max-width: 1024px) 30vw, 25vw"
+                className="object-cover"
+              />
+            </div>
           </div>
-          <div className="about-img overflow-hidden">
-            <Image
-              src={photos[2].src}
-              alt={photos[2].alt}
-              width={800}
-              height={900}
-              className="h-full w-full object-cover"
-            />
+
+          {/* Right Image Column */}
+          <div className="w-1/2 flex flex-col gap-4 lg:gap-8 relative z-20">
+            <div className="about-img relative overflow-hidden w-full aspect-[3/4]">
+              <Image
+                src={photos[1].src}
+                alt={photos[1].alt}
+                fill
+                sizes="(max-width: 1024px) 30vw, 25vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="about-img relative overflow-hidden w-full aspect-[5/4] xl:aspect-[4/3]">
+              <Image
+                src={photos[3].src}
+                alt={photos[3].alt}
+                fill
+                sizes="(max-width: 1024px) 30vw, 25vw"
+                className="object-cover grayscale"
+              />
+            </div>
           </div>
         </div>
 
-        {/* Right column: 2 photos + text */}
-        <div className="space-y-32 md:pt-48">
-          <div className="about-img overflow-hidden">
-            <Image
-              src={photos[1].src}
-              alt={photos[1].alt}
-              width={800}
-              height={500}
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="about-img overflow-hidden">
-            <Image
-              src={photos[3].src}
-              alt={photos[3].alt}
-              width={800}
-              height={800}
-              className="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div className="about-text pt-4">
-            <h3 className="text-3xl font-sans font-medium tracking-tight text-white leading-snug">
-              Matter is a multi-disciplinary cultural hub that focuses on partnering creatives with brands to produce innovative stories.
-            </h3>
-            <p className="mt-8 text-sm leading-7 text-gray-500">
+        {/* Right side: Text Block aligned to bottom right */}
+        <div className="w-[38%] lg:w-[32%] flex flex-col justify-end mb-16 lg:mb-32 pl-6 lg:pl-16 relative z-30">
+          <div className="about-text flex flex-col gap-6">
+            <p className="text-[13px] lg:text-[14px] leading-[1.6] text-white/90 font-sans tracking-tight">
+              Matter is a multi-disciplinary cultural hub that focuses on partnering creatives with brands to produce innovative stories. The real challenge is no longer visibility, but meaning.
+            </p>
+            <p className="text-[13px] lg:text-[14px] leading-[1.6] text-white/90 font-sans tracking-tight">
               We connect strategy, content, paid media, and conversion design so every touchpoint feels like part of the same system, not a pile of disconnected tactics.
             </p>
           </div>
