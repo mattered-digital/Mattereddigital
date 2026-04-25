@@ -92,8 +92,26 @@ export default function ServicesSection() {
       className="relative min-h-screen w-full overflow-hidden bg-[#0b0b0b] px-6 py-24 md:flex md:flex-col md:items-center md:justify-center md:py-32"
     >
       {/* RED GLOW OVERLAYS */}
-      <div className="pointer-events-none absolute bottom-[10%] left-[-20%] h-[70vh] w-[50vw] rounded-full bg-[#ff3b00] opacity-[0.25] mix-blend-screen blur-[120px] md:bottom-[-10%] md:h-[80vh] md:w-[60vw] md:opacity-[0.35]" />
-      <div className="pointer-events-none absolute bottom-[10%] right-[-20%] h-[70vh] w-[50vw] rounded-full bg-[#ff3b00] opacity-[0.25] mix-blend-screen blur-[120px] md:bottom-[-10%] md:h-[80vh] md:w-[60vw] md:opacity-[0.35]" />
+      <div className="pointer-events-none absolute bottom-[10%] left-[-30%] h-[70vh] w-[40vw] rounded-full bg-[#ff3b00] opacity-[0.25] mix-blend-screen blur-[120px] md:bottom-[-10%] md:left-[-25%] md:h-[90vh] md:w-[45vw] md:opacity-[0.35]" />
+      <div className="pointer-events-none absolute bottom-[10%] right-[-30%] h-[70vh] w-[40vw] rounded-full bg-[#ff3b00] opacity-[0.25] mix-blend-screen blur-[120px] md:bottom-[-10%] md:right-[-25%] md:h-[90vh] md:w-[45vw] md:opacity-[0.35]" />
+
+      {/* TEXTURE OVERLAYS (Masked to glows) */}
+      <div 
+        className="pointer-events-none absolute bottom-[10%] left-[-30%] z-0 h-[70vh] w-[40vw] scale-150 opacity-[0.15] mix-blend-overlay md:bottom-[-10%] md:left-[-25%] md:h-[90vh] md:w-[45vw]"
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          maskImage: 'radial-gradient(closest-side, black 20%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(closest-side, black 20%, transparent 80%)'
+        }}
+      />
+      <div 
+        className="pointer-events-none absolute bottom-[10%] right-[-30%] z-0 h-[70vh] w-[40vw] scale-150 opacity-[0.15] mix-blend-overlay md:bottom-[-10%] md:right-[-25%] md:h-[90vh] md:w-[45vw]"
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          maskImage: 'radial-gradient(closest-side, black 20%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(closest-side, black 20%, transparent 80%)'
+        }}
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         {/* HEADING */}
