@@ -20,7 +20,7 @@ export default function Nav() {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     }
   }, [menuOpen]);
 
@@ -95,14 +95,14 @@ export default function Nav() {
           <button
             type="button"
             onClick={() => handleScroll("home")}
-            className="font-heading text-xl font-bold uppercase tracking-tight z-[120]"
+            className="font-heading text-lg font-bold uppercase tracking-tight z-[120]"
           >
-            <span className="mr-1 text-xs">✦</span>Matter
+            <span className="mr-1 text-[10px]">✦</span>Matter
           </button>
 
           {/* Center tagline (only visible when menu closed) */}
           {!menuOpen && (
-            <div className="hidden max-w-xs text-center text-[11px] leading-relaxed text-gray-light lg:block">
+            <div className="hidden max-w-xs text-center text-[10px] leading-relaxed text-gray-light lg:block">
               <p>Marketing strategy and creative systems.</p>
               <p>Built for brands that need attention</p>
               <p>to turn into momentum.</p>
@@ -114,7 +114,7 @@ export default function Nav() {
               <button
                 type="button"
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="group relative flex items-center gap-3 rounded-none border border-white/20 px-4 py-1.5 text-[11px] uppercase tracking-label text-white transition-all hover:bg-white hover:text-black"
+                className="group relative flex items-center gap-3 rounded-none border border-white/20 px-4 py-1.5 text-[10px] uppercase tracking-label text-white transition-all hover:bg-white hover:text-black"
               >
                 <span>{menuOpen ? "Close" : "Menu"}</span>
                 <div className="flex h-3 w-4 flex-col justify-between overflow-hidden">
@@ -145,7 +145,7 @@ export default function Nav() {
                   <span className="mr-4 mt-2 font-mono text-xs text-gray-light/40 md:mt-4 md:text-sm">
                     0{idx + 1}
                   </span>
-                  <span className="heading-condensed text-[12vw] leading-[0.85] transition-colors group-hover:text-gray-light/60 md:text-[10vw]">
+                  <span className="heading-condensed text-[11vw] leading-[0.85] transition-colors group-hover:text-gray-light/60 md:text-[9vw]">
                     {link.label}
                   </span>
                 </button>
@@ -156,14 +156,14 @@ export default function Nav() {
 
         {/* Footer info in menu */}
         <div className="menu-secondary-item px-6 py-10 md:px-20 md:py-16 flex flex-col md:flex-row justify-between items-end border-t border-white/5 bg-black/50">
-           <div className="flex flex-col gap-1 text-[11px] uppercase tracking-[0.2em] text-gray-light mb-8 md:mb-0">
+           <div className="flex flex-col gap-1 text-[10px] uppercase tracking-[0.2em] text-gray-light mb-8 md:mb-0">
               <span className="text-white mb-2">Social</span>
               <a href="#" className="hover:text-white transition-colors">Instagram</a>
               <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
               <a href="#" className="hover:text-white transition-colors">X / Twitter</a>
            </div>
            
-           <div className="flex flex-col gap-1 text-right text-[11px] uppercase tracking-[0.2em] text-gray-light">
+           <div className="flex flex-col gap-1 text-right text-[10px] uppercase tracking-[0.2em] text-gray-light">
               <span className="text-white mb-2">Inquiries</span>
               <a href="mailto:hello@matter.agency" className="hover:text-white transition-colors">hello@matter.agency</a>
               <span>Remote Worldwide</span>
