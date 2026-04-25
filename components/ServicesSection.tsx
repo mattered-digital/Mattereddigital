@@ -110,9 +110,9 @@ export default function ServicesSection() {
         {/* CIRCLE SYSTEM / CARDS GRID */}
         <div className="relative mx-auto w-full max-w-[850px]">
           
-          {/* Background Graphics (Anchored to exact center of the cards grid) */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 hidden -translate-x-1/2 -translate-y-1/2 md:block">
-            <div className="relative flex h-[1000px] w-[1000px] items-center justify-center md:h-[900px] md:w-[900px] lg:h-[1000px] lg:w-[1000px]">
+          {/* Background Graphics (Anchored and shifted upwards to center over the entire content block) */}
+          <div className="pointer-events-none absolute left-1/2 top-[30%] z-0 hidden -translate-x-1/2 -translate-y-1/2 md:block">
+            <div className="relative flex h-[750px] w-[750px] items-center justify-center md:h-[800px] md:w-[800px] lg:h-[850px] lg:w-[850px]">
               {/* Outer circle */}
               <div className="absolute inset-0 rounded-full border border-white/10" />
 
