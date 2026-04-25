@@ -8,9 +8,7 @@ const serviceBlocks = [
   { title: "Brand\nStrategy", image: "/humans-1.jpg" },
   { title: "Creative\nCampaigns", image: "/humans-2.jpg" },
   { title: "Performance\nMedia", image: "/humans-3.jpg" },
-  { title: "Content\nSystems", image: "/humans-4.jpg" },
-  { title: "Experience\nDesign", image: "/humans-5.jpg" },
-  { title: "Data &\nAnalytics", image: "/humans-6.jpg" }
+  { title: "Content\nSystems", image: "/humans-4.jpg" }
 ];
 
 export default function AgencyStatement() {
@@ -159,9 +157,9 @@ export default function AgencyStatement() {
             </div>
           </div>
 
-          {/* RIGHT SIDE: Scrollable Cards Grid on PC */}
+          {/* RIGHT SIDE: Cards Grid on PC */}
           <div className="w-full lg:w-7/12">
-            <div className="services-scroll-area h-auto lg:h-[75vh] lg:overflow-y-auto pr-0 lg:pr-4">
+            <div className="services-grid-area pr-0 lg:pr-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 {/* The grey boxes */}
                 {serviceBlocks.map((block, i) => {
