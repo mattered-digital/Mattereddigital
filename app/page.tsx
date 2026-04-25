@@ -5,7 +5,7 @@ import Preloader from "@/components/Preloader";
 import ProjectTable from "@/components/ProjectTable";
 import ServicesAccordion from "@/components/ServicesAccordion";
 import ShowreelSection from "@/components/ShowreelSection";
-import AboutSection from "@/components/AboutSection";
+import AboutSection from "@/components/ServicesSection";
 
 export default function Page() {
   return (
