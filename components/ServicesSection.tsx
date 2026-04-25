@@ -92,8 +92,8 @@ export default function ServicesSection() {
       className="relative min-h-screen w-full overflow-hidden bg-[#0b0b0b] px-6 py-24 md:flex md:flex-col md:items-center md:justify-center md:py-32"
     >
       {/* RED GLOW OVERLAYS */}
-      <div className="pointer-events-none absolute bottom-0 left-[-10%] h-[60vh] w-[50vw] bg-red-600/10 blur-[150px] md:bg-red-600/15" />
-      <div className="pointer-events-none absolute bottom-0 right-[-10%] h-[60vh] w-[50vw] bg-red-600/10 blur-[150px] md:bg-red-600/15" />
+      <div className="pointer-events-none absolute bottom-[10%] left-[-20%] h-[70vh] w-[50vw] rounded-full bg-[#ff3b00] opacity-[0.25] mix-blend-screen blur-[120px] md:bottom-[-10%] md:h-[80vh] md:w-[60vw] md:opacity-[0.35]" />
+      <div className="pointer-events-none absolute bottom-[10%] right-[-20%] h-[70vh] w-[50vw] rounded-full bg-[#ff3b00] opacity-[0.25] mix-blend-screen blur-[120px] md:bottom-[-10%] md:h-[80vh] md:w-[60vw] md:opacity-[0.35]" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         {/* HEADING */}
@@ -137,13 +137,13 @@ export default function ServicesSection() {
                 ref={(el) => {
                   if (el) cardsRef.current[index] = el;
                 }}
-                className="opacity-0"
+                className="flex flex-col justify-center py-6 opacity-0 md:py-16 lg:py-20"
               >
                 <div className="flex flex-col text-left">
                   <h3 className="whitespace-pre-line text-[1.75rem] font-medium leading-[1.2] tracking-tight text-white md:text-[2rem]">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-[0.95rem] leading-relaxed text-white/50 md:mt-4 md:pr-4">
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-white/50 md:mt-4 md:pr-4 lg:pr-12">
                     {service.description}
                   </p>
                 </div>
