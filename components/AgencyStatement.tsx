@@ -5,10 +5,12 @@ import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const serviceBlocks = [
-  { title: "Brand\nStrategy", image: "/services/brand-strategy.png" },
-  { title: "Creative\nCampaigns", image: "/services/creative-campaigns.png" },
-  { title: "Performance\nMedia", image: "/services/performance-media.png" },
-  { title: "Content\nSystems", image: "/services/content-systems.png" }
+  { title: "Brand\nStrategy", image: "/humans-1.jpg" },
+  { title: "Creative\nCampaigns", image: "/humans-2.jpg" },
+  { title: "Performance\nMedia", image: "/humans-3.jpg" },
+  { title: "Content\nSystems", image: "/humans-4.jpg" },
+  { title: "Experience\nDesign", image: "/humans-5.jpg" },
+  { title: "Data &\nAnalytics", image: "/humans-6.jpg" }
 ];
 
 export default function AgencyStatement() {
@@ -83,18 +85,18 @@ export default function AgencyStatement() {
   useGSAP(() => {
     if (!bgImagesRef.current) return;
     
-    const children = bgImagesRef.current.children;
+    const imageLayers = bgImagesRef.current.querySelectorAll(".bg-image-layer");
     
-    gsap.to(children, {
+    gsap.to(imageLayers, {
       opacity: 0,
-      scale: 1.1,
+      scale: 1.05,
       duration: 0.8,
       ease: "power2.inOut"
     });
 
-    if (hoveredIndex !== null) {
-      gsap.to(children[hoveredIndex], {
-        opacity: 0.4, // Keep it subtle for readability
+    if (hoveredIndex !== null && imageLayers[hoveredIndex]) {
+      gsap.to(imageLayers[hoveredIndex], {
+        opacity: 0.8, // Increased opacity for the background image
         scale: 1,
         duration: 1.2,
         ease: "power3.out"
@@ -112,19 +114,19 @@ export default function AgencyStatement() {
         {serviceBlocks.map((block, i) => (
           <div 
             key={`${block.title}-bg`}
-            className="absolute inset-0 opacity-0 scale-110 will-change-transform"
+            className="bg-image-layer absolute inset-0 opacity-0 scale-110 will-change-transform"
           >
             <Image
               src={block.image}
               alt=""
               fill
-              className="object-cover grayscale brightness-50"
+              className="object-cover grayscale brightness-[0.7]"
               priority
             />
           </div>
         ))}
-        {/* Dark overlay to ensure text contrast */}
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        {/* Dark overlay to ensure text contrast, stays static */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
       </div>
 
       <div className="relative z-20">
@@ -136,36 +138,40 @@ export default function AgencyStatement() {
         </div>
 
         {/* Grid below */}
-        <div className="mt-12 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-[2vw] gap-y-6 md:gap-y-12">
+        <div className="mt-12 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-x-[2vw] gap-y-6 md:gap-y-12">
           
-          {/* The 4 grey boxes */}
-          {serviceBlocks.map((block, i) => (
-            <div 
-              key={block.title} 
-              className="service-block-wrap w-full flex flex-col group cursor-pointer"
-              onMouseEnter={() => setHoveredIndex(i)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className="h-8 mb-2 flex items-center">
-                {i === 0 && (
-                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
-                    Our Services
-                  </p>
-                )}
-              </div>
-              <div className="bg-[#141414]/80 backdrop-blur-sm group-hover:bg-[#1a1a1a]/40 transition-colors duration-500 h-[180px] md:h-[360px] w-full p-5 flex flex-col justify-between border border-transparent group-hover:border-white/10">
-                <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight">
-                  {block.title}
-                </h3>
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-end">
-                  <span className="text-[10px] uppercase tracking-widest text-white/60">(Explore)</span>
+          {/* The grey boxes */}
+          {serviceBlocks.map((block, i) => {
+            const isHovered = hoveredIndex === i;
+            return (
+              <div 
+                key={block.title} 
+                className="service-block-wrap w-full flex flex-col group cursor-pointer"
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => setHoveredIndex(isHovered ? null : i)}
+              >
+                <div className="h-8 mb-2 flex items-center">
+                  {i === 0 && (
+                    <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
+                      Our Services
+                    </p>
+                  )}
+                </div>
+                <div className={`transition-colors duration-500 h-[180px] md:h-[360px] w-full p-5 flex flex-col justify-between border border-white/10 relative overflow-hidden backdrop-blur-[2px] ${isHovered ? 'bg-[#1a1a1a]/30' : 'bg-[#141414]/20'}`}>
+                  <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight relative z-10 drop-shadow-md">
+                    {block.title}
+                  </h3>
+                  <div className={`transition-opacity duration-500 flex justify-end relative z-10 ${isHovered ? 'opacity-100' : 'opacity-0 md:opacity-0 group-hover:opacity-100'}`}>
+                    <span className="text-[10px] uppercase tracking-widest text-white/90 font-semibold drop-shadow-md">(Explore)</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {/* Right side paragraphs taking 2 columns */}
-          <div className="lg:col-span-2 paragraphs-container pl-0 lg:pl-[2vw] flex flex-col">
+          <div className="lg:col-span-2 xl:col-span-2 paragraphs-container pl-0 xl:pl-[2vw] flex flex-col">
             <div className="h-8 mb-2 flex items-center">
               <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
                 Matter Agency
