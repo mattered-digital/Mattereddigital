@@ -111,8 +111,8 @@ export default function ServicesSection() {
         <div className="relative mx-auto w-full max-w-[850px]">
           
           {/* Background Graphics (Anchored and shifted upwards to center over the entire content block) */}
-          <div className="pointer-events-none absolute left-1/2 top-[30%] z-0 hidden -translate-x-1/2 -translate-y-1/2 md:block">
-            <div className="relative flex h-[750px] w-[750px] items-center justify-center md:h-[800px] md:w-[800px] lg:h-[850px] lg:w-[850px]">
+          <div className="pointer-events-none absolute left-1/2 top-[30%] z-0 block -translate-x-1/2 -translate-y-1/2">
+            <div className="relative flex h-[500px] w-[500px] items-center justify-center sm:h-[600px] sm:w-[600px] md:h-[800px] md:w-[800px] lg:h-[850px] lg:w-[850px]">
               {/* Outer circle */}
               <div className="absolute inset-0 rounded-full border border-white/10" />
 
