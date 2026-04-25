@@ -175,32 +175,21 @@ body::after {
     @apply relative z-20 flex w-full justify-between pt-8 px-4 text-[10px] sm:text-[11px] uppercase tracking-label;
   }
 
-  .hero-categories .hero-cat {
+  .hero-categories .hero-element {
     @apply text-gray-light;
   }
 
-  .hero-categories .hero-cat:nth-child(2) {
+  .hero-categories .hero-element:nth-child(2) {
     @apply absolute left-1/2 -translate-x-1/2 text-white hidden sm:block;
   }
 
   .hero-heading-wrap {
-    @apply relative z-20 mt-auto w-full text-center pointer-events-none pb-16;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    width: calc(100% + 3rem);
-  }
-
-  @media (min-width: 768px) {
-    .hero-heading-wrap {
-      margin-left: 0;
-      margin-right: 0;
-      width: 100%;
-    }
+    @apply relative z-20 mt-auto w-full pointer-events-none pb-8 md:pb-16;
   }
 
   .hero-heading {
-    @apply font-heading leading-[0.82] flex flex-col items-center justify-center text-white font-bold uppercase;
-    font-size: clamp(4rem, 20vw, 12rem);
+    @apply font-heading leading-[0.82] flex flex-col items-start md:items-center justify-center text-left md:text-center text-white font-bold uppercase;
+    font-size: clamp(4rem, 17.5vw, 12rem);
     letter-spacing: -0.02em;
   }
 

@@ -94,7 +94,7 @@ export default function Hero() {
       if (!headingRef.current || !imageContainerRef.current) return;
 
       const words = headingRef.current.querySelectorAll(".hero-word");
-      const cats = sectionRef.current?.querySelectorAll(".hero-cat");
+      const cats = sectionRef.current?.querySelectorAll(".hero-element");
 
       // Initial states
       gsap.set(words, { yPercent: 120, opacity: 0 });
@@ -112,7 +112,7 @@ export default function Hero() {
         ease: "power4.out",
       });
 
-      // Category labels
+      // Category labels / Intro
       if (cats) {
         masterTl.fromTo(
           cats,
@@ -126,6 +126,11 @@ export default function Hero() {
           },
           "-=0.4"
         );
+      }
+      
+      const caseStudies = sectionRef.current?.querySelector(".hero-case-studies");
+      if (caseStudies) {
+        masterTl.to(caseStudies, { opacity: 1, duration: 1 }, "-=0.2");
       }
 
       // Main Hero Image Initial State (no entry wipe)
@@ -204,11 +209,22 @@ export default function Hero() {
 
       <div className="hero-screen-overlay" aria-hidden="true" />
 
-      {/* Top category labels */}
-      <div className="hero-categories">
-        <span className="hero-cat opacity-0">Brand Strategy</span>
-        <span className="hero-cat opacity-0">Creative Campaigns</span>
-        <span className="hero-cat opacity-0">Performance Marketing</span>
+      {/* Top element - Desktop: categories, Mobile: intros */}
+      <div className="hero-top-elements relative z-20">
+        <div className="hero-categories hidden md:flex">
+          <span className="hero-element opacity-0">Brand Strategy</span>
+          <span className="hero-element opacity-0">Creative Campaigns</span>
+          <span className="hero-element opacity-0">Performance Marketing</span>
+        </div>
+        
+        <div className="hero-intro-mobile md:hidden flex flex-col gap-[2px] mt-8 text-[11px] sm:text-[12px] font-mono tracking-wide text-white/80">
+          <span className="hero-element opacity-0">hello@matter.com</span>
+          <span className="hero-element opacity-0">New York, EST 2024</span>
+          <div className="h-4"></div>
+          <p className="hero-element opacity-0 leading-relaxed max-w-[260px] text-white">
+            Matter® is a digital studio that blends strategy, design, and technology to craft meaningful experiences.
+          </p>
+        </div>
       </div>
 
       {/* Massive headline — bottom of hero */}
@@ -220,6 +236,13 @@ export default function Hero() {
             </div>
           ))}
         </h1>
+
+        {/* Scroll indicator - mobile only, matching second image */}
+        <div className="hero-case-studies md:hidden flex justify-between items-center text-[10px] font-mono tracking-widest text-white mt-12 mb-4 opacity-0">
+          <span>[</span>
+          <span className="uppercase">Matter Case Studies</span>
+          <span>]</span>
+        </div>
       </div>
     </section>
   );
