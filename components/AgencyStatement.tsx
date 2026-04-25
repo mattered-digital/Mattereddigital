@@ -1,17 +1,20 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const serviceBlocks = [
-  { title: "Brand\nStrategy" },
-  { title: "Creative\nCampaigns" },
-  { title: "Performance\nMedia" },
-  { title: "Content\nSystems" }
+  { title: "Brand\nStrategy", image: "/services/brand-strategy.png" },
+  { title: "Creative\nCampaigns", image: "/services/creative-campaigns.png" },
+  { title: "Performance\nMedia", image: "/services/performance-media.png" },
+  { title: "Content\nSystems", image: "/services/content-systems.png" }
 ];
 
 export default function AgencyStatement() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const bgImagesRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -76,56 +79,112 @@ export default function AgencyStatement() {
     { scope: sectionRef }
   );
 
-  return (
-    <section ref={sectionRef} className="section-shell py-24 md:py-36 relative z-20">
-      {/* Top large statement */}
-      <div className="mx-auto w-full lg:max-w-[95%] lg:mx-0">
-        <h2 className="agency-heading font-sans text-[28px] md:text-[38px] lg:text-[44px] font-medium leading-[1.1] tracking-tight md:tracking-[-0.02em] text-white">
-          Matter builds marketing systems for brands that want clear positioning, memorable creative, and measurable growth working together from day one.
-        </h2>
-      </div>
+  // Background image animation logic
+  useGSAP(() => {
+    if (!bgImagesRef.current) return;
+    
+    const children = bgImagesRef.current.children;
+    
+    gsap.to(children, {
+      opacity: 0,
+      scale: 1.1,
+      duration: 0.8,
+      ease: "power2.inOut"
+    });
 
-      {/* Grid below */}
-      <div className="mt-12 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-[2vw] gap-y-6 md:gap-y-12">
-        
-        {/* The 4 grey boxes */}
+    if (hoveredIndex !== null) {
+      gsap.to(children[hoveredIndex], {
+        opacity: 0.4, // Keep it subtle for readability
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.out"
+      });
+    }
+  }, [hoveredIndex]);
+
+  return (
+    <section ref={sectionRef} className="section-shell py-24 md:py-36 relative overflow-hidden">
+      {/* Background Hover Images */}
+      <div 
+        ref={bgImagesRef}
+        className="absolute inset-0 z-0 pointer-events-none"
+      >
         {serviceBlocks.map((block, i) => (
-          <div key={block.title} className="service-block-wrap w-full flex flex-col">
-            <div className="h-8 mb-2 flex items-center">
-              {i === 0 && (
-                <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
-                  Our Services
-                </p>
-              )}
-            </div>
-            <div className="bg-[#141414] h-[180px] md:h-[360px] w-full p-5 flex flex-col justify-between">
-              <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight">
-                {block.title}
-              </h3>
-            </div>
+          <div 
+            key={`${block.title}-bg`}
+            className="absolute inset-0 opacity-0 scale-110 will-change-transform"
+          >
+            <Image
+              src={block.image}
+              alt=""
+              fill
+              className="object-cover grayscale brightness-50"
+              priority
+            />
           </div>
         ))}
+        {/* Dark overlay to ensure text contrast */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
+      </div>
 
-        {/* Right side paragraphs taking 2 columns */}
-        <div className="lg:col-span-2 paragraphs-container pl-0 lg:pl-[2vw] flex flex-col">
-          <div className="h-8 mb-2 flex items-center">
-            <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
-              Matter Agency
-            </p>
-          </div>
-          <div className="space-y-6 lg:space-y-8 pt-1">
-            <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              We turn research, messaging, campaign ideas, and distribution into one connected growth engine.
-            </p>
-            <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              Matter helps teams move faster with sharper stories, better creative decisions, and channels that reinforce each other instead of competing for attention.
-            </p>
-            <p className="agency-paragraph font-sans text-white text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-              Less noise, more traction. That is the standard we build for every launch, campaign, and growth sprint.
-            </p>
-          </div>
+      <div className="relative z-20">
+        {/* Top large statement */}
+        <div className="mx-auto w-full lg:max-w-[95%] lg:mx-0">
+          <h2 className="agency-heading font-sans text-[28px] md:text-[38px] lg:text-[44px] font-medium leading-[1.1] tracking-tight md:tracking-[-0.02em] text-white">
+            Matter builds marketing systems for brands that want clear positioning, memorable creative, and measurable growth working together from day one.
+          </h2>
         </div>
 
+        {/* Grid below */}
+        <div className="mt-12 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-[2vw] gap-y-6 md:gap-y-12">
+          
+          {/* The 4 grey boxes */}
+          {serviceBlocks.map((block, i) => (
+            <div 
+              key={block.title} 
+              className="service-block-wrap w-full flex flex-col group cursor-pointer"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="h-8 mb-2 flex items-center">
+                {i === 0 && (
+                  <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
+                    Our Services
+                  </p>
+                )}
+              </div>
+              <div className="bg-[#141414]/80 backdrop-blur-sm group-hover:bg-[#1a1a1a]/40 transition-colors duration-500 h-[180px] md:h-[360px] w-full p-5 flex flex-col justify-between border border-transparent group-hover:border-white/10">
+                <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight">
+                  {block.title}
+                </h3>
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-end">
+                  <span className="text-[10px] uppercase tracking-widest text-white/60">(Explore)</span>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Right side paragraphs taking 2 columns */}
+          <div className="lg:col-span-2 paragraphs-container pl-0 lg:pl-[2vw] flex flex-col">
+            <div className="h-8 mb-2 flex items-center">
+              <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
+                Matter Agency
+              </p>
+            </div>
+            <div className="space-y-6 lg:space-y-8 pt-1">
+              <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
+                We turn research, messaging, campaign ideas, and distribution into one connected growth engine.
+              </p>
+              <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
+                Matter helps teams move faster with sharper stories, better creative decisions, and channels that reinforce each other instead of competing for attention.
+              </p>
+              <p className="agency-paragraph font-sans text-white text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
+                Less noise, more traction. That is the standard we build for every launch, campaign, and growth sprint.
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
