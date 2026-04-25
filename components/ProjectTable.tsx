@@ -156,22 +156,56 @@ export default function ProjectTable() {
               onFocus={() => showProjectImage(cs.id)}
               onBlur={hideProjectImage}
               onPointerEnter={() => showProjectImage(cs.id)}
-              className="cs-row mono-row group relative flex flex-col items-start gap-1 overflow-visible py-5 outline-none md:grid md:grid-cols-[1.2fr_1fr_1fr_1.5fr] md:items-center md:gap-4 md:py-0 md:min-h-[56px]"
+              className="cs-row group relative overflow-visible outline-none w-full border-b border-white/20 last:border-b-0 md:border-b-0"
             >
-              <span className="pointer-events-none absolute left-0 right-0 top-1/2 z-0 h-5 -translate-y-1/2 scale-x-0 bg-white opacity-0 transition-[opacity,transform] duration-200 ease-out group-hover:scale-x-100 group-hover:opacity-100 group-focus:scale-x-100 group-focus:opacity-100" />
+              {/* Mobile Layout */}
+              <div className="grid grid-cols-2 gap-x-4 py-8 md:hidden relative w-full">
+                <div className="flex flex-col pr-2">
+                  <h3
+                    className="mb-4 text-[26px] font-medium tracking-tight text-white lowercase"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {cs.partner.toLowerCase()}
+                  </h3>
+                  <div className="font-mono text-[10px] uppercase leading-[16px] text-white opacity-80">
+                    <p>{cs.platform}</p>
+                    <br />
+                    <p>{cs.services.join(", ")}</p>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-black">
+                    <Image
+                      src={cs.image}
+                      alt={cs.partner}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 50vw, 0px"
+                    />
+                  </div>
+                  <div className="w-full bg-white px-2 py-[6px] text-center font-mono text-[11px] text-black">
+                    Explore {cs.partner.charAt(0) + cs.partner.slice(1).toLowerCase()}
+                  </div>
+                </div>
+              </div>
 
-              <span className="relative z-10 whitespace-nowrap text-[14px] font-medium leading-none text-white transition-colors duration-200 group-hover:text-black group-focus:text-black md:text-[13px]">
-                {cs.partner}
-              </span>
-              <span className="relative z-10 whitespace-nowrap text-[11px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black md:text-[13px]">
-                {cs.platform}
-              </span>
-              <span className="relative z-10 hidden whitespace-nowrap text-center text-[13px] leading-none text-gray transition-colors duration-200 group-hover:text-black group-focus:text-black md:block">
-                {cs.index}
-              </span>
-              <span className="relative z-10 text-left text-[11px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black md:truncate md:text-[13px] md:text-right">
-                {cs.services.join(", ")}
-              </span>
+              {/* Desktop Layout */}
+              <div className="mono-row relative hidden w-full items-center gap-4 py-0 md:grid md:min-h-[56px] md:grid-cols-[1.2fr_1fr_1fr_1.5fr]">
+                <span className="pointer-events-none absolute left-0 right-0 top-1/2 z-0 h-5 -translate-y-1/2 scale-x-0 bg-white opacity-0 transition-[opacity,transform] duration-200 ease-out group-hover:scale-x-100 group-hover:opacity-100 group-focus:scale-x-100 group-focus:opacity-100" />
+
+                <span className="relative z-10 whitespace-nowrap text-[13px] font-medium leading-none text-white transition-colors duration-200 group-hover:text-black group-focus:text-black">
+                  {cs.partner}
+                </span>
+                <span className="relative z-10 whitespace-nowrap text-[13px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black">
+                  {cs.platform}
+                </span>
+                <span className="relative z-10 hidden whitespace-nowrap text-center text-[13px] leading-none text-gray transition-colors duration-200 group-hover:text-black group-focus:text-black md:block">
+                  {cs.index}
+                </span>
+                <span className="relative z-10 truncate whitespace-nowrap text-right text-[13px] leading-none text-gray-light transition-colors duration-200 group-hover:text-black group-focus:text-black">
+                  {cs.services.join(", ")}
+                </span>
+              </div>
             </div>
           ))}
         </div>

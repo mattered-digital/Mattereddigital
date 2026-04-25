@@ -185,10 +185,28 @@ body::after {
 
   .hero-heading-wrap {
     @apply relative z-20 mt-auto w-full text-center pointer-events-none pb-16;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    width: calc(100% + 3rem);
+  }
+
+  @media (min-width: 768px) {
+    .hero-heading-wrap {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
   }
 
   .hero-heading {
-    @apply text-hero leading-[0.82] w-full flex flex-col items-center justify-center text-white;
-    font-size: clamp(2.8rem, 10vw, 9.5rem);
+    @apply font-heading leading-[0.82] flex flex-col items-center justify-center text-white font-bold uppercase;
+    font-size: clamp(4rem, 20vw, 12rem);
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 768px) {
+    .hero-heading {
+      font-size: clamp(5rem, 10vw, 9.5rem);
+    }
   }
 }
