@@ -8,20 +8,21 @@ export default function Footer() {
 
   useGSAP(
     () => {
-      const heading = footerRef.current?.querySelector(".footer-heading");
-      if (heading) {
+      const container = footerRef.current?.querySelector(".footer-logo-container");
+      const logoText = footerRef.current?.querySelector(".footer-logo-text");
+      
+      if (logoText && container) {
         gsap.fromTo(
-          heading,
-          { opacity: 0, y: 60 },
+          logoText,
+          { y: "150%" },
           {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
+            y: "0%",
+            duration: 1.5,
+            ease: "expo.out",
             scrollTrigger: {
-              trigger: heading,
-              start: "top 85%",
-              toggleActions: "play none none none"
+              trigger: footerRef.current,
+              start: "top 75%", // Triggers reliably when the footer itself enters the viewport
+              toggleActions: "play none none reverse",
             }
           }
         );
@@ -31,58 +32,88 @@ export default function Footer() {
   );
 
   return (
-    <footer ref={footerRef} id="contact" className="relative overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/footer-bg.png"
-          alt=""
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
+    <footer
+      ref={footerRef}
+      id="contact"
+      className="relative flex flex-col justify-between overflow-hidden bg-black pt-24 sm:pt-32"
+    >
+      {/* Red gradient behind the text at the bottom */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[70%] bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#ff1a1a]/30 via-[#ff1a1a]/5 to-transparent opacity-90 lg:h-[80%]" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[50%] bg-gradient-to-t from-[#B71811] to-transparent" />
 
-      <div className="relative z-10 section-shell py-24 md:py-32">
-        {/* CTA section */}
-        <div className="text-center">
-          <p className="section-heading mb-6">Start a project</p>
-          <h2 className="footer-heading heading-condensed mx-auto max-w-5xl text-hero-sm md:text-hero">
-            MAKE YOUR NEXT CAMPAIGN MATTER.
-          </h2>
-          <a
-            href="mailto:hello@matter.agency"
-            className="mt-8 inline-block border-b border-white/30 pb-1 font-mono text-sm uppercase tracking-label text-gray-light transition-colors hover:border-white hover:text-white"
-          >
-            hello@matter.agency
-          </a>
+      {/* Top content grid */}
+      <div className="relative z-10 section-shell mb-24 flex flex-col gap-16 md:flex-row md:justify-between lg:mb-32">
+        {/* Left Column */}
+        <div className="max-w-md md:w-5/12 lg:w-5/12">
+          <h3 className="text-3xl font-medium tracking-tight text-white md:text-4xl lg:text-[40px] lg:leading-[1.1]">
+            30+ projects shipped for startups and global teams.
+          </h3>
+        </div>
+
+        {/* Right Columns */}
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:w-7/12 lg:w-1/2 md:gap-4">
+          {/* Contact Column */}
+          <div className="flex flex-col gap-6 text-sm">
+            <div>
+              <h4 className="mb-4 font-semibold text-white">Contact</h4>
+              <div className="flex flex-col gap-1 text-white/70">
+                <p>Matter agency</p>
+                <p>New York, USA</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-1 text-white/70">
+              <a href="mailto:hello@matter.agency" className="transition-colors hover:text-white">
+                hello@matter.agency
+              </a>
+              <a href="tel:+442012345678" className="transition-colors hover:text-white">
+                +44 20 1234 5678
+              </a>
+            </div>
+          </div>
+
+          {/* Pages Column */}
+          <div className="flex flex-col text-sm">
+            <h4 className="mb-4 font-semibold text-white">Pages</h4>
+            <div className="flex flex-col gap-2.5 text-white/70">
+              <a href="#" className="transition-colors hover:text-white">Home</a>
+              <a href="#" className="transition-colors hover:text-white">Projects</a>
+              <a href="#" className="transition-colors hover:text-white">Services</a>
+              <a href="#" className="transition-colors hover:text-white">About us</a>
+              <a href="#" className="transition-colors hover:text-white">Blog</a>
+              <a href="#" className="transition-colors hover:text-white">Contact</a>
+              <div className="mt-4 flex flex-col gap-2.5">
+                <a href="#" className="transition-colors hover:text-white">Terms</a>
+                <a href="#" className="transition-colors hover:text-white">Privacy policy</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Links Column */}
+          <div className="flex flex-col text-sm">
+            <h4 className="mb-4 font-semibold text-white">Links</h4>
+            <div className="flex flex-col gap-2.5 text-white/70">
+              <a href="#" className="transition-colors hover:text-white">LinkedIn</a>
+              <a href="#" className="transition-colors hover:text-white">X</a>
+              <a href="#" className="transition-colors hover:text-white">Instagram</a>
+              <a href="#" className="transition-colors hover:text-white">Dribbble</a>
+              <a href="#" className="transition-colors hover:text-white">Behance</a>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Sub-footer */}
-      <div className="relative z-10 section-shell border-t border-white/10 py-6">
-        <div className="flex flex-col gap-3 text-xs uppercase tracking-label text-gray md:flex-row md:items-center md:justify-between">
-          <p className="font-mono">✦ Matter - Independent marketing agency</p>
-          <div className="flex gap-4 font-mono">
-            <a
-              href="#"
-              className="transition-colors hover:text-white"
-            >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="transition-colors hover:text-white"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="#"
-              className="transition-colors hover:text-white"
-            >
-              Behance
-            </a>
-          </div>
-          <p className="font-mono">Strategy, creative, media, web</p>
+      {/* Huge Logo Text Section */}
+      <div className="relative z-10 w-full flex flex-col items-center">
+        {/* Title container with overflow-hidden for the reveal upward */}
+        <div className="footer-logo-container w-full overflow-hidden text-center px-4 pb-2 sm:px-8">
+          <h1 className="footer-logo-text font-sans inline-block text-[22vw] w-full font-bold leading-[0.75] tracking-tighter text-white">
+            Matter
+          </h1>
+        </div>
+
+        {/* Copyright strip */}
+        <div className="w-full text-center text-xs text-white/80 pb-6 pt-4 z-20 mix-blend-difference relative">
+          All rights reserved &copy; 2026 Matter agency
         </div>
       </div>
     </footer>
