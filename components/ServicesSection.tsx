@@ -97,7 +97,7 @@ export default function ServicesSection() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         {/* HEADING */}
-        <div className="mx-auto mb-20 w-full max-w-[850px] md:mb-32">
+        <div className="mx-auto mb-16 w-full max-w-[850px] md:mb-24">
           <h2
             ref={headingRef}
             className="text-left text-[clamp(2.2rem,4vw,3.2rem)] font-medium leading-[1.15] tracking-tight text-white opacity-0"
@@ -112,7 +112,7 @@ export default function ServicesSection() {
           
           {/* Background Graphics (Anchored to exact center of the cards grid) */}
           <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 hidden -translate-x-1/2 -translate-y-1/2 md:block">
-            <div className="relative flex h-[1200px] w-[1200px] items-center justify-center">
+            <div className="relative flex h-[1000px] w-[1000px] items-center justify-center md:h-[900px] md:w-[900px] lg:h-[1000px] lg:w-[1000px]">
               {/* Outer circle */}
               <div className="absolute inset-0 rounded-full border border-white/10" />
 
@@ -130,14 +130,14 @@ export default function ServicesSection() {
           </div>
 
           {/* Cards Grid */}
-          <div className="relative z-10 grid w-full grid-cols-1 gap-16 sm:grid-cols-2 md:gap-x-24 md:gap-y-28 lg:gap-x-32 lg:gap-y-36">
+          <div className="relative z-10 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:gap-x-20 md:gap-y-5 lg:gap-x-24 lg:gap-y-20">
             {services.map((service, index) => (
               <div
                 key={index}
                 ref={(el) => {
                   if (el) cardsRef.current[index] = el;
                 }}
-                className="flex flex-col justify-center py-6 opacity-0 md:py-16 lg:py-20"
+                className="flex flex-col justify-center py-6 opacity-0 md:py-10 lg:py-0"
               >
                 <div className="flex flex-col text-left">
                   <h3 className="whitespace-pre-line text-[1.75rem] font-medium leading-[1.2] tracking-tight text-white md:text-[2rem]">
