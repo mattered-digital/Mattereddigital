@@ -31,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "MEDIA",
     index: "(d.)",
     services: ["Growth Strategy", "Subscription Funnel", "Paid Social"],
-    image: "/editorial-glass.jpg"
+    image: "/humans-1.jpg"
   },
   {
     id: "astral",
@@ -47,7 +47,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "B2B SERVICES",
     index: "(f.)",
     services: ["Positioning", "Web Copy", "Demand Gen"],
-    image: "/editorial-glass.jpg"
+    image: "/humans-1.jpg"
   },
   {
     id: "atlas",
@@ -71,7 +71,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "FINTECH",
     index: "(i.)",
     services: ["Product Marketing", "Paid Media", "Lifecycle"],
-    image: "/editorial-glass.jpg"
+    image: "/humans-1.jpg"
   },
   {
     id: "vale",
@@ -103,7 +103,7 @@ export const caseStudies: CaseStudy[] = [
     platform: "WELLNESS",
     index: "(o.)",
     services: ["Creator Partnerships", "Retention", "Paid Search"],
-    image: "/editorial-glass.jpg"
+    image: "/humans-1.jpg"
   }
 ];
 
