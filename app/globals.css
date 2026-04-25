@@ -199,3 +199,20 @@ body::after {
     }
   }
 }
+
+/* ── Custom beautiful scrollbar for specific elements ── */
+.services-scroll-area::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+}
+.services-scroll-area::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+.services-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.services-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

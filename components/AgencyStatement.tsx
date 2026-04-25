@@ -130,63 +130,69 @@ export default function AgencyStatement() {
       </div>
 
       <div className="relative z-20">
-        {/* Top large statement */}
-        <div className="mx-auto w-full lg:max-w-[95%] lg:mx-0">
-          <h2 className="agency-heading font-sans text-[28px] md:text-[38px] lg:text-[44px] font-medium leading-[1.1] tracking-tight md:tracking-[-0.02em] text-white">
-            Matter builds marketing systems for brands that want clear positioning, memorable creative, and measurable growth working together from day one.
-          </h2>
-        </div>
-
-        {/* Grid below */}
-        <div className="mt-12 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-x-[2vw] gap-y-6 md:gap-y-12">
+        
+        <div className="mt-8 flex flex-col lg:flex-row gap-12 lg:gap-[6vw] relative">
           
-          {/* The grey boxes */}
-          {serviceBlocks.map((block, i) => {
-            const isHovered = hoveredIndex === i;
-            return (
-              <div 
-                key={block.title} 
-                className="service-block-wrap w-full flex flex-col group cursor-pointer"
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setHoveredIndex(isHovered ? null : i)}
-              >
-                <div className="h-8 mb-2 flex items-center">
-                  {i === 0 && (
-                    <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
-                      Our Services
-                    </p>
-                  )}
-                </div>
-                <div className={`transition-colors duration-500 h-[180px] md:h-[360px] w-full p-5 flex flex-col justify-between border border-white/10 relative overflow-hidden backdrop-blur-[2px] ${isHovered ? 'bg-[#1a1a1a]/30' : 'bg-[#141414]/20'}`}>
-                  <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight relative z-10 drop-shadow-md">
-                    {block.title}
-                  </h3>
-                  <div className={`transition-opacity duration-500 flex justify-end relative z-10 ${isHovered ? 'opacity-100' : 'opacity-0 md:opacity-0 group-hover:opacity-100'}`}>
-                    <span className="text-[10px] uppercase tracking-widest text-white/90 font-semibold drop-shadow-md">(Explore)</span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {/* LEFT SIDE: Text and Paragraphs (Sticky on PC) */}
+          <div className="w-full lg:w-5/12 flex flex-col lg:sticky lg:top-40 h-fit">
+            <h2 className="agency-heading font-sans text-[28px] md:text-[38px] lg:text-[44px] font-medium leading-[1.1] tracking-tight md:tracking-[-0.02em] text-white mb-12 lg:mb-20">
+              Matter builds marketing systems for brands that want clear positioning, memorable creative, and measurable growth working together from day one.
+            </h2>
 
-          {/* Right side paragraphs taking 2 columns */}
-          <div className="lg:col-span-2 xl:col-span-2 paragraphs-container pl-0 xl:pl-[2vw] flex flex-col">
-            <div className="h-8 mb-2 flex items-center">
-              <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
-                Matter Agency
-              </p>
+            <div className="paragraphs-container flex flex-col">
+              <div className="h-8 mb-4 flex items-center">
+                <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
+                  Matter Agency
+                </p>
+              </div>
+              <div className="space-y-6 lg:space-y-8">
+                <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
+                  We turn research, messaging, campaign ideas, and distribution into one connected growth engine.
+                </p>
+                <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
+                  Matter helps teams move faster with sharper stories, better creative decisions, and channels that reinforce each other instead of competing for attention.
+                </p>
+                <p className="agency-paragraph font-sans text-white text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
+                  Less noise, more traction. That is the standard we build for every launch, campaign, and growth sprint.
+                </p>
+              </div>
             </div>
-            <div className="space-y-6 lg:space-y-8 pt-1">
-              <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-                We turn research, messaging, campaign ideas, and distribution into one connected growth engine.
-              </p>
-              <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-                Matter helps teams move faster with sharper stories, better creative decisions, and channels that reinforce each other instead of competing for attention.
-              </p>
-              <p className="agency-paragraph font-sans text-white text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-                Less noise, more traction. That is the standard we build for every launch, campaign, and growth sprint.
-              </p>
+          </div>
+
+          {/* RIGHT SIDE: Scrollable Cards Grid on PC */}
+          <div className="w-full lg:w-7/12">
+            <div className="services-scroll-area h-auto lg:h-[75vh] lg:overflow-y-auto pr-0 lg:pr-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                {/* The grey boxes */}
+                {serviceBlocks.map((block, i) => {
+                  const isHovered = hoveredIndex === i;
+                  return (
+                    <div 
+                      key={block.title} 
+                      className="service-block-wrap w-full flex flex-col group cursor-pointer"
+                      onMouseEnter={() => setHoveredIndex(i)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      onClick={() => setHoveredIndex(isHovered ? null : i)}
+                    >
+                      <div className="h-8 mb-2 flex items-center">
+                        {i === 0 && (
+                          <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
+                            Our Services
+                          </p>
+                        )}
+                      </div>
+                      <div className={`transition-colors duration-500 h-[180px] md:h-[320px] w-full p-5 flex flex-col justify-between border border-white/10 relative overflow-hidden backdrop-blur-md ${isHovered ? 'bg-[#1a1a1a]/40' : 'bg-[#141414]/10'}`}>
+                        <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight relative z-10 drop-shadow-md">
+                          {block.title}
+                        </h3>
+                        <div className={`transition-opacity duration-500 flex justify-end relative z-10 ${isHovered ? 'opacity-100' : 'opacity-0 md:opacity-0 group-hover:opacity-100'}`}>
+                          <span className="text-[10px] uppercase tracking-widest text-white/90 font-semibold drop-shadow-md">(Explore)</span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 

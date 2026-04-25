@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const heroImages = [
   "/editorial-fashion.jpg",
-  "/editorial-glass.jpg",
+  "/humans-1.jpg",
   "/editorial-redbook.jpg",
   "/editorial-tshirt.jpg",
   "/footer-bg.png"
