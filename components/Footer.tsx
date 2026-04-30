@@ -2,9 +2,37 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleScroll = (id: string) => {
+    if (id === "home") {
+      if (pathname === "/") {
+        gsap.to(window, { duration: 1.15, ease: "power3.inOut", scrollTo: 0 });
+      } else {
+        router.push("/");
+      }
+      return;
+    }
+
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+      return;
+    }
+
+    const target = document.getElementById(id);
+    if (target === null) return;
+
+    gsap.to(window, {
+      duration: 1.15,
+      ease: "power3.inOut",
+      scrollTo: { y: target, offsetY: 88 }
+    });
+  };
 
   useGSAP(
     () => {
@@ -75,10 +103,10 @@ export default function Footer() {
           <div className="flex flex-col text-sm">
             <h4 className="mb-4 font-semibold text-white">Pages</h4>
             <div className="flex flex-col gap-2.5 text-white/70">
-              <a href="#" className="transition-colors hover:text-white">Home</a>
-              <a href="#" className="transition-colors hover:text-white">Projects</a>
-              <a href="#" className="transition-colors hover:text-white">Services</a>
-              <a href="#" className="transition-colors hover:text-white">About us</a>
+              <button onClick={() => handleScroll("home")} className="text-left transition-colors hover:text-white">Home</button>
+              <button onClick={() => handleScroll("projects")} className="text-left transition-colors hover:text-white">Projects</button>
+              <button onClick={() => handleScroll("services")} className="text-left transition-colors hover:text-white">Services</button>
+              <button onClick={() => handleScroll("about")} className="text-left transition-colors hover:text-white">About us</button>
               <a href="/contact" className="transition-colors hover:text-white">Contact</a>
             </div>
           </div>

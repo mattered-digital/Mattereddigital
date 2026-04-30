@@ -103,7 +103,7 @@ export default function AgencyStatement() {
   }, [hoveredIndex]);
 
   return (
-    <section ref={sectionRef} className="section-shell py-24 md:py-36 relative overflow-hidden">
+    <section ref={sectionRef} id="about" className="section-shell py-24 md:py-36 relative overflow-hidden">
       {/* Background Hover Images */}
       <div 
         ref={bgImagesRef}
