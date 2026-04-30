@@ -13,9 +13,9 @@ const heroImages = [
 ];
 
 const heroHeadingLines = [
-  "MATTER",
-  "MAKES",
-  "MOMENTUM"
+  "WEB DESIGN",
+  "& DIGITAL",
+  "MARKETING"
 ];
 
 export default function Hero() {
@@ -212,9 +212,9 @@ export default function Hero() {
       {/* Top element - Desktop: categories, Mobile: intros */}
       <div className="hero-top-elements relative z-20">
         <div className="hero-categories hidden md:flex">
-          <span className="hero-element opacity-0">Brand Strategy</span>
-          <span className="hero-element opacity-0">Creative Campaigns</span>
-          <span className="hero-element opacity-0">Performance Marketing</span>
+          <span className="hero-element opacity-0">Web Engineering</span>
+          <span className="hero-element opacity-0">Digital Marketing</span>
+          <span className="hero-element opacity-0">UI/UX Design</span>
         </div>
         
         <div className="hero-intro-mobile md:hidden flex flex-col gap-[2px] mt-8 text-[11px] sm:text-[12px] font-mono tracking-wide text-white/80">
@@ -222,7 +222,7 @@ export default function Hero() {
           <span className="hero-element opacity-0">New York, EST 2024</span>
           <div className="h-4"></div>
           <p className="hero-element opacity-0 leading-relaxed max-w-[260px] text-white">
-            Matter® is a digital studio that blends strategy, design, and technology to craft meaningful experiences.
+            Matter® is a digital agency specializing in custom web solutions and high-impact marketing strategies.
           </p>
         </div>
       </div>

@@ -5,10 +5,10 @@ import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const serviceBlocks = [
-  { title: "Brand\nStrategy", image: "/humans-1.jpg" },
-  { title: "Creative\nCampaigns", image: "/humans-2.jpg" },
-  { title: "Performance\nMedia", image: "/humans-3.jpg" },
-  { title: "Content\nSystems", image: "/humans-4.jpg" }
+  { title: "Custom\nEngineering", image: "/humans-1.jpg" },
+  { title: "Digital\nMarketing", image: "/humans-2.jpg" },
+  { title: "UI/UX\nDesign", image: "/humans-3.jpg" },
+  { title: "AI &\nAutomation", image: "/humans-4.jpg" }
 ];
 
 export default function AgencyStatement() {
@@ -134,7 +134,7 @@ export default function AgencyStatement() {
           {/* LEFT SIDE: Text and Paragraphs (Sticky on PC) */}
           <div className="w-full lg:w-5/12 flex flex-col lg:sticky lg:top-40 h-fit">
             <h2 className="agency-heading font-sans text-[28px] md:text-[38px] lg:text-[44px] font-medium leading-[1.1] tracking-tight md:tracking-[-0.02em] text-white mb-12 lg:mb-20">
-              Matter builds marketing systems for brands that want clear positioning, memorable creative, and measurable growth working together from day one.
+              Matter builds high-performance digital ecosystems for brands that demand custom engineering, data-driven marketing, and scalable growth.
             </h2>
 
             <div className="paragraphs-container flex flex-col">
@@ -145,13 +145,13 @@ export default function AgencyStatement() {
               </div>
               <div className="space-y-6 lg:space-y-8">
                 <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-                  We turn research, messaging, campaign ideas, and distribution into one connected growth engine.
+                  As a full-service web agency and digital marketing powerhouse, we combine deep technical expertise with strategic marketing to turn your digital presence into a conversion-focused growth engine.
                 </p>
                 <p className="agency-paragraph font-sans text-gray-400 text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-                  Matter helps teams move faster with sharper stories, better creative decisions, and channels that reinforce each other instead of competing for attention.
+                  From bespoke web applications to multi-channel marketing campaigns, we help teams scale faster with solutions that actually perform.
                 </p>
                 <p className="agency-paragraph font-sans text-white text-[13.5px] md:text-[14px] leading-[1.5] tracking-[-0.01em]">
-                  Less noise, more traction. That is the standard we build for every launch, campaign, and growth sprint.
+                  Precision engineering meets creative marketing. That is the standard we set for every build and every campaign.
                 </p>
               </div>
             </div>

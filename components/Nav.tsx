@@ -103,9 +103,9 @@ export default function Nav() {
           {/* Center tagline (only visible when menu closed) */}
           {!menuOpen && (
             <div className="hidden max-w-xs text-center text-[10px] leading-relaxed text-gray-light lg:block">
-              <p>Marketing strategy and creative systems.</p>
-              <p>Built for brands that need attention</p>
-              <p>to turn into momentum.</p>
+              <p>Full-service web agency & digital marketing.</p>
+              <p>Building high-performance digital</p>
+              <p>ecosystems that scale.</p>
             </div>
           )}
 

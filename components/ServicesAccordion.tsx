@@ -37,7 +37,7 @@ export default function ServicesAccordion() {
       <div className="mb-8 max-w-2xl">
         <p className="section-heading mb-3">(b.) Services</p>
         <h2 className="heading-condensed text-3xl md:text-4xl">
-          A MODERN MARKETING STACK BUILT TO CREATE DEMAND.
+          A POWERFUL WEB & MARKETING STACK BUILT TO DRIVE GROWTH.
         </h2>
       </div>
       <div className="space-y-3">

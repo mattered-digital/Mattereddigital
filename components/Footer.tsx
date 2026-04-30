@@ -46,7 +46,7 @@ export default function Footer() {
         {/* Left Column */}
         <div className="max-w-md md:w-5/12 lg:w-5/12">
           <h3 className="text-3xl font-medium tracking-tight text-white md:text-4xl lg:text-[40px] lg:leading-[1.1]">
-            30+ projects shipped for startups and global teams.
+            25+ custom solutions delivered for startups and global teams.
           </h3>
         </div>
 

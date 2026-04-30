@@ -8,24 +8,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
-    title: "Creative\nexcellence",
+    title: "Custom Web\nSolutions",
     description:
-      "Experience our team's creative expertise in innovative, compelling design solutions.",
+      "High-performance, scalable web applications built with modern frameworks like Next.js to solve complex business challenges.",
   },
   {
-    title: "Customized\nsolutions",
+    title: "Digital\nMarketing",
     description:
-      "We customize services for your unique business needs with a personal touch.",
+      "Data-driven marketing strategies that amplify your brand reach and drive measurable ROI through targeted acquisition.",
   },
   {
-    title: "Full-stack\nexpertise",
+    title: "UI/UX\nDesign",
     description:
-      "One team, all your needs. Development, design, and everything in between.",
+      "User-centric interfaces that blend aesthetic excellence with intuitive functionality for seamless digital experiences.",
   },
   {
-    title: "Transparent\ncommunication",
+    title: "AI & Custom\nTools",
     description:
-      "Stay informed and involved with clear, open communication during the project.",
+      "Intelligent AI agents and bespoke automation tools designed to solve complex operational challenges and scale your business.",
+  },
+  {
+    title: "Growth\nStrategy",
+    description:
+      "Data-driven roadmaps that align your technical infrastructure with your long-term business and marketing goals.",
+  },
+  {
+    title: "E-commerce\nEngineering",
+    description:
+      "Bespoke online shopping experiences built with Shopify Plus or custom headless architectures for global scaling.",
   },
 ];
 
@@ -120,8 +130,8 @@ export default function ServicesSection() {
             ref={headingRef}
             className="text-left text-[clamp(2.2rem,4vw,3.2rem)] font-medium leading-[1.15] tracking-tight text-white opacity-0"
           >
-            We prioritize exceptional customer service, meeting every client's
-            needs across development & design — with a great experience
+            We provide specialized engineering and digital marketing expertise —
+            delivering custom solutions that drive measurable business growth.
           </h2>
         </div>
 
@@ -129,7 +139,7 @@ export default function ServicesSection() {
         <div className="relative mx-auto w-full max-w-[850px]">
           
           {/* Background Graphics (Anchored and shifted upwards to center over the entire content block) */}
-          <div className="pointer-events-none absolute left-1/2 top-[30%] z-0 block -translate-x-1/2 -translate-y-1/2">
+          <div className="pointer-events-none absolute left-1/2 top-[50%] z-0 block -translate-x-1/2 -translate-y-1/2">
             <div className="relative flex h-[500px] w-[500px] items-center justify-center sm:h-[600px] sm:w-[600px] md:h-[800px] md:w-[800px] lg:h-[850px] lg:w-[850px]">
               {/* Outer circle */}
               <div className="absolute inset-0 rounded-full border border-white/10" />

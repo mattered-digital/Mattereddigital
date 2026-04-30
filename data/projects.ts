@@ -4,9 +4,9 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "northline",
     partner: "NORTHLINE",
-    platform: "DTC RETAIL",
+    platform: "E-COMMERCE",
     index: "(a.)",
-    services: ["Brand Strategy", "Paid Social", "Email", "CRO"],
+    services: ["Custom Shopify", "SEO", "Email", "CRO"],
     image: "/editorial-fashion.jpg"
   },
   {
@@ -14,166 +14,130 @@ export const caseStudies: CaseStudy[] = [
     partner: "HELIO",
     platform: "B2B SAAS",
     index: "(b.)",
-    services: ["Messaging", "Launch Campaign", "Paid Search", "CRM"],
+    services: ["Web App", "Paid Search", "CRM", "Product Dev"],
     image: "/editorial-tshirt.jpg"
   },
   {
     id: "cinder",
     partner: "CINDER",
-    platform: "HOSPITALITY",
+    platform: "RETAIL",
     index: "(c.)",
-    services: ["Rebrand Rollout", "Content Production", "Local Ads"],
+    services: ["Custom Engineering", "Digital Strategy", "Social Ads"],
     image: "/editorial-redbook.jpg"
   },
   {
     id: "monograph",
     partner: "MONOGRAPH",
-    platform: "MEDIA",
+    platform: "FINTECH",
     index: "(d.)",
-    services: ["Growth Strategy", "Subscription Funnel", "Paid Social"],
+    services: ["Full-stack Build", "Performance Marketing", "Growth"],
     image: "/humans-1.jpg"
-  },
-  {
-    id: "astral",
-    partner: "ASTRAL",
-    platform: "BEAUTY",
-    index: "(e.)",
-    services: ["Creative Testing", "UGC Direction", "Retention"],
-    image: "/editorial-redbook.jpg"
   },
   {
     id: "forge",
     partner: "FORGE",
-    platform: "B2B SERVICES",
-    index: "(f.)",
-    services: ["Positioning", "Web Copy", "Demand Gen"],
-    image: "/humans-1.jpg"
+    platform: "B2B SAAS",
+    index: "(e.)",
+    services: ["Custom Dashboard", "Lead Gen", "API Dev"],
+    image: "/editorial-tshirt.jpg"
   },
   {
     id: "atlas",
     partner: "ATLAS",
     platform: "TRAVEL",
-    index: "(g.)",
-    services: ["Campaign Strategy", "Video Ads", "Landing Pages"],
+    index: "(f.)",
+    services: ["Booking Engine", "Technical SEO", "UI Design"],
     image: "/editorial-fashion.jpg"
   },
   {
     id: "noir",
     partner: "NOIR",
-    platform: "LUXURY GOODS",
-    index: "(h.)",
-    services: ["Brand Platform", "Influencer Seeding", "CRM"],
-    image: "/editorial-tshirt.jpg"
+    platform: "E-COMMERCE",
+    index: "(g.)",
+    services: ["Shopify Plus", "Digital Ads", "Rebranding"],
+    image: "/editorial-redbook.jpg"
   },
   {
     id: "kite",
     partner: "KITE",
     platform: "FINTECH",
-    index: "(i.)",
-    services: ["Product Marketing", "Paid Media", "Lifecycle"],
+    index: "(h.)",
+    services: ["Banking Portal", "Paid Search", "Compliance"],
     image: "/humans-1.jpg"
   },
   {
     id: "vale",
     partner: "VALE",
-    platform: "WELLNESS",
-    index: "(j.)",
-    services: ["Go-to-Market", "Content System", "SEO"],
+    platform: "SUBSCRIPTION",
+    index: "(i.)",
+    services: ["Subscription App", "CRM Setup", "Automation"],
     image: "/editorial-tshirt.jpg"
-  },
-  {
-    id: "drift",
-    partner: "DRIFT",
-    platform: "CONSUMER APP",
-    index: "(m.)",
-    services: ["Launch Strategy", "Paid Social", "App Store Creative"],
-    image: "/editorial-fashion.jpg"
-  },
-  {
-    id: "signal",
-    partner: "SIGNAL",
-    platform: "SAAS",
-    index: "(n.)",
-    services: ["ABM Campaigns", "Landing Pages", "Sales Enablement"],
-    image: "/editorial-redbook.jpg"
-  },
-  {
-    id: "luma",
-    partner: "LUMA",
-    platform: "WELLNESS",
-    index: "(o.)",
-    services: ["Creator Partnerships", "Retention", "Paid Search"],
-    image: "/humans-1.jpg"
   }
 ];
 
 export const latestProjects: Project[] = [
   {
-    id: "northline-launch",
-    title: "Northline Spring Launch",
-    category: "Paid Social / Landing Pages",
+    id: "northline-custom-app",
+    title: "Northline Custom App",
+    category: "Full-stack Engineering / UI UX",
     year: "2026",
     summary:
-      "A seasonal demand push that paired sharper offer framing with a faster landing-page system for a retail brand scaling acquisition.",
+      "A high-performance custom e-commerce solution that optimized the checkout flow and integrated a bespoke inventory management system.",
     location: "London",
-    primaryMetric: "+42% qualified revenue",
-    metrics: ["Offer strategy", "Creative refresh", "Email follow-up"],
+    primaryMetric: "+35% checkout conversion",
+    metrics: ["React Architecture", "Inventory API", "UX Optimization"],
     gradient: "from-zinc-200 via-stone-500 to-black"
   },
   {
-    id: "helio-demand-gen",
-    title: "Helio Demand Gen",
-    category: "B2B SaaS / Growth Marketing",
+    id: "helio-marketing-scale",
+    title: "Helio Marketing Scale",
+    category: "Digital Marketing / Growth",
     year: "2025",
     summary:
-      "A cleaner narrative, media mix, and nurture sequence for a SaaS team moving from founder-led sales into a repeatable pipeline.",
+      "A multi-channel marketing campaign that combined technical SEO with precision-targeted search ads to drive B2B lead generation.",
     location: "New York",
-    primaryMetric: "2.3x pipeline lift",
-    metrics: ["Messaging", "Paid search", "Lifecycle automation"],
+    primaryMetric: "3.1x lead quality lift",
+    metrics: ["Technical SEO", "Paid Search", "Automation"],
     gradient: "from-slate-100 via-emerald-500 to-neutral-950"
   },
   {
-    id: "vale-retention",
-    title: "Vale Retention System",
-    category: "CRM / Content Strategy",
+    id: "vale-platform-migration",
+    title: "Vale Platform Migration",
+    category: "Web Engineering / SEO",
     year: "2025",
     summary:
-      "A content and retention framework that gave a wellness brand more reasons to show up consistently across email, product pages, and paid remarketing.",
+      "A complex architectural migration for a wellness brand, ensuring zero downtime and maintaining search engine rankings during the transition.",
     location: "Los Angeles",
-    primaryMetric: "+28% repeat purchase",
-    metrics: ["CRM strategy", "Content calendar", "Retention design"],
+    primaryMetric: "0% traffic loss during migration",
+    metrics: ["Next.js Migration", "SEO Preservation", "Performance"],
     gradient: "from-white via-red-500 to-zinc-950"
   }
 ];
 
 export const services: Service[] = [
   {
-    title: "Brand strategy",
+    title: "Custom web solutions",
     intro:
-      "Positioning, category insight, and message architecture that give every campaign a clear point of view.",
-    items: ["Audience research", "Positioning sprints", "Message architecture"]
+      "Full-stack engineering and custom application development designed for scalability, speed, and business impact.",
+    items: ["React & Next.js Development", "API Integration", "Architecture Design"]
   },
   {
-    title: "Creative campaigns",
+    title: "Digital marketing",
     intro:
-      "Concepts, visual direction, and campaign assets designed to be remembered and built to travel across channels.",
-    items: ["Campaign concepts", "Art direction", "Paid creative production"]
+      "Data-driven strategies that combine technical SEO with performance-based advertising to drive high-quality growth.",
+    items: ["Search Engine Optimization", "Paid Search & Social", "Conversion Optimization"]
   },
   {
-    title: "Performance marketing",
+    title: "UI/UX design",
     intro:
-      "Paid media and testing systems that connect creative intent with pipeline, revenue, and repeatable learning.",
-    items: [
-      "Paid social and search",
-      "Funnel optimization",
-      "Reporting and experimentation"
-    ]
+      "User-centric design systems that bridge the gap between aesthetic excellence and intuitive digital experiences.",
+    items: ["Interaction Design", "Prototyping", "Design Systems"]
   },
   {
-    title: "Content systems",
+    title: "AI & Automation",
     intro:
-      "Editorial planning, lifecycle flows, and landing-page content that keep brands consistent while they scale.",
-    items: ["Content calendars", "CRM and retention", "Landing-page copy"]
+      "Intelligent AI agents and custom automation tools designed to streamline workflows and enhance user interactions.",
+    items: ["AI Agent Development", "Workflow Automation", "Custom LLM Solutions"]
   }
 ];
 
