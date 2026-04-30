@@ -195,8 +195,8 @@ export default function ContactPage() {
                 <section>
                   <h3 className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono mb-6">Offices</h3>
                   <div className="space-y-4">
-                    <p className="text-xl">New Delhi, DL<br/>India</p>
-                    <p className="text-xl">Mumbai, MH<br/>Remote Worldwide</p>
+                    <p className="text-xl">Patna, BR<br/>India</p>
+                    <p className="text-xl">Remote Worldwide</p>
                   </div>
                 </section>
 

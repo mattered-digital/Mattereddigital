@@ -86,7 +86,7 @@ export default function Footer() {
               <h4 className="mb-4 font-semibold text-white">Contact</h4>
               <div className="flex flex-col gap-1 text-white/70">
                 <p>Matter agency</p>
-                <p>New Delhi, India</p>
+                <p>Patna, Bihar</p>
               </div>
             </div>
             <div className="flex flex-col gap-1 text-white/70">

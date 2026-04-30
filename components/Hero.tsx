@@ -219,7 +219,7 @@ export default function Hero() {
         
         <div className="hero-intro-mobile md:hidden flex flex-col gap-[2px] mt-8 text-[11px] sm:text-[12px] font-mono tracking-wide text-white/80">
           <span className="hero-element opacity-0">hi@mattered.digital</span>
-          <span className="hero-element opacity-0">New Delhi, IST 2024</span>
+          <span className="hero-element opacity-0">Patna, IST 2024</span>
           <div className="h-4"></div>
           <p className="hero-element opacity-0 leading-relaxed max-w-[260px] text-white">
             Matter® is a digital agency specializing in custom web solutions and high-impact marketing strategies.
