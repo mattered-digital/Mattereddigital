@@ -47,7 +47,7 @@ export default function ServicesAccordion() {
           return (
             <div
               key={service.title}
-              className="accordion-item border border-white/8 bg-white/[0.02]"
+              className="accordion-item border border-white/5 bg-white/[0.02]"
             >
               <button
                 type="button"
@@ -76,7 +76,7 @@ export default function ServicesAccordion() {
                     {service.items.map((item) => (
                       <div
                         key={item}
-                        className="border border-white/8 bg-white/[0.03] px-4 py-3 font-mono text-xs uppercase tracking-label text-gray-light"
+                        className="border border-white/5 bg-white/[0.03] px-4 py-3 font-mono text-xs uppercase tracking-label text-gray-light"
                       >
                         {item}
                       </div>
