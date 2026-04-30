@@ -188,7 +188,7 @@ export default function ContactPage() {
                   <h3 className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono mb-6">Contact Info</h3>
                   <div className="space-y-4">
                     <p className="text-xl">hi@mattered.digital</p>
-                    <p className="text-xl">+91 999 999 9999</p>
+                    <p className="text-xl">+91 94305 58276</p>
                   </div>
                 </section>
 

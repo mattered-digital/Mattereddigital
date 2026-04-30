@@ -93,8 +93,8 @@ export default function Footer() {
               <a href="mailto:hi@mattered.digital" className="transition-colors hover:text-white">
                 hi@mattered.digital
               </a>
-              <a href="tel:+919999999999" className="transition-colors hover:text-white">
-                +91 999 999 9999
+              <a href="tel:+919430558276" className="transition-colors hover:text-white">
+                +91 94305 58276
               </a>
             </div>
           </div>
