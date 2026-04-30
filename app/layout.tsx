@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import GridOverlay from "@/components/GridOverlay";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -75,6 +76,7 @@ export default function RootLayout({
           <GridOverlay />
           <Nav />
           {children}
+          <Analytics />
         </SmoothScrollProvider>
       </body>
     </html>

@@ -79,12 +79,7 @@ export default function Footer() {
               <a href="#" className="transition-colors hover:text-white">Projects</a>
               <a href="#" className="transition-colors hover:text-white">Services</a>
               <a href="#" className="transition-colors hover:text-white">About us</a>
-              <a href="#" className="transition-colors hover:text-white">Blog</a>
-              <a href="#" className="transition-colors hover:text-white">Contact</a>
-              <div className="mt-4 flex flex-col gap-2.5">
-                <a href="#" className="transition-colors hover:text-white">Terms</a>
-                <a href="#" className="transition-colors hover:text-white">Privacy policy</a>
-              </div>
+              <a href="/contact" className="transition-colors hover:text-white">Contact</a>
             </div>
           </div>
 

@@ -2,19 +2,23 @@
 
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
+import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 
 const links = [
   { label: "Work", id: "projects" },
   { label: "About", id: "about" },
   { label: "Approach", id: "showreel" },
   { label: "Services", id: "services" },
-  { label: "Contact", id: "contact" }
+  { label: "Contact", id: "/contact" }
 ];
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (menuOpen) {
@@ -74,16 +78,33 @@ export default function Nav() {
 
   const handleScroll = (id: string) => {
     setMenuOpen(false);
-    const target = id === "home" ? 0 : document.getElementById(id);
+    
+    if (id === "/contact") {
+      router.push("/contact");
+      return;
+    }
+
+    if (id === "home") {
+      if (pathname === "/") {
+        gsap.to(window, { duration: 1.15, ease: "power3.inOut", scrollTo: 0 });
+      } else {
+        router.push("/");
+      }
+      return;
+    }
+
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+      return;
+    }
+
+    const target = document.getElementById(id);
     if (target === null) return;
 
     gsap.to(window, {
       duration: 1.15,
       ease: "power3.inOut",
-      scrollTo:
-        typeof target === "number"
-          ? target
-          : { y: target, offsetY: 88 }
+      scrollTo: { y: target, offsetY: 88 }
     });
   };
 
