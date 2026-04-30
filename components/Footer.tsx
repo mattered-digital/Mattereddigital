@@ -86,15 +86,15 @@ export default function Footer() {
               <h4 className="mb-4 font-semibold text-white">Contact</h4>
               <div className="flex flex-col gap-1 text-white/70">
                 <p>Matter agency</p>
-                <p>New York, USA</p>
+                <p>New Delhi, India</p>
               </div>
             </div>
             <div className="flex flex-col gap-1 text-white/70">
-              <a href="mailto:hello@matter.agency" className="transition-colors hover:text-white">
-                hello@matter.agency
+              <a href="mailto:hi@mattered.digital" className="transition-colors hover:text-white">
+                hi@mattered.digital
               </a>
-              <a href="tel:+442012345678" className="transition-colors hover:text-white">
-                +44 20 1234 5678
+              <a href="tel:+919999999999" className="transition-colors hover:text-white">
+                +91 999 999 9999
               </a>
             </div>
           </div>

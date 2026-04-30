@@ -3,12 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     service: "Web Development",
     message: "",
   });
@@ -61,7 +61,7 @@ export default function ContactPage() {
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", service: "Web Development", message: "" });
+        setFormData({ name: "", email: "", phone: "", service: "Web Development", message: "" });
       } else {
         setStatus("error");
       }
@@ -77,7 +77,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Preloader />
       <main className="relative min-h-screen bg-black pt-32 pb-20 overflow-hidden">
         {/* Subtle background element */}
         <div className="pointer-events-none absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-blue-500/5 blur-[120px]" />
@@ -109,18 +108,33 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono">Email Address</label>
-                  <input
-                    required
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-white/10 py-4 outline-none transition-colors focus:border-white text-lg"
-                    placeholder="john@example.com"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono">Email Address</label>
+                    <input
+                      required
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full bg-transparent border-b border-white/10 py-4 outline-none transition-colors focus:border-white text-lg"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono">Phone Number</label>
+                    <input
+                      required
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full bg-transparent border-b border-white/10 py-4 outline-none transition-colors focus:border-white text-lg"
+                      placeholder="+91 99999 99999"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -173,16 +187,16 @@ export default function ContactPage() {
                 <section>
                   <h3 className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono mb-6">Contact Info</h3>
                   <div className="space-y-4">
-                    <p className="text-xl">hello@matter.digital</p>
-                    <p className="text-xl">+1 (555) 000-0000</p>
+                    <p className="text-xl">hi@mattered.digital</p>
+                    <p className="text-xl">+91 999 999 9999</p>
                   </div>
                 </section>
 
                 <section>
                   <h3 className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono mb-6">Offices</h3>
                   <div className="space-y-4">
-                    <p className="text-xl">New York, NY<br/>United States</p>
-                    <p className="text-xl">London, UK<br/>Remote Worldwide</p>
+                    <p className="text-xl">New Delhi, DL<br/>India</p>
+                    <p className="text-xl">Mumbai, MH<br/>Remote Worldwide</p>
                   </div>
                 </section>
 

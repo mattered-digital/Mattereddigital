@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   try {
-    const { name, email, service, message } = await req.json();
+    const { name, email, phone, service, message } = await req.json();
 
     const transporter = nodemailer.createTransport({
       host: 'smtppro.zoho.in',
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       to: process.env.EMAIL_USER, // Sending to yourself
       replyTo: email,
       subject: `New Inquiry from ${name} - ${service}`,
-      text: `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage:\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nMessage:\n${message}`,
     };
 
     await transporter.sendMail(mailOptions);
