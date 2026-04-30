@@ -28,9 +28,34 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Matter | Marketing Agency for Brands That Want Momentum",
+  metadataBase: new URL("http://mattered.digital/"),
+  title: {
+    default: "Matter | Web Agency & Digital Marketing Powerhouse",
+    template: "%s | Matter"
+  },
   description:
-    "Matter is a marketing agency blending strategy, creative, content, and performance to help ambitious brands turn attention into growth."
+    "Matter is a premier web agency and digital marketing powerhouse. We specialize in custom web solutions, AI agents, and high-performance marketing strategies for global brands.",
+  keywords: ["Web Agency", "Digital Marketing", "Custom Web Solutions", "AI Agents", "Next.js Development", "Growth Marketing"],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Matter | Web Agency & Digital Marketing Powerhouse",
+    description: "Custom web solutions and digital marketing strategies that drive measurable growth.",
+    url: "http://mattered.digital/",
+    siteName: "Matter Digital",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Matter | Web Agency & Digital Marketing Powerhouse",
+    description: "Custom web solutions and digital marketing strategies that drive measurable growth.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export default function RootLayout({
