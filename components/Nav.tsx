@@ -177,14 +177,7 @@ export default function Nav() {
 
         {/* Footer info in menu */}
         <div className="menu-secondary-item px-6 py-10 md:px-20 md:py-16 flex flex-col md:flex-row justify-between items-end border-t border-white/5 bg-black/50">
-           <div className="flex flex-col gap-1 text-[10px] uppercase tracking-[0.2em] text-gray-light mb-8 md:mb-0">
-              <span className="text-white mb-2">Social</span>
-              <a href="#" className="hover:text-white transition-colors">Instagram</a>
-              <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-              <a href="#" className="hover:text-white transition-colors">X / Twitter</a>
-           </div>
-           
-           <div className="flex flex-col gap-1 text-right text-[10px] uppercase tracking-[0.2em] text-gray-light">
+           <div className="w-full flex justify-between gap-1 text-right text-[10px] uppercase tracking-[0.2em] text-gray-light">
               <span className="text-white mb-2">Inquiries</span>
               <a href="mailto:hello@matter.agency" className="hover:text-white transition-colors">hello@matter.agency</a>
               <span>Remote Worldwide</span>
