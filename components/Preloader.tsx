@@ -5,10 +5,23 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 export default function Preloader() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const counterRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    const hasSeenPreloader = window.sessionStorage.getItem("matter-preloader-seen");
+
+    if (hasSeenPreloader === "true") {
+      return;
+    }
+
+    window.sessionStorage.setItem("matter-preloader-seen", "true");
+    setIsVisible(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -57,7 +70,7 @@ export default function Preloader() {
       document.body.style.overflow = previousOverflow;
       context.revert();
     };
-  }, []);
+  }, [isVisible]);
 
   if (!isVisible) return null;
 

@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         {/* Right Columns */}
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:w-7/12 lg:w-1/2 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10  md:w-7/12 lg:w-1/2 md:gap-4">
           {/* Contact Column */}
           <div className="flex flex-col gap-6 text-sm">
             <div>
@@ -111,17 +111,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Column */}
-          <div className="flex flex-col text-sm">
-            <h4 className="mb-4 font-semibold text-white">Links</h4>
-            <div className="flex flex-col gap-2.5 text-white/70">
-              <a href="#" className="transition-colors hover:text-white">LinkedIn</a>
-              <a href="#" className="transition-colors hover:text-white">X</a>
-              <a href="#" className="transition-colors hover:text-white">Instagram</a>
-              <a href="#" className="transition-colors hover:text-white">Dribbble</a>
-              <a href="#" className="transition-colors hover:text-white">Behance</a>
-            </div>
-          </div>
+       
         </div>
       </div>
 
