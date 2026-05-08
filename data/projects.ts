@@ -2,75 +2,43 @@ import type { CaseStudy, Project, Service, Brand } from "@/types";
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "northline",
-    partner: "NORTHLINE",
+    id: "archtierela",
+    partner: "ARCHTIERELA",
     platform: "E-COMMERCE",
     index: "(a.)",
-    services: ["Custom Shopify", "SEO", "Email", "CRO"],
-    image: "/editorial-fashion.jpg"
+    services: ["Shopify Store Build", "SEO", "Email Marketing", "CRO"],
+    image: "/projects/ecommerce_site.png"
   },
   {
-    id: "helio",
-    partner: "HELIO",
-    platform: "B2B SAAS",
+    id: "estate-devlop",
+    partner: "ESTATE DEVLOP",
+    platform: "REAL ESTATE WEBSITE",
     index: "(b.)",
-    services: ["Web App", "Paid Search", "CRM", "Product Dev"],
-    image: "/editorial-tshirt.jpg"
+    services: ["Property Listing Build", "Lead Forms", "Local SEO", "CRM Setup"],
+    image: "/projects/real_estate.png"
   },
   {
-    id: "cinder",
-    partner: "CINDER",
-    platform: "RETAIL",
+    id: "city-hospital",
+    partner: "CITY HOSPITAL",
+    platform: "HOSPITAL WEBSITE",
     index: "(c.)",
-    services: ["Custom Engineering", "Digital Strategy", "Social Ads"],
-    image: "/editorial-redbook.jpg"
+    services: ["Appointment System", "Service Pages", "SEO", "Performance Fixes"],
+    image: "/projects/hospital_landing_page.png"
   },
   {
-    id: "monograph",
-    partner: "MONOGRAPH",
-    platform: "FINTECH",
+    id: "oak-interiors",
+    partner: "OAK INTERIORS",
+    platform: "INTERIOR DESIGN WEBSITE",
     index: "(d.)",
-    services: ["Full-stack Build", "Performance Marketing", "Growth"],
-    image: "/humans-1.jpg"
+    services: ["Portfolio Website", "UI Design", "Gallery Setup", "Digital Marketing"],
+    image: "/projects/architect_site.png"
   },
   {
-    id: "forge",
-    partner: "FORGE",
-    platform: "B2B SAAS",
+    id: "north-college",
+    partner: "NORTH COLLEGE",
+    platform: "COLLEGE WEBSITE",
     index: "(e.)",
-    services: ["Custom Dashboard", "Lead Gen", "API Dev"],
-    image: "/editorial-tshirt.jpg"
-  },
-  {
-    id: "atlas",
-    partner: "ATLAS",
-    platform: "TRAVEL",
-    index: "(f.)",
-    services: ["Booking Engine", "Technical SEO", "UI Design"],
-    image: "/editorial-fashion.jpg"
-  },
-  {
-    id: "noir",
-    partner: "NOIR",
-    platform: "E-COMMERCE",
-    index: "(g.)",
-    services: ["Shopify Plus", "Digital Ads", "Rebranding"],
-    image: "/editorial-redbook.jpg"
-  },
-  {
-    id: "kite",
-    partner: "KITE",
-    platform: "FINTECH",
-    index: "(h.)",
-    services: ["Banking Portal", "Paid Search", "Compliance"],
-    image: "/humans-1.jpg"
-  },
-  {
-    id: "vale",
-    partner: "VALE",
-    platform: "SUBSCRIPTION",
-    index: "(i.)",
-    services: ["Subscription App", "CRM Setup", "Automation"],
+    services: ["Admissions Pages", "CMS Setup", "SEO", "Maintenance Support"],
     image: "/editorial-tshirt.jpg"
   }
 ];
