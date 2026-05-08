@@ -166,7 +166,7 @@ export default function Nav() {
                   <span className="mr-4 mt-2 font-mono text-xs text-gray-light/40 md:mt-4 md:text-sm">
                     0{idx + 1}
                   </span>
-                  <span className="heading-condensed text-[11vw] leading-[0.85] transition-colors group-hover:text-gray-light/60 md:text-[9vw]">
+                  <span className="heading-condensed text-[9vw] leading-[0.9] transition-colors group-hover:text-gray-light/60 md:text-[7vw]">
                     {link.label}
                   </span>
                 </button>
