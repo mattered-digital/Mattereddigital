@@ -4,16 +4,24 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "archtierela",
     partner: "ARCHTIERELA",
-    platform: "E-COMMERCE",
+    platform: "CUSTOM E-COMMERCE SITE",
     index: "(a.)",
-    services: ["Shopify Store Build", "SEO", "Email Marketing", "CRO"],
+    services: ["SEO", "Email Marketing", "CRO"],
     image: "/projects/ecommerce_site.png"
+  },
+  {
+    id: "shopify-store",
+    partner: "SHOPIFY STORE",
+    platform: "SHOPIFY E-COMMERCE SITE",
+    index: "(b.)",
+    services: ["Shopify Setup", "Theme Customization", "Product Pages", "CRO"],
+    image: "/projects/shopify_store.png"
   },
   {
     id: "estate-devlop",
     partner: "ESTATE DEVLOP",
     platform: "REAL ESTATE WEBSITE",
-    index: "(b.)",
+    index: "(c.)",
     services: ["Property Listing Build", "Lead Forms", "Local SEO", "CRM Setup"],
     image: "/projects/real_estate.png"
   },
@@ -21,7 +29,7 @@ export const caseStudies: CaseStudy[] = [
     id: "city-hospital",
     partner: "CITY HOSPITAL",
     platform: "HOSPITAL WEBSITE",
-    index: "(c.)",
+    index: "(d.)",
     services: ["Appointment System", "Service Pages", "SEO", "Performance Fixes"],
     image: "/projects/hospital_landing_page.png"
   },
@@ -29,7 +37,7 @@ export const caseStudies: CaseStudy[] = [
     id: "oak-interiors",
     partner: "OAK INTERIORS",
     platform: "INTERIOR DESIGN WEBSITE",
-    index: "(d.)",
+    index: "(e.)",
     services: ["Portfolio Website", "UI Design", "Gallery Setup", "Digital Marketing"],
     image: "/projects/architect_site.png"
   },
@@ -37,7 +45,7 @@ export const caseStudies: CaseStudy[] = [
     id: "north-college",
     partner: "NORTH COLLEGE",
     platform: "COLLEGE WEBSITE",
-    index: "(e.)",
+    index: "(f.)",
     services: ["Admissions Pages", "CMS Setup", "SEO", "Maintenance Support"],
     image: "/editorial-tshirt.jpg"
   }
