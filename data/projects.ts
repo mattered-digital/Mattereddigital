@@ -42,12 +42,12 @@ export const caseStudies: CaseStudy[] = [
     image: "/projects/architect_site.png"
   },
   {
-    id: "north-college",
-    partner: "NORTH COLLEGE",
-    platform: "COLLEGE WEBSITE",
+    id: "ecommerce-site",
+    partner: "Ecommerce Site",
+    platform: "ECOMMERCE WEBSITE",
     index: "(f.)",
     services: ["Admissions Pages", "CMS Setup", "SEO", "Maintenance Support"],
-    image: "/editorial-tshirt.jpg"
+    image: "/projects/ecommerce_site.png"
   }
 ];
 
