@@ -49,10 +49,17 @@ export default function ServicesAccordion() {
               key={service.title}
               className="accordion-item border border-white/5 bg-white/[0.02]"
             >
-              <button
-                type="button"
+              <div
+                role="button"
+                tabIndex={0}
                 onClick={() => setActiveIndex(index)}
-                className="flex w-full flex-col gap-3 px-6 py-5 text-left md:flex-row md:items-center md:justify-between"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveIndex(index);
+                  }
+                }}
+                className="flex w-full flex-col gap-3 px-6 py-5 text-left md:flex-row md:items-center md:justify-between cursor-pointer"
               >
                 <div>
                   <p className="font-heading text-xl font-semibold uppercase tracking-tight md:text-2xl">
@@ -62,10 +69,22 @@ export default function ServicesAccordion() {
                     {service.intro}
                   </p>
                 </div>
-                <span className="font-mono text-xs uppercase tracking-label text-gray">
-                  {isActive ? "Open" : "View"}
-                </span>
-              </button>
+                {isActive && service.title === "Digital marketing" ? (
+                  <a
+                    href="https://seo.mattered.digital/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="font-mono text-xs uppercase tracking-label text-[#ff1a1a] hover:text-white transition-colors"
+                  >
+                    Open ↗
+                  </a>
+                ) : (
+                  <span className="font-mono text-xs uppercase tracking-label text-gray">
+                    {isActive ? "Open" : "View"}
+                  </span>
+                )}
+              </div>
               <div
                 className={`grid overflow-hidden px-6 transition-[grid-template-rows,padding-bottom] duration-300 ${
                   isActive ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"

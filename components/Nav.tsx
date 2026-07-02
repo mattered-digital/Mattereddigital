@@ -6,10 +6,9 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 
 const links = [
-  { label: "Work", id: "projects" },
-  { label: "About", id: "about" },
-  { label: "Approach", id: "showreel" },
-  { label: "Services", id: "services" },
+  { label: "Work", id: "/projects" },
+  { label: "About", id: "/about" },
+  { label: "Services", id: "/services" },
   { label: "Contact", id: "/contact" }
 ];
 
@@ -79,8 +78,12 @@ export default function Nav() {
   const handleScroll = (id: string) => {
     setMenuOpen(false);
     
-    if (id === "/contact") {
-      router.push("/contact");
+    if (id.startsWith("/")) {
+      if (pathname === id) {
+        gsap.to(window, { duration: 1.15, ease: "power3.inOut", scrollTo: 0 });
+      } else {
+        router.push(id);
+      }
       return;
     }
 
