@@ -10,8 +10,8 @@ This repository contains the source code for the official Matter agency website,
 
 ## 🚀 Tech Stack
 
-- **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
-- **Frontend:** React 18, TypeScript
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Frontend:** React 19, TypeScript
 - **Styling:** Tailwind CSS (Custom Dark Mode & Layouts)
 - **Animations:** [GSAP](https://gsap.com/) & [Lenis](https://lenis.studiofreight.com/) (Smooth Scrolling)
 - **Analytics:** Vercel Analytics
