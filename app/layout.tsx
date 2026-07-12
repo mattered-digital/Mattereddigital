@@ -29,7 +29,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://mattered.digital/"),
+  metadataBase: new URL("https://mattered.digital/"),
   title: {
     default: "Matter | Web Agency & Digital Marketing Powerhouse",
     template: "%s | Matter"
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Matter | Web Agency & Digital Marketing Powerhouse",
     description: "Custom web solutions and digital marketing strategies that drive measurable growth.",
-    url: "http://mattered.digital/",
+    url: "https://mattered.digital/",
     siteName: "Matter Digital",
     locale: "en_US",
     type: "website",
@@ -52,6 +52,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Matter | Web Agency & Digital Marketing Powerhouse",
     description: "Custom web solutions and digital marketing strategies that drive measurable growth.",
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   robots: {
     index: true,

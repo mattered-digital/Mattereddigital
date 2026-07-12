@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'http://mattered.digital/sitemap.xml',
+    sitemap: 'https://mattered.digital/sitemap.xml',
   }
 }

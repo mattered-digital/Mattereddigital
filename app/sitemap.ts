@@ -3,31 +3,31 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'http://mattered.digital',
+      url: 'https://mattered.digital',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: 'http://mattered.digital/about',
+      url: 'https://mattered.digital/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'http://mattered.digital/services',
+      url: 'https://mattered.digital/services',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'http://mattered.digital/projects',
+      url: 'https://mattered.digital/projects',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'http://mattered.digital/contact',
+      url: 'https://mattered.digital/contact',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.5,
