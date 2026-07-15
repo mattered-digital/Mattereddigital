@@ -31,26 +31,41 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mattered.digital/"),
   title: {
-    default: "Matter | Web Agency & Digital Marketing Powerhouse",
-    template: "%s | Matter"
+    default: "Mattered | Web Agency & Digital Marketing Powerhouse",
+    template: "%s | Mattered"
   },
   description:
-    "Matter is a premier web agency and digital marketing powerhouse. We specialize in custom web solutions, AI agents, and high-performance marketing strategies for global brands.",
-  keywords: ["Web Agency", "Digital Marketing", "Custom Web Solutions", "AI Agents", "Next.js Development", "Growth Marketing"],
+    "Mattered is a premier web agency and digital marketing powerhouse. We build custom websites, help you get more customers online, and grow your business.",
+  keywords: [
+    // Plain English & Problem-Solving Queries
+    "Hire a web developer",
+    "Best digital marketing agency",
+    "Make a website for my business",
+    "How to get more customers online",
+    "Website design company",
+    "Help with SEO and marketing",
+    
+    // Core Services & Niche
+    "Custom Web Solutions",
+    "Digital Marketing Powerhouse",
+    "AI Agents for Business",
+    "Web Agency",
+    "Growth Marketing"
+  ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Matter | Web Agency & Digital Marketing Powerhouse",
+    title: "Mattered | Web Agency & Digital Marketing Powerhouse",
     description: "Custom web solutions and digital marketing strategies that drive measurable growth.",
     url: "https://mattered.digital/",
-    siteName: "Matter Digital",
+    siteName: "Mattered Digital",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Matter | Web Agency & Digital Marketing Powerhouse",
+    title: "Mattered | Web Agency & Digital Marketing Powerhouse",
     description: "Custom web solutions and digital marketing strategies that drive measurable growth.",
   },
   verification: {
@@ -67,6 +82,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+  // JSON-LD Schema for Google Rich Snippets
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mattered Digital",
+    "url": "https://mattered.digital/",
+    "logo": "https://mattered.digital/logo.png", // Just make sure you have a logo.png in your public folder
+    "description": "Mattered is a premier web agency and digital marketing powerhouse.",
+    "sameAs": [
+      "https://x.com/mattereddigital",
+      "https://www.linkedin.com/company/mattered-digital"
+    ]
+  };
+
   return (
     <html
       lang="en"
@@ -74,6 +104,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-black font-sans text-white antialiased">
+        {/* Injecting Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        
         <SmoothScrollProvider>
           <CustomCursor />
           <GridOverlay />
