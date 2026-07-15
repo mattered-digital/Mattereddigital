@@ -93,27 +93,45 @@ export const latestProjects: Project[] = [
 export const services: Service[] = [
   {
     title: "Custom web solutions",
+    slug: "custom-web-solutions",
     intro:
       "Full-stack engineering and custom application development designed for scalability, speed, and business impact.",
     items: ["React & Next.js Development", "API Integration", "Architecture Design"]
   },
   {
     title: "Digital marketing",
+    slug: "digital-marketing",
     intro:
       "Data-driven strategies that combine technical SEO with performance-based advertising to drive high-quality growth.",
     items: ["Search Engine Optimization", "Paid Search & Social", "Conversion Optimization"]
   },
   {
     title: "UI/UX design",
+    slug: "ui-ux-design",
     intro:
       "User-centric design systems that bridge the gap between aesthetic excellence and intuitive digital experiences.",
     items: ["Interaction Design", "Prototyping", "Design Systems"]
   },
   {
     title: "AI & Automation",
+    slug: "ai-automation",
     intro:
       "Intelligent AI agents and custom automation tools designed to streamline workflows and enhance user interactions.",
     items: ["AI Agent Development", "Workflow Automation", "Custom LLM Solutions"]
+  },
+  {
+    title: "Mobile App Development",
+    slug: "mobile-app-development",
+    intro:
+      "High-performance native iOS and Android apps crafted using React Native for smooth, unified user experiences.",
+    items: ["React Native Cross-Platform", "App Store Submission", "Offline Syncing"]
+  },
+  {
+    title: "Custom CRM Systems",
+    slug: "custom-crm",
+    intro:
+      "Bespoke Customer Relationship Management software tailored precisely to scale your business operations.",
+    items: ["Sales Pipeline Boards", "Automated Workflows", "Reporting & Dashboards"]
   }
 ];
 

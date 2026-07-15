@@ -23,6 +23,7 @@ export type Service = {
   title: string;
   intro: string;
   items: string[];
+  slug?: string;
 };
 
 export type Brand = {

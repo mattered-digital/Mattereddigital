@@ -3,37 +3,44 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
     title: "Custom Web\nSolutions",
+    slug: "custom-web-solutions",
     description:
       "High-performance, scalable web applications built with modern frameworks like Next.js to solve complex business challenges.",
   },
   {
     title: "Digital\nMarketing",
+    slug: "digital-marketing",
     description:
       "Data-driven marketing strategies that amplify your brand reach and drive measurable ROI through targeted acquisition.",
   },
   {
     title: "UI/UX\nDesign",
+    slug: "ui-ux-design",
     description:
       "User-centric interfaces that blend aesthetic excellence with intuitive functionality for seamless digital experiences.",
   },
   {
     title: "AI & Custom\nTools",
+    slug: "ai-automation",
     description:
       "Intelligent AI agents and bespoke automation tools designed to solve complex operational challenges and scale your business.",
   },
   {
     title: "Growth\nStrategy",
+    slug: "digital-marketing",
     description:
       "Data-driven roadmaps that align your technical infrastructure with your long-term business and marketing goals.",
   },
   {
     title: "E-commerce\nEngineering",
+    slug: "custom-web-solutions",
     description:
       "Bespoke online shopping experiences built with Shopify Plus or custom headless architectures for global scaling.",
   },
@@ -174,6 +181,9 @@ export default function ServicesSection() {
                   <p className="mt-3 text-[0.95rem] leading-relaxed text-white/50 md:mt-4 md:pr-4 lg:pr-12">
                     {service.description}
                   </p>
+                  <Link href={`/services/${service.slug}`} className="mt-4 font-mono text-xs uppercase tracking-label text-[#ff3b00] hover:text-white transition-colors w-fit">
+                    Explore Service ↗
+                  </Link>
                 </div>
               </div>
             ))}

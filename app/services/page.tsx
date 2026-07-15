@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function ServicesPage() {
   return (
@@ -34,6 +35,9 @@ export default function ServicesPage() {
                  <li className="flex items-center gap-2"><span className="text-[#ff1a1a]">✦</span> API Integration</li>
                  <li className="flex items-center gap-2"><span className="text-[#ff1a1a]">✦</span> CMS Development</li>
                </ul>
+               <Link href="/services/custom-web-solutions" className="mt-8 relative inline-flex items-center gap-4 overflow-hidden border border-white/20 px-6 py-3 uppercase tracking-widest text-[11px] hover:bg-white hover:text-black transition-all w-fit">
+                 Explore Custom Web Solutions →
+               </Link>
             </div>
           </div>
 
@@ -51,6 +55,9 @@ export default function ServicesPage() {
                  <li className="flex items-center gap-2"><span className="text-[#ff1a1a]">✦</span> Data Processing</li>
                  <li className="flex items-center gap-2"><span className="text-[#ff1a1a]">✦</span> Intelligent Chatbots</li>
                </ul>
+               <Link href="/services/ai-automation" className="mt-8 relative inline-flex items-center gap-4 overflow-hidden border border-white/20 px-6 py-3 uppercase tracking-widest text-[11px] hover:bg-white hover:text-black transition-all w-fit">
+                 Explore AI & Automation →
+               </Link>
             </div>
           </div>
 
@@ -68,6 +75,9 @@ export default function ServicesPage() {
                  <li className="flex items-center gap-2"><span className="text-[#ff1a1a]">✦</span> Performance Campaigns</li>
                  <li className="flex items-center gap-2"><span className="text-[#ff1a1a]">✦</span> Analytics & Data</li>
                </ul>
+               <Link href="/services/digital-marketing" className="mt-8 relative inline-flex items-center gap-4 overflow-hidden border border-white/20 px-6 py-3 uppercase tracking-widest text-[11px] hover:bg-white hover:text-black transition-all w-fit">
+                 Explore Digital Marketing & SEO →
+               </Link>
             </div>
           </div>
         </section>

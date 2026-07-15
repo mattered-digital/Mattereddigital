@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { services } from "@/data/projects";
 import { gsap, useGSAP } from "@/lib/gsap";
+import Link from "next/link";
 
 export default function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -69,19 +70,17 @@ export default function ServicesAccordion() {
                     {service.intro}
                   </p>
                 </div>
-                {isActive && service.title === "Digital marketing" ? (
-                  <a
-                    href="https://seo.mattered.digital/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {isActive ? (
+                  <Link
+                    href={`/services/${service.slug}`}
                     onClick={(e) => e.stopPropagation()}
                     className="font-mono text-xs uppercase tracking-label text-[#ff1a1a] hover:text-white transition-colors"
                   >
                     Open ↗
-                  </a>
+                  </Link>
                 ) : (
                   <span className="font-mono text-xs uppercase tracking-label text-gray">
-                    {isActive ? "Open" : "View"}
+                    View
                   </span>
                 )}
               </div>
