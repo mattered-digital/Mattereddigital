@@ -50,11 +50,19 @@ export default function CustomCursor() {
       ease: "power3.out"
     });
 
-    const scaleRing = gsap.quickTo(ring, "scale", {
+    const scaleRingX = gsap.quickTo(ring, "scaleX", {
       duration: 0.3,
       ease: "power3.out"
     });
-    const scaleDot = gsap.quickTo(dot, "scale", {
+    const scaleRingY = gsap.quickTo(ring, "scaleY", {
+      duration: 0.3,
+      ease: "power3.out"
+    });
+    const scaleDotX = gsap.quickTo(dot, "scaleX", {
+      duration: 0.3,
+      ease: "power3.out"
+    });
+    const scaleDotY = gsap.quickTo(dot, "scaleY", {
       duration: 0.3,
       ease: "power3.out"
     });
@@ -70,13 +78,17 @@ export default function CustomCursor() {
     };
 
     const handleDown = () => {
-      scaleRing(0.6);
-      scaleDot(0.8);
+      scaleRingX(0.6);
+      scaleRingY(0.6);
+      scaleDotX(0.8);
+      scaleDotY(0.8);
     };
     
     const handleUp = () => {
-      scaleRing(1);
-      scaleDot(1);
+      scaleRingX(1);
+      scaleRingY(1);
+      scaleDotX(1);
+      scaleDotY(1);
     };
     
     const handleLeave = () => {

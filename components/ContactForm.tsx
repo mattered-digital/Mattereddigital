@@ -16,6 +16,7 @@ export default function ContactForm({ defaultService = "Web Development", isInli
     service: defaultService,
     message: "",
   });
+  const [countryCode, setCountryCode] = useState("+91");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -44,7 +45,10 @@ export default function ContactForm({ defaultService = "Web Development", isInli
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          phone: `${countryCode} ${formData.phone}`
+        }),
       });
 
       if (response.ok) {
@@ -95,16 +99,32 @@ export default function ContactForm({ defaultService = "Web Development", isInli
         </div>
         <div className="space-y-2">
           <label htmlFor="phone" className="text-[10px] uppercase tracking-widest text-gray-light/60 font-mono">Phone Number</label>
-          <input
-            required
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full bg-transparent border-b border-white/10 py-4 outline-none transition-colors focus:border-white text-lg"
-            placeholder="+91 99999 99999"
-          />
+          <div className="flex gap-3 items-end">
+            <select
+              value={countryCode}
+              onChange={(e) => setCountryCode(e.target.value)}
+              className="bg-transparent border-b border-white/10 py-4 outline-none transition-colors focus:border-white text-lg cursor-pointer max-w-[90px]"
+            >
+              <option value="+91" className="bg-[#0a0a0a]">+91 (IN)</option>
+              <option value="+1" className="bg-[#0a0a0a]">+1 (US)</option>
+              <option value="+44" className="bg-[#0a0a0a]">+44 (UK)</option>
+              <option value="+61" className="bg-[#0a0a0a]">+61 (AU)</option>
+              <option value="+971" className="bg-[#0a0a0a]">+971 (AE)</option>
+              <option value="+49" className="bg-[#0a0a0a]">+49 (DE)</option>
+              <option value="+33" className="bg-[#0a0a0a]">+33 (FR)</option>
+              <option value="+65" className="bg-[#0a0a0a]">+65 (SG)</option>
+            </select>
+            <input
+              required
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="flex-1 bg-transparent border-b border-white/10 py-4 outline-none transition-colors focus:border-white text-lg"
+              placeholder="99999 99999"
+            />
+          </div>
         </div>
       </div>
 
