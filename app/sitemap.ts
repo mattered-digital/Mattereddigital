@@ -1,6 +1,22 @@
 import { MetadataRoute } from 'next'
 
+const serviceSlugs = [
+  "custom-web-solutions",
+  "digital-marketing",
+  "ui-ux-design",
+  "ai-automation",
+  "mobile-app-development",
+  "custom-crm",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const servicePages = serviceSlugs.map((slug) => ({
+    url: `https://mattered.digital/services/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   return [
     {
       url: 'https://mattered.digital',
@@ -18,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://mattered.digital/services',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: 'https://mattered.digital/projects',
@@ -32,11 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
-    {
-      url: 'https://seo.mattered.digital/',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-  ]
+    ...servicePages,
+  ];
 }

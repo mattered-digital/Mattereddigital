@@ -1,5 +1,19 @@
+import { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Explore Mattered's full-service digital capabilities: custom web development, AI automation, digital marketing & SEO, UI/UX design, mobile apps, and CRM systems.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Digital Services | Mattered",
+    description:
+      "Full-service web agency offering custom engineering, growth marketing, AI automation, and design systems.",
+    url: "/services",
+  },
+};
 
 export default function ServicesPage() {
   return (
@@ -79,6 +93,27 @@ export default function ServicesPage() {
                  Explore Digital Marketing & SEO →
                </Link>
             </div>
+          </div>
+        </section>
+
+        {/* Cross-links */}
+        <section className="section-shell relative z-10 mt-32 border-t border-white/10 pt-24 text-center">
+          <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl uppercase tracking-tighter mb-8">
+            See our work<br />in action.
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/projects"
+              className="inline-block bg-white text-black px-8 py-4 font-mono text-sm uppercase tracking-wider hover:bg-[#ff1a1a] hover:text-white transition-colors duration-300"
+            >
+              View Projects
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-block border border-white/20 text-white px-8 py-4 font-mono text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
+            >
+              Start a Project
+            </Link>
           </div>
         </section>
       </main>

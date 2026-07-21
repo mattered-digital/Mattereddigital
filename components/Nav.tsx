@@ -116,13 +116,13 @@ export default function Nav() {
       <header className={`fixed inset-x-0 top-0 z-[110] px-6 py-4 md:px-10 lg:px-16 transition-colors duration-500 ${menuOpen ? "bg-transparent border-transparent" : "bg-black/50 backdrop-blur-lg border-b border-white/5"}`}>
         <nav className="relative flex items-center justify-between">
           {/* Logo */}
-          <button
-            type="button"
-            onClick={() => handleScroll("home")}
+          <Link
+            href="/"
+            onClick={(e) => { e.preventDefault(); handleScroll("home"); }}
             className="font-heading text-lg font-bold uppercase tracking-tight z-[120]"
           >
             <span className="mr-1 text-[10px]">✦</span>Matter
-          </button>
+          </Link>
 
           {/* Center tagline (only visible when menu closed) */}
           {!menuOpen && (
@@ -161,9 +161,9 @@ export default function Nav() {
           <div ref={linksRef} className="flex flex-col gap-4 md:gap-8">
             {links.map((link, idx) => (
               <div key={link.id} className="overflow-hidden">
-                <button
-                  type="button"
-                  onClick={() => handleScroll(link.id)}
+                <Link
+                  href={link.id}
+                  onClick={(e) => { e.preventDefault(); handleScroll(link.id); }}
                   className="menu-link group flex items-start text-left"
                 >
                   <span className="mr-4 mt-2 font-mono text-xs text-gray-light/40 md:mt-4 md:text-sm">
@@ -172,7 +172,7 @@ export default function Nav() {
                   <span className="heading-condensed text-[9vw] leading-[0.9] transition-colors group-hover:text-gray-light/60 md:text-[7vw]">
                     {link.label}
                   </span>
-                </button>
+                </Link>
               </div>
             ))}
           </div>

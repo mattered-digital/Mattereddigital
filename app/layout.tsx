@@ -89,8 +89,22 @@ export default function RootLayout({
     "@type": "ProfessionalService",
     "name": "Mattered Digital",
     "url": "https://mattered.digital/",
-    "logo": "https://mattered.digital/logo.png", // Just make sure you have a logo.png in your public folder
+    "logo": "https://mattered.digital/logo.png",
     "description": "Mattered is a premier web agency and digital marketing powerhouse.",
+    "telephone": "+919430558276",
+    "email": "hi@mattered.digital",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Patna",
+      "addressRegion": "Bihar",
+      "addressCountry": "IN"
+    },
+    "areaServed": "Worldwide",
+    "priceRange": "$$",
+    "knowsAbout": [
+      "Web Development", "Digital Marketing", "SEO",
+      "AI Automation", "UI/UX Design", "React", "Next.js"
+    ],
     "sameAs": [
       "https://x.com/mattereddigital",
       "https://www.linkedin.com/company/mattered-digital"

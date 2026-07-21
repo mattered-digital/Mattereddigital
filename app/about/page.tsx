@@ -1,6 +1,20 @@
+import { Metadata } from "next";
 import Footer from "@/components/Footer";
 import AgencyStatement from "@/components/AgencyStatement";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Mattered is a collective of designers, engineers, and strategists building high-performance digital ecosystems for ambitious brands.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us | Mattered",
+    description:
+      "Meet the team behind Mattered Digital — designers, engineers, and strategists obsessed with the bleeding edge of the web.",
+    url: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (

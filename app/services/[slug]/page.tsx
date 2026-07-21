@@ -182,11 +182,42 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     "areaServed": "Worldwide"
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": service.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a,
+      },
+    })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mattered.digital/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://mattered.digital/services" },
+      { "@type": "ListItem", "position": 3, "name": service.title, "item": `https://mattered.digital/services/${slug}` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <main className="relative min-h-screen overflow-hidden bg-black text-white pt-40 pb-24">
         {/* Subtle background glow */}

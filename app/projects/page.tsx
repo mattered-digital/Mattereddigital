@@ -1,5 +1,19 @@
+import { Metadata } from "next";
 import Footer from "@/components/Footer";
 import ProjectTable from "@/components/ProjectTable";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "A curated selection of our most impactful work. We partner with ambitious brands to create digital experiences that perform flawlessly.",
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    title: "Featured Projects | Mattered",
+    description:
+      "Explore our portfolio of custom web solutions, digital marketing campaigns, and AI integrations.",
+    url: "/projects",
+  },
+};
 
 export default function ProjectsPage() {
   return (

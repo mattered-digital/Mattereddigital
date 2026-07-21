@@ -2,13 +2,14 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from 'next/link';
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const serviceBlocks = [
-  { title: "Custom\nEngineering", image: "/humans-1.jpg" },
-  { title: "Digital\nMarketing", image: "/humans-2.jpg" },
-  { title: "UI/UX\nDesign", image: "/humans-3.jpg" },
-  { title: "AI &\nAutomation", image: "/humans-4.jpg" }
+  { title: "Custom\nEngineering", image: "/humans-1.jpg", slug: "/services/custom-web-solutions" },
+  { title: "Digital\nMarketing", image: "/humans-2.jpg", slug: "/services/digital-marketing" },
+  { title: "UI/UX\nDesign", image: "/humans-3.jpg", slug: "/services/ui-ux-design" },
+  { title: "AI &\nAutomation", image: "/humans-4.jpg", slug: "/services/ai-automation" },
 ];
 
 export default function AgencyStatement() {
@@ -165,29 +166,32 @@ export default function AgencyStatement() {
                 {serviceBlocks.map((block, i) => {
                   const isHovered = hoveredIndex === i;
                   return (
-                    <div 
-                      key={block.title} 
-                      className="service-block-wrap w-full flex flex-col group cursor-pointer"
-                      onMouseEnter={() => setHoveredIndex(i)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                      onClick={() => setHoveredIndex(isHovered ? null : i)}
-                    >
-                      <div className="h-8 mb-2 flex items-center">
-                        {i === 0 && (
-                          <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
-                            Our Services
-                          </p>
-                        )}
-                      </div>
-                      <div className={`transition-colors duration-500 h-[180px] md:h-[320px] w-full p-5 flex flex-col justify-between border border-white/10 relative overflow-hidden backdrop-blur-md ${isHovered ? 'bg-[#1a1a1a]/40' : 'bg-[#141414]/10'}`}>
-                        <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight relative z-10 drop-shadow-md">
-                          {block.title}
-                        </h3>
-                        <div className={`transition-opacity duration-500 flex justify-end relative z-10 ${isHovered ? 'opacity-100' : 'opacity-0 md:opacity-0 group-hover:opacity-100'}`}>
-                          <span className="text-[10px] uppercase tracking-widest text-white/90 font-semibold drop-shadow-md">(Explore)</span>
+                    <Link href={block.slug} key={block.title}>
+                      <div 
+                        className="service-block-wrap w-full flex flex-col group cursor-pointer"
+                        onMouseEnter={() => setHoveredIndex(i)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={() => setHoveredIndex(isHovered ? null : i)}
+                      >
+                        <div className="h-8 mb-2 flex items-center">
+                          {i === 0 && (
+                            <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-white font-medium">
+                              Our Services
+                            </p>
+                          )}
+                        </div>
+                        <div className={`transition-colors duration-500 h-[180px] md:h-[320px] w-full p-5 flex flex-col justify-between border border-white/10 relative overflow-hidden backdrop-blur-md ${isHovered ? 'bg-[#1a1a1a]/40' : 'bg-[#141414]/10'}`}>
+                          <h3 className="font-sans text-white text-[14px] leading-[1.2] font-medium whitespace-pre-line tracking-tight relative z-10 drop-shadow-md">
+                            {block.title}
+                          </h3>
+                          <div className={`transition-opacity duration-500 flex justify-end relative z-10 ${isHovered ? 'opacity-100' : 'opacity-0 md:opacity-0 group-hover:opacity-100'}`}>
+                            <Link href={block.slug} className="text-[10px] uppercase tracking-widest text-white/90 font-semibold drop-shadow-md hover:text-[#ff1a1a] transition-colors">
+                              Explore →
+                            </Link>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

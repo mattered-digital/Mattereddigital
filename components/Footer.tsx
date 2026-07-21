@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function Footer() {
@@ -88,7 +89,7 @@ export default function Footer() {
         </div>
 
         {/* Right Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10  md:w-7/12 lg:w-1/2 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10  md:w-7/12 lg:w-1/2 md:gap-4">
           {/* Contact Column */}
           <div className="flex flex-col gap-6 text-sm">
             <div>
@@ -114,11 +115,24 @@ export default function Footer() {
           <div className="flex flex-col text-sm">
             <h4 className="mb-4 font-semibold text-white">Pages</h4>
             <div className="flex flex-col gap-2.5 text-white/70">
-              <button onClick={() => handleScroll("home")} className="text-left transition-colors hover:text-white">Home</button>
-              <button onClick={() => handleScroll("/projects")} className="text-left transition-colors hover:text-white">Projects</button>
-              <button onClick={() => handleScroll("/services")} className="text-left transition-colors hover:text-white">Services</button>
-              <button onClick={() => handleScroll("/about")} className="text-left transition-colors hover:text-white">About us</button>
-              <a href="/contact" className="transition-colors hover:text-white">Contact</a>
+              <Link href="/" className="text-left transition-colors hover:text-white">Home</Link>
+              <Link href="/projects" className="text-left transition-colors hover:text-white">Projects</Link>
+              <Link href="/services" className="text-left transition-colors hover:text-white">Services</Link>
+              <Link href="/about" className="text-left transition-colors hover:text-white">About us</Link>
+              <Link href="/contact" className="text-left transition-colors hover:text-white">Contact</Link>
+            </div>
+          </div>
+
+          {/* Services Column */}
+          <div className="flex flex-col text-sm">
+            <h4 className="mb-4 font-semibold text-white">Services</h4>
+            <div className="flex flex-col gap-2.5 text-white/70">
+              <Link href="/services/custom-web-solutions" className="transition-colors hover:text-white">Web Development</Link>
+              <Link href="/services/digital-marketing" className="transition-colors hover:text-white">Digital Marketing & SEO</Link>
+              <Link href="/services/ui-ux-design" className="transition-colors hover:text-white">UI/UX Design</Link>
+              <Link href="/services/ai-automation" className="transition-colors hover:text-white">AI & Automation</Link>
+              <Link href="/services/mobile-app-development" className="transition-colors hover:text-white">Mobile Apps</Link>
+              <Link href="/services/custom-crm" className="transition-colors hover:text-white">Custom CRM</Link>
             </div>
           </div>
 
@@ -130,9 +144,9 @@ export default function Footer() {
       <div className="relative z-10 w-full flex flex-col items-center">
         {/* Title container with overflow-hidden for the reveal upward */}
         <div className="footer-logo-container w-full overflow-hidden text-center px-4 pb-2 sm:px-8">
-          <h1 className="footer-logo-text font-sans inline-block text-[22vw] w-full font-bold leading-[0.75] tracking-tighter text-white">
+          <span className="footer-logo-text font-sans inline-block text-[22vw] w-full font-bold leading-[0.75] tracking-tighter text-white" aria-hidden="true">
             Matter
-          </h1>
+          </span>
         </div>
 
         {/* Copyright strip */}
